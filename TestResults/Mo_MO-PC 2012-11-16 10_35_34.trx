@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="0e775ebe-03db-4091-9a84-8c7998517d9c" name="Mo@MO-PC 2012-11-16 10:35:34" runUser="Mo-PC\Mo" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Default Test Settings" id="e69364c8-d17d-43ed-8291-c6004aade84e">
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+    <Deployment runDeploymentRoot="Mo_MO-PC 2012-11-16 10_35_34" />
+  </TestSettings>
+  <Times creation="2012-11-16T10:35:34.6580854+07:00" queuing="2012-11-16T10:35:35.3221234+07:00" start="2012-11-16T10:35:35.4521308+07:00" finish="2012-11-16T10:35:36.1801725+07:00" />
+  <ResultSummary outcome="Completed">
+    <Counters total="3" executed="3" passed="3" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="Contact" storage="c:\users\mo\documents\github\manee\pillar1procurementsystem.tests\bin\debug\pillar1procurementsystem.tests.dll" id="52cf93a0-401b-af8a-4afa-19f05857e26c">
+      <Execution id="f579c8ec-0bd4-4c33-a9c6-8a24c7d7b55f" />
+      <TestMethod codeBase="C:/Users/Mo/Documents/GitHub/manee/Pillar1ProcurementSystem.Tests/bin/Debug/Pillar1ProcurementSystem.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Manee.Tests.Controllers.HomeControllerTest, Pillar1ProcurementSystem.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Contact" />
+    </UnitTest>
+    <UnitTest name="Index" storage="c:\users\mo\documents\github\manee\pillar1procurementsystem.tests\bin\debug\pillar1procurementsystem.tests.dll" id="e8eca427-66ad-c564-4523-536913124572">
+      <Execution id="8ed176c4-20cc-48c2-aff0-da8f337776aa" />
+      <TestMethod codeBase="C:/Users/Mo/Documents/GitHub/manee/Pillar1ProcurementSystem.Tests/bin/Debug/Pillar1ProcurementSystem.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Manee.Tests.Controllers.HomeControllerTest, Pillar1ProcurementSystem.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Index" />
+    </UnitTest>
+    <UnitTest name="About" storage="c:\users\mo\documents\github\manee\pillar1procurementsystem.tests\bin\debug\pillar1procurementsystem.tests.dll" id="c92b439f-a21e-a902-74ca-d7510afb1d5f">
+      <Execution id="75230dd1-8e6f-4e21-9a74-12fbb729eb2f" />
+      <TestMethod codeBase="C:/Users/Mo/Documents/GitHub/manee/Pillar1ProcurementSystem.Tests/bin/Debug/Pillar1ProcurementSystem.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Manee.Tests.Controllers.HomeControllerTest, Pillar1ProcurementSystem.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="About" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="e8eca427-66ad-c564-4523-536913124572" executionId="8ed176c4-20cc-48c2-aff0-da8f337776aa" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c92b439f-a21e-a902-74ca-d7510afb1d5f" executionId="75230dd1-8e6f-4e21-9a74-12fbb729eb2f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="52cf93a0-401b-af8a-4afa-19f05857e26c" executionId="f579c8ec-0bd4-4c33-a9c6-8a24c7d7b55f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="8ed176c4-20cc-48c2-aff0-da8f337776aa" testId="e8eca427-66ad-c564-4523-536913124572" testName="Index" computerName="MO-PC" duration="00:00:00.0894267" startTime="2012-11-16T10:35:35.4641315+07:00" endTime="2012-11-16T10:35:36.0851670+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8ed176c4-20cc-48c2-aff0-da8f337776aa">
+    </UnitTestResult>
+    <UnitTestResult executionId="75230dd1-8e6f-4e21-9a74-12fbb729eb2f" testId="c92b439f-a21e-a902-74ca-d7510afb1d5f" testName="About" computerName="MO-PC" duration="00:00:00.0037016" startTime="2012-11-16T10:35:36.0871671+07:00" endTime="2012-11-16T10:35:36.0951676+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="75230dd1-8e6f-4e21-9a74-12fbb729eb2f">
+    </UnitTestResult>
+    <UnitTestResult executionId="f579c8ec-0bd4-4c33-a9c6-8a24c7d7b55f" testId="52cf93a0-401b-af8a-4afa-19f05857e26c" testName="Contact" computerName="MO-PC" duration="00:00:00.0029828" startTime="2012-11-16T10:35:36.0961677+07:00" endTime="2012-11-16T10:35:36.1041681+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f579c8ec-0bd4-4c33-a9c6-8a24c7d7b55f">
+    </UnitTestResult>
+  </Results>
+</TestRun>

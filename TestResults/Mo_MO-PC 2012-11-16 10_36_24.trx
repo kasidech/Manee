@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="e6ccd5c0-dd66-43e0-8f94-21195c317ad5" name="Mo@MO-PC 2012-11-16 10:36:24" runUser="Mo-PC\Mo" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Default Test Settings" id="039e7e24-9049-4c42-9b60-11735b79edbd">
+    <Deployment runDeploymentRoot="Mo_MO-PC 2012-11-16 10_36_24">
+      <DeploymentItem filename="C:\Users\Mo\Documents\GitHub\manee\Manee.INV\bin\Manee.INV.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2012-11-16T10:36:24.8469560+07:00" queuing="2012-11-16T10:36:27.3781008+07:00" start="2012-11-16T10:36:27.6431160+07:00" finish="2012-11-16T10:36:28.4201604+07:00" />
+  <ResultSummary outcome="Warning">
+    <Counters total="3" executed="3" passed="3" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <RunInfos>
+      <RunInfo computerName="MO-PC" outcome="Warning" timestamp="2012-11-16T10:36:27.0220804+07:00">
+        <Text>Warning: conflict during test run deployment: deployment item 'c:\users\mo\documents\github\manee\pillar1procurementsystem.tests\bin\debug\Manee.INV.dll' directly or indirectly referenced by the test container 'c:\users\mo\documents\github\manee\pillar1procurementsystem.tests\bin\debug\pillar1procurementsystem.tests.dll' cannot be deployed to 'Manee.INV.dll' because otherwise the file 'c:\users\mo\documents\github\manee\pillar1procurementsystem.tests\bin\debug\Manee.INV.dll' would overwrite deployment item 'C:\Users\Mo\Documents\GitHub\manee\Manee.INV\bin\Manee.INV.dll' directly or indirectly referenced by C:\Users\Mo\Documents\GitHub\manee\Pillar1ProcurementSystem.Tests\bin\Debug\Pillar1ProcurementSystem.Tests.dll.</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="Contact" storage="c:\users\mo\documents\github\manee\pillar1procurementsystem.tests\bin\debug\pillar1procurementsystem.tests.dll" id="52cf93a0-401b-af8a-4afa-19f05857e26c">
+      <Execution id="af309946-ccbd-44a4-86e0-8ec0cf80962e" />
+      <TestMethod codeBase="C:/Users/Mo/Documents/GitHub/manee/Pillar1ProcurementSystem.Tests/bin/Debug/Pillar1ProcurementSystem.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Manee.Tests.Controllers.HomeControllerTest, Pillar1ProcurementSystem.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Contact" />
+    </UnitTest>
+    <UnitTest name="Index" storage="c:\users\mo\documents\github\manee\pillar1procurementsystem.tests\bin\debug\pillar1procurementsystem.tests.dll" id="e8eca427-66ad-c564-4523-536913124572">
+      <Execution id="d3ad6547-2a8b-4658-bcb7-6ee32b19dc7f" />
+      <TestMethod codeBase="C:/Users/Mo/Documents/GitHub/manee/Pillar1ProcurementSystem.Tests/bin/Debug/Pillar1ProcurementSystem.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Manee.Tests.Controllers.HomeControllerTest, Pillar1ProcurementSystem.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="Index" />
+    </UnitTest>
+    <UnitTest name="About" storage="c:\users\mo\documents\github\manee\pillar1procurementsystem.tests\bin\debug\pillar1procurementsystem.tests.dll" id="c92b439f-a21e-a902-74ca-d7510afb1d5f">
+      <Execution id="cccf7507-1cd1-4ca0-a2b4-d18fb7d4684b" />
+      <TestMethod codeBase="C:/Users/Mo/Documents/GitHub/manee/Pillar1ProcurementSystem.Tests/bin/Debug/Pillar1ProcurementSystem.Tests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="Manee.Tests.Controllers.HomeControllerTest, Pillar1ProcurementSystem.Tests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="About" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="e8eca427-66ad-c564-4523-536913124572" executionId="d3ad6547-2a8b-4658-bcb7-6ee32b19dc7f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c92b439f-a21e-a902-74ca-d7510afb1d5f" executionId="cccf7507-1cd1-4ca0-a2b4-d18fb7d4684b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="52cf93a0-401b-af8a-4afa-19f05857e26c" executionId="af309946-ccbd-44a4-86e0-8ec0cf80962e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="d3ad6547-2a8b-4658-bcb7-6ee32b19dc7f" testId="e8eca427-66ad-c564-4523-536913124572" testName="Index" computerName="MO-PC" duration="00:00:00.0904341" startTime="2012-11-16T10:36:27.5561110+07:00" endTime="2012-11-16T10:36:27.9661344+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d3ad6547-2a8b-4658-bcb7-6ee32b19dc7f">
+    </UnitTestResult>
+    <UnitTestResult executionId="cccf7507-1cd1-4ca0-a2b4-d18fb7d4684b" testId="c92b439f-a21e-a902-74ca-d7510afb1d5f" testName="About" computerName="MO-PC" duration="00:00:00.0020924" startTime="2012-11-16T10:36:27.9671345+07:00" endTime="2012-11-16T10:36:27.9721348+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="cccf7507-1cd1-4ca0-a2b4-d18fb7d4684b">
+    </UnitTestResult>
+    <UnitTestResult executionId="af309946-ccbd-44a4-86e0-8ec0cf80962e" testId="52cf93a0-401b-af8a-4afa-19f05857e26c" testName="Contact" computerName="MO-PC" duration="00:00:00.0018510" startTime="2012-11-16T10:36:27.9721348+07:00" endTime="2012-11-16T10:36:27.9801352+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="af309946-ccbd-44a4-86e0-8ec0cf80962e">
+    </UnitTestResult>
+  </Results>
+</TestRun>
