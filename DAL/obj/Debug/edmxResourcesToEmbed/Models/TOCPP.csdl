@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="TOCPP" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+  <EntityContainer Name="TOCPPContainer1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="DeliveryNotes" EntityType="TOCPP.DeliveryNote" />
+    <EntitySet Name="ReceiptNotes" EntityType="TOCPP.ReceiptNote" />
+    <AssociationSet Name="DeliveryNoteReceiptNote" Association="TOCPP.DeliveryNoteReceiptNote">
+      <End Role="DeliveryNote" EntitySet="DeliveryNotes" />
+      <End Role="ReceiptNote" EntitySet="ReceiptNotes" />
+    </AssociationSet>
+    <EntitySet Name="NoteLineItems" EntityType="TOCPP.NoteLineItem" />
+    <AssociationSet Name="DeliveryNoteNoteLineItem" Association="TOCPP.DeliveryNoteNoteLineItem">
+      <End Role="DeliveryNote" EntitySet="DeliveryNotes" />
+      <End Role="NoteLineItem" EntitySet="NoteLineItems" />
+    </AssociationSet>
+    <EntitySet Name="Locations" EntityType="TOCPP.Location" />
+    <EntitySet Name="LocationTypes" EntityType="TOCPP.LocationType" />
+    <AssociationSet Name="LocationLocationType" Association="TOCPP.LocationLocationType">
+      <End Role="Location" EntitySet="Locations" />
+      <End Role="LocationType" EntitySet="LocationTypes" />
+    </AssociationSet>
+    <EntitySet Name="Workers" EntityType="TOCPP.Worker" />
+  </EntityContainer>
+  <EntityType Name="DeliveryNote">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="SenderName" Nullable="true" />
+    <Property Type="Decimal" Name="OriginId" Nullable="true" />
+    <Property Type="Decimal" Name="DestinationId" Nullable="true" />
+    <Property Type="String" Name="DriverName" Nullable="true" />
+    <Property Type="String" Name="CarLicensePlate" Nullable="true" />
+    <Property Type="String" Name="Cartype" Nullable="true" />
+    <Property Type="String" Name="SenderCode" Nullable="true" />
+    <NavigationProperty Name="ReceiptNote" Relationship="TOCPP.DeliveryNoteReceiptNote" FromRole="DeliveryNote" ToRole="ReceiptNote" />
+    <NavigationProperty Name="NoteLineItems" Relationship="TOCPP.DeliveryNoteNoteLineItem" FromRole="DeliveryNote" ToRole="NoteLineItem" />
+  </EntityType>
+  <EntityType Name="ReceiptNote">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="DeliveryNoteId" Nullable="true" />
+    <NavigationProperty Name="DeliveryNote" Relationship="TOCPP.DeliveryNoteReceiptNote" FromRole="ReceiptNote" ToRole="DeliveryNote" />
+    <Property Type="String" Name="ReceiverName" Nullable="false" />
+    <Property Type="String" Name="ReceiverCode" Nullable="false" />
+  </EntityType>
+  <Association Name="DeliveryNoteReceiptNote">
+    <End Type="TOCPP.DeliveryNote" Role="DeliveryNote" Multiplicity="1" />
+    <End Type="TOCPP.ReceiptNote" Role="ReceiptNote" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="DeliveryNote">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ReceiptNote">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="NoteLineItem">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="ItemCode" Nullable="false" />
+    <Property Type="String" Name="ItemName" Nullable="false" />
+    <Property Type="String" Name="ItemStatus" Nullable="false" />
+    <Property Type="String" Name="Qty" Nullable="false" />
+    <Property Type="String" Name="Unit" Nullable="false" />
+    <Property Type="String" Name="KindOfItem" Nullable="false" />
+    <NavigationProperty Name="DeliveryNote" Relationship="TOCPP.DeliveryNoteNoteLineItem" FromRole="NoteLineItem" ToRole="DeliveryNote" />
+    <Property Type="Int32" Name="DeliveryNoteId" Nullable="false" />
+  </EntityType>
+  <Association Name="DeliveryNoteNoteLineItem">
+    <End Type="TOCPP.DeliveryNote" Role="DeliveryNote" Multiplicity="1" />
+    <End Type="TOCPP.NoteLineItem" Role="NoteLineItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DeliveryNote">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="NoteLineItem">
+        <PropertyRef Name="DeliveryNoteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Location">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="LocationName" Nullable="false" />
+    <Property Type="String" Name="LocationTypeId" Nullable="false" />
+    <NavigationProperty Name="LocationType" Relationship="TOCPP.LocationLocationType" FromRole="Location" ToRole="LocationType" />
+  </EntityType>
+  <EntityType Name="LocationType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="LocationTypeName" Nullable="false" />
+    <NavigationProperty Name="Location" Relationship="TOCPP.LocationLocationType" FromRole="LocationType" ToRole="Location" />
+  </EntityType>
+  <Association Name="LocationLocationType">
+    <End Type="TOCPP.Location" Role="Location" Multiplicity="1" />
+    <End Type="TOCPP.LocationType" Role="LocationType" Multiplicity="1" />
+  </Association>
+  <EntityType Name="Worker">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="WorkerName" Nullable="false" />
+  </EntityType>
+</Schema>

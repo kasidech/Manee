@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TOCPP.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="TOCPPStoreContainer">
+    <EntitySet Name="DeliveryNotes" EntityType="TOCPP.Store.DeliveryNotes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ReceiptNotes" EntityType="TOCPP.Store.ReceiptNotes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="NoteLineItems" EntityType="TOCPP.Store.NoteLineItems" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Locations" EntityType="TOCPP.Store.Locations" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="LocationTypes" EntityType="TOCPP.Store.LocationTypes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Workers" EntityType="TOCPP.Store.Workers" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="DeliveryNoteReceiptNote" Association="TOCPP.Store.DeliveryNoteReceiptNote">
+      <End Role="DeliveryNote" EntitySet="DeliveryNotes" />
+      <End Role="ReceiptNote" EntitySet="ReceiptNotes" />
+    </AssociationSet>
+    <AssociationSet Name="DeliveryNoteNoteLineItem" Association="TOCPP.Store.DeliveryNoteNoteLineItem">
+      <End Role="DeliveryNote" EntitySet="DeliveryNotes" />
+      <End Role="NoteLineItem" EntitySet="NoteLineItems" />
+    </AssociationSet>
+    <AssociationSet Name="LocationLocationType" Association="TOCPP.Store.LocationLocationType">
+      <End Role="Location" EntitySet="Locations" />
+      <End Role="LocationType" EntitySet="LocationTypes" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="DeliveryNotes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SenderName" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="OriginId" Type="decimal" Nullable="true" />
+    <Property Name="DestinationId" Type="decimal" Nullable="true" />
+    <Property Name="DriverName" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="CarLicensePlate" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Cartype" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="SenderCode" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="ReceiptNotes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DeliveryNoteId" Type="int" Nullable="true" />
+    <Property Name="ReceiverName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ReceiverCode" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NoteLineItems">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ItemCode" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ItemName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ItemStatus" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Qty" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Unit" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="KindOfItem" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DeliveryNoteId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Locations">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LocationName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LocationTypeId" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LocationType_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LocationTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LocationTypeName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Workers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WorkerName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="DeliveryNoteReceiptNote">
+    <End Role="DeliveryNote" Type="TOCPP.Store.DeliveryNotes" Multiplicity="1" />
+    <End Role="ReceiptNote" Type="TOCPP.Store.ReceiptNotes" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="DeliveryNote">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ReceiptNote">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DeliveryNoteNoteLineItem">
+    <End Role="DeliveryNote" Type="TOCPP.Store.DeliveryNotes" Multiplicity="1" />
+    <End Role="NoteLineItem" Type="TOCPP.Store.NoteLineItems" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DeliveryNote">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="NoteLineItem">
+        <PropertyRef Name="DeliveryNoteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LocationLocationType">
+    <End Role="Location" Type="TOCPP.Store.Locations" Multiplicity="*" />
+    <End Role="LocationType" Type="TOCPP.Store.LocationTypes" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="LocationType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Location">
+        <PropertyRef Name="LocationType_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

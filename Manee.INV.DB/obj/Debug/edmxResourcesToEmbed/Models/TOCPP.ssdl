@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TOCPP.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="TOCPPStoreContainer">
+    <EntitySet Name="Car" EntityType="TOCPP.Store.Car" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DeliveryNote" EntityType="TOCPP.Store.DeliveryNote" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Location" EntityType="TOCPP.Store.Location" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="LocationType" EntityType="TOCPP.Store.LocationType" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="NoteLineItems" EntityType="TOCPP.Store.NoteLineItems" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ReceiptNote" EntityType="TOCPP.Store.ReceiptNote" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Worker" EntityType="TOCPP.Store.Worker" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_DeliveryNote_Car" Association="TOCPP.Store.FK_DeliveryNote_Car">
+      <End Role="Car" EntitySet="Car" />
+      <End Role="DeliveryNote" EntitySet="DeliveryNote" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DeliveryNote_Location" Association="TOCPP.Store.FK_DeliveryNote_Location">
+      <End Role="Location" EntitySet="Location" />
+      <End Role="DeliveryNote" EntitySet="DeliveryNote" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DeliveryNote_Location1" Association="TOCPP.Store.FK_DeliveryNote_Location1">
+      <End Role="Location" EntitySet="Location" />
+      <End Role="DeliveryNote" EntitySet="DeliveryNote" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DeliveryNote_User" Association="TOCPP.Store.FK_DeliveryNote_User">
+      <End Role="Worker" EntitySet="Worker" />
+      <End Role="DeliveryNote" EntitySet="DeliveryNote" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DeliveryNote_User1" Association="TOCPP.Store.FK_DeliveryNote_User1">
+      <End Role="Worker" EntitySet="Worker" />
+      <End Role="DeliveryNote" EntitySet="DeliveryNote" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Location_LocationType" Association="TOCPP.Store.FK_Location_LocationType">
+      <End Role="LocationType" EntitySet="LocationType" />
+      <End Role="Location" EntitySet="Location" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReceiptNote_DeliveryNote" Association="TOCPP.Store.FK_ReceiptNote_DeliveryNote">
+      <End Role="DeliveryNote" EntitySet="DeliveryNote" />
+      <End Role="ReceiptNote" EntitySet="ReceiptNote" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Car">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Type" Type="varchar" MaxLength="50" />
+    <Property Name="LicensePlateId" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="DeliveryNote">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Sender" Type="int" />
+    <Property Name="Reciever" Type="int" />
+    <Property Name="Origin" Type="int" />
+    <Property Name="Destination" Type="int" />
+    <Property Name="CarId" Type="int" />
+    <Property Name="DeliveryDate" Type="datetime" />
+    <Property Name="ReceiveDate" Type="datetime" />
+    <Property Name="TDate" Type="datetime" />
+    <Property Name="Driver" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Location">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="LocationTypeId" Type="int" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="Code" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="LocationType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="LocationType" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="NoteLineItems">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="DeliveryNoteId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ReceiptNote">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="DeliveryNoteId" Type="int" />
+  </EntityType>
+  <EntityType Name="Worker">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="nchar" MaxLength="10" />
+    <Property Name="Code" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <Association Name="FK_DeliveryNote_Car">
+    <End Role="Car" Type="TOCPP.Store.Car" Multiplicity="0..1" />
+    <End Role="DeliveryNote" Type="TOCPP.Store.DeliveryNote" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Car">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DeliveryNote">
+        <PropertyRef Name="CarId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DeliveryNote_Location">
+    <End Role="Location" Type="TOCPP.Store.Location" Multiplicity="0..1" />
+    <End Role="DeliveryNote" Type="TOCPP.Store.DeliveryNote" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DeliveryNote">
+        <PropertyRef Name="Origin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DeliveryNote_Location1">
+    <End Role="Location" Type="TOCPP.Store.Location" Multiplicity="0..1" />
+    <End Role="DeliveryNote" Type="TOCPP.Store.DeliveryNote" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DeliveryNote">
+        <PropertyRef Name="Destination" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DeliveryNote_User">
+    <End Role="Worker" Type="TOCPP.Store.Worker" Multiplicity="0..1" />
+    <End Role="DeliveryNote" Type="TOCPP.Store.DeliveryNote" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Worker">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DeliveryNote">
+        <PropertyRef Name="Sender" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DeliveryNote_User1">
+    <End Role="Worker" Type="TOCPP.Store.Worker" Multiplicity="0..1" />
+    <End Role="DeliveryNote" Type="TOCPP.Store.DeliveryNote" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Worker">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DeliveryNote">
+        <PropertyRef Name="Reciever" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Location_LocationType">
+    <End Role="LocationType" Type="TOCPP.Store.LocationType" Multiplicity="0..1" />
+    <End Role="Location" Type="TOCPP.Store.Location" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LocationType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Location">
+        <PropertyRef Name="LocationTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReceiptNote_DeliveryNote">
+    <End Role="DeliveryNote" Type="TOCPP.Store.DeliveryNote" Multiplicity="0..1" />
+    <End Role="ReceiptNote" Type="TOCPP.Store.ReceiptNote" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DeliveryNote">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ReceiptNote">
+        <PropertyRef Name="DeliveryNoteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
