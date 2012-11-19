@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TOCPPModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="TOCPPModelStoreContainer">
+    <EntitySet Name="DeliveryNotes" EntityType="TOCPPModel.Store.DeliveryNotes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ReceitpNotes" EntityType="TOCPPModel.Store.ReceitpNotes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Workers" EntityType="TOCPPModel.Store.Workers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="LocationTypes" EntityType="TOCPPModel.Store.LocationTypes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Locations" EntityType="TOCPPModel.Store.Locations" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Methods" EntityType="TOCPPModel.Store.Methods" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Cars" EntityType="TOCPPModel.Store.Cars" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CarTypes" EntityType="TOCPPModel.Store.CarTypes" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="LocationTypeLocation" Association="TOCPPModel.Store.LocationTypeLocation">
+      <End Role="LocationType" EntitySet="LocationTypes" />
+      <End Role="Location" EntitySet="Locations" />
+    </AssociationSet>
+    <AssociationSet Name="CarCarType" Association="TOCPPModel.Store.CarCarType">
+      <End Role="Car" EntitySet="Cars" />
+      <End Role="CarType" EntitySet="CarTypes" />
+    </AssociationSet>
+    <AssociationSet Name="WorkerMethod" Association="TOCPPModel.Store.WorkerMethod">
+      <End Role="Worker" EntitySet="Workers" />
+      <End Role="Method" EntitySet="Methods" />
+    </AssociationSet>
+    <AssociationSet Name="DeliveryNotesReceitpNote" Association="TOCPPModel.Store.DeliveryNotesReceitpNote">
+      <End Role="DeliveryNotes" EntitySet="DeliveryNotes" />
+      <End Role="ReceitpNote" EntitySet="ReceitpNotes" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="DeliveryNotes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="decimal" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OriginId" Type="decimal" Nullable="true" />
+    <Property Name="DestinationId" Type="decimal" Nullable="true" />
+    <Property Name="DeliveryDate" Type="datetime" Nullable="true" />
+    <Property Name="DocumentDate" Type="datetime" Nullable="true" />
+    <Property Name="SerderName" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="SenderCode" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="CarType" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="CarLicensePlate" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Code" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ReceitpNote_Id" Type="decimal" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ReceitpNotes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="decimal" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Code" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="DeliveryNoteId" Type="decimal" Nullable="true" />
+    <Property Name="ReceiverCode" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ReceiverName" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ReceiveDate" Type="datetime" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Workers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="decimal" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FullName" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Code" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="IdCardNumber" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="MethodId" Type="decimal" Nullable="false" />
+    <Property Name="Method_Id" Type="decimal" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LocationTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="decimal" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LocationTypeName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Location_Id" Type="decimal" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Locations">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="decimal" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Code" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LocationTypeId" Type="decimal" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ProjectManagerId" Type="decimal" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Methods">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="decimal" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MethodName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Cars">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="decimal" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CarTypeId" Type="decimal" Nullable="false" />
+    <Property Name="CarLicensePlate" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CarType_Id" Type="decimal" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CarTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="decimal" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CarTypeName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="LocationTypeLocation">
+    <End Role="LocationType" Type="TOCPPModel.Store.LocationTypes" Multiplicity="*" />
+    <End Role="Location" Type="TOCPPModel.Store.Locations" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LocationType">
+        <PropertyRef Name="Location_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CarCarType">
+    <End Role="Car" Type="TOCPPModel.Store.Cars" Multiplicity="*" />
+    <End Role="CarType" Type="TOCPPModel.Store.CarTypes" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="CarType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Car">
+        <PropertyRef Name="CarType_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="WorkerMethod">
+    <End Role="Worker" Type="TOCPPModel.Store.Workers" Multiplicity="*" />
+    <End Role="Method" Type="TOCPPModel.Store.Methods" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Method">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Worker">
+        <PropertyRef Name="Method_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DeliveryNotesReceitpNote">
+    <End Role="DeliveryNotes" Type="TOCPPModel.Store.DeliveryNotes" Multiplicity="*" />
+    <End Role="ReceitpNote" Type="TOCPPModel.Store.ReceitpNotes" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="ReceitpNote">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DeliveryNotes">
+        <PropertyRef Name="ReceitpNote_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

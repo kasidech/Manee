@@ -1,7 +1,6 @@
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV\bin\Manee.INV.dll
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV\bin\Manee.INV.pdb
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV\bin\Antlr3.Runtime.dll
-C:\Users\Mo\Documents\GitHub\manee\Manee.INV\bin\DAL.dll
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV\bin\DotNetOpenAuth.AspNet.dll
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV\bin\DotNetOpenAuth.Core.dll
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV\bin\DotNetOpenAuth.OAuth.Consumer.dll
@@ -27,7 +26,6 @@ C:\Users\Mo\Documents\GitHub\manee\Manee.INV\bin\System.Web.WebPages.Razor.dll
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV\bin\WebGrease.dll
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV\bin\WebMatrix.Data.dll
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV\bin\WebMatrix.WebData.dll
-C:\Users\Mo\Documents\GitHub\manee\Manee.INV\bin\DAL.pdb
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV\bin\EntityFramework.xml
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV\bin\Newtonsoft.Json.xml
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV\bin\System.Net.Http.xml
@@ -53,3 +51,5 @@ C:\Users\Mo\Documents\GitHub\manee\Manee.INV\bin\DotNetOpenAuth.OpenId.RelyingPa
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV\obj\Debug\Manee.INV.csprojResolveAssemblyReference.cache
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV\obj\Debug\Manee.INV.dll
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV\obj\Debug\Manee.INV.pdb
+C:\Users\Mo\Documents\GitHub\manee\Manee.INV\bin\DAL.dll
+C:\Users\Mo\Documents\GitHub\manee\Manee.INV\bin\DAL.pdb

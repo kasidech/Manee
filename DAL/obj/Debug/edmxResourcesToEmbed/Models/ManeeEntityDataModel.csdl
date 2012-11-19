@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TOCPPModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="TOCPPEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="DeliveryNotes" EntityType="TOCPPModel.DeliveryNotes" />
+    <EntitySet Name="ReceitpNotes" EntityType="TOCPPModel.ReceitpNote" />
+    <EntitySet Name="Workers" EntityType="TOCPPModel.Worker" />
+    <EntitySet Name="LocationTypes" EntityType="TOCPPModel.LocationType" />
+    <EntitySet Name="Locations" EntityType="TOCPPModel.Location" />
+    <EntitySet Name="Methods" EntityType="TOCPPModel.Method" />
+    <EntitySet Name="Cars" EntityType="TOCPPModel.Car" />
+    <EntitySet Name="CarTypes" EntityType="TOCPPModel.CarType" />
+    <AssociationSet Name="LocationTypeLocation" Association="TOCPPModel.LocationTypeLocation">
+      <End Role="LocationType" EntitySet="LocationTypes" />
+      <End Role="Location" EntitySet="Locations" />
+    </AssociationSet>
+    <AssociationSet Name="CarCarType" Association="TOCPPModel.CarCarType">
+      <End Role="Car" EntitySet="Cars" />
+      <End Role="CarType" EntitySet="CarTypes" />
+    </AssociationSet>
+    <AssociationSet Name="WorkerMethod" Association="TOCPPModel.WorkerMethod">
+      <End Role="Worker" EntitySet="Workers" />
+      <End Role="Method" EntitySet="Methods" />
+    </AssociationSet>
+    <AssociationSet Name="DeliveryNotesReceitpNote" Association="TOCPPModel.DeliveryNotesReceitpNote">
+      <End Role="DeliveryNotes" EntitySet="DeliveryNotes" />
+      <End Role="ReceitpNote" EntitySet="ReceitpNotes" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="DeliveryNotes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Decimal" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OriginId" Type="Decimal" />
+    <Property Name="DestinationId" Type="Decimal" />
+    <Property Name="DeliveryDate" Type="DateTime" />
+    <Property Name="DocumentDate" Type="DateTime" />
+    <Property Name="SerderName" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="SenderCode" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="CarType" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="CarLicensePlate" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Type="String" Name="Code" Nullable="false" />
+    <NavigationProperty Name="ReceitpNote" Relationship="TOCPPModel.DeliveryNotesReceitpNote" FromRole="DeliveryNotes" ToRole="ReceitpNote" />
+  </EntityType>
+  <EntityType Name="ReceitpNote">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Decimal" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Code" Nullable="true" />
+    <Property Type="Decimal" Name="DeliveryNoteId" Nullable="true" />
+    <Property Type="String" Name="ReceiverCode" Nullable="true" />
+    <Property Type="String" Name="ReceiverName" Nullable="true" />
+    <Property Type="DateTime" Name="ReceiveDate" Nullable="true" />
+    <NavigationProperty Name="DeliveryNotes" Relationship="TOCPPModel.DeliveryNotesReceitpNote" FromRole="ReceitpNote" ToRole="DeliveryNotes" />
+  </EntityType>
+  <EntityType Name="Worker">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Decimal" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="FullName" Nullable="true" />
+    <Property Type="String" Name="Code" Nullable="true" />
+    <Property Type="String" Name="IdCardNumber" Nullable="true" />
+    <Property Type="Decimal" Name="MethodId" Nullable="false" />
+    <NavigationProperty Name="Method" Relationship="TOCPPModel.WorkerMethod" FromRole="Worker" ToRole="Method" />
+  </EntityType>
+  <EntityType Name="LocationType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Decimal" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="LocationTypeName" Nullable="false" />
+    <NavigationProperty Name="Location" Relationship="TOCPPModel.LocationTypeLocation" FromRole="LocationType" ToRole="Location" />
+  </EntityType>
+  <EntityType Name="Location">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Decimal" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Code" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" />
+    <Property Type="Decimal" Name="LocationTypeId" Nullable="false" />
+    <Property Type="String" Name="Address" Nullable="false" />
+    <Property Type="Decimal" Name="ProjectManagerId" Nullable="true" />
+    <NavigationProperty Name="LocationType" Relationship="TOCPPModel.LocationTypeLocation" FromRole="Location" ToRole="LocationType" />
+  </EntityType>
+  <EntityType Name="Method">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Decimal" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="MethodName" Nullable="false" />
+    <NavigationProperty Name="Worker" Relationship="TOCPPModel.WorkerMethod" FromRole="Method" ToRole="Worker" />
+  </EntityType>
+  <EntityType Name="Car">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Decimal" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Decimal" Name="CarTypeId" Nullable="false" />
+    <Property Type="String" Name="CarLicensePlate" Nullable="false" />
+    <NavigationProperty Name="CarType" Relationship="TOCPPModel.CarCarType" FromRole="Car" ToRole="CarType" />
+  </EntityType>
+  <EntityType Name="CarType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Decimal" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="CarTypeName" Nullable="false" />
+    <NavigationProperty Name="Car" Relationship="TOCPPModel.CarCarType" FromRole="CarType" ToRole="Car" />
+  </EntityType>
+  <Association Name="LocationTypeLocation">
+    <End Type="TOCPPModel.LocationType" Role="LocationType" Multiplicity="1" />
+    <End Type="TOCPPModel.Location" Role="Location" Multiplicity="1" />
+  </Association>
+  <Association Name="CarCarType">
+    <End Type="TOCPPModel.Car" Role="Car" Multiplicity="1" />
+    <End Type="TOCPPModel.CarType" Role="CarType" Multiplicity="1" />
+  </Association>
+  <Association Name="WorkerMethod">
+    <End Type="TOCPPModel.Worker" Role="Worker" Multiplicity="1" />
+    <End Type="TOCPPModel.Method" Role="Method" Multiplicity="1" />
+  </Association>
+  <Association Name="DeliveryNotesReceitpNote">
+    <End Type="TOCPPModel.DeliveryNotes" Role="DeliveryNotes" Multiplicity="1" />
+    <End Type="TOCPPModel.ReceitpNote" Role="ReceitpNote" Multiplicity="1" />
+  </Association>
+</Schema>

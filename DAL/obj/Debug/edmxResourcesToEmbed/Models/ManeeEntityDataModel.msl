@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TOCPPModelStoreContainer" CdmEntityContainer="TOCPPEntities">
+    <EntitySetMapping Name="DeliveryNotes">
+      <EntityTypeMapping TypeName="IsTypeOf(TOCPPModel.DeliveryNotes)">
+        <MappingFragment StoreEntitySet="DeliveryNotes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OriginId" ColumnName="OriginId" />
+          <ScalarProperty Name="DestinationId" ColumnName="DestinationId" />
+          <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+          <ScalarProperty Name="DocumentDate" ColumnName="DocumentDate" />
+          <ScalarProperty Name="SerderName" ColumnName="SerderName" />
+          <ScalarProperty Name="SenderCode" ColumnName="SenderCode" />
+          <ScalarProperty Name="CarType" ColumnName="CarType" />
+          <ScalarProperty Name="CarLicensePlate" ColumnName="CarLicensePlate" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReceitpNotes">
+      <EntityTypeMapping TypeName="IsTypeOf(TOCPPModel.ReceitpNote)">
+        <MappingFragment StoreEntitySet="ReceitpNotes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="DeliveryNoteId" ColumnName="DeliveryNoteId" />
+          <ScalarProperty Name="ReceiverCode" ColumnName="ReceiverCode" />
+          <ScalarProperty Name="ReceiverName" ColumnName="ReceiverName" />
+          <ScalarProperty Name="ReceiveDate" ColumnName="ReceiveDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Workers">
+      <EntityTypeMapping TypeName="IsTypeOf(TOCPPModel.Worker)">
+        <MappingFragment StoreEntitySet="Workers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="IdCardNumber" ColumnName="IdCardNumber" />
+          <ScalarProperty Name="MethodId" ColumnName="MethodId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LocationTypes">
+      <EntityTypeMapping TypeName="IsTypeOf(TOCPPModel.LocationType)">
+        <MappingFragment StoreEntitySet="LocationTypes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="LocationTypeName" ColumnName="LocationTypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Locations">
+      <EntityTypeMapping TypeName="IsTypeOf(TOCPPModel.Location)">
+        <MappingFragment StoreEntitySet="Locations">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="LocationTypeId" ColumnName="LocationTypeId" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="ProjectManagerId" ColumnName="ProjectManagerId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Methods">
+      <EntityTypeMapping TypeName="IsTypeOf(TOCPPModel.Method)">
+        <MappingFragment StoreEntitySet="Methods">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="MethodName" ColumnName="MethodName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cars">
+      <EntityTypeMapping TypeName="IsTypeOf(TOCPPModel.Car)">
+        <MappingFragment StoreEntitySet="Cars">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CarTypeId" ColumnName="CarTypeId" />
+          <ScalarProperty Name="CarLicensePlate" ColumnName="CarLicensePlate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CarTypes">
+      <EntityTypeMapping TypeName="IsTypeOf(TOCPPModel.CarType)">
+        <MappingFragment StoreEntitySet="CarTypes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CarTypeName" ColumnName="CarTypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="LocationTypeLocation" TypeName="TOCPPModel.LocationTypeLocation" StoreEntitySet="LocationTypes">
+      <EndProperty Name="Location">
+        <ScalarProperty Name="Id" ColumnName="Location_Id" />
+      </EndProperty>
+      <EndProperty Name="LocationType">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CarCarType" TypeName="TOCPPModel.CarCarType" StoreEntitySet="Cars">
+      <EndProperty Name="CarType">
+        <ScalarProperty Name="Id" ColumnName="CarType_Id" />
+      </EndProperty>
+      <EndProperty Name="Car">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="WorkerMethod" TypeName="TOCPPModel.WorkerMethod" StoreEntitySet="Workers">
+      <EndProperty Name="Method">
+        <ScalarProperty Name="Id" ColumnName="Method_Id" />
+      </EndProperty>
+      <EndProperty Name="Worker">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="DeliveryNotesReceitpNote" TypeName="TOCPPModel.DeliveryNotesReceitpNote" StoreEntitySet="DeliveryNotes">
+      <EndProperty Name="ReceitpNote">
+        <ScalarProperty Name="Id" ColumnName="ReceitpNote_Id" />
+      </EndProperty>
+      <EndProperty Name="DeliveryNotes">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

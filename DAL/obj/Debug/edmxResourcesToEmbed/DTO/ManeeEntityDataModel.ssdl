@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TOCPPModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="TOCPPModelStoreContainer">
+    <EntitySet Name="DeliveryNotes" EntityType="TOCPPModel.Store.DeliveryNotes" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="DeliveryNotes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="OriginId" Type="int" />
+    <Property Name="DestinationId" Type="int" />
+    <Property Name="DeliveryDate" Type="datetime" />
+    <Property Name="DocumentDate" Type="datetime" />
+    <Property Name="SerderName" Type="nvarchar(max)" />
+    <Property Name="SenderCode" Type="nvarchar(max)" />
+    <Property Name="CarType" Type="nvarchar(max)" />
+    <Property Name="CarLicensePlate" Type="nvarchar(max)" />
+  </EntityType>
+</Schema>

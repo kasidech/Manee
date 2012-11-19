@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using DAL.Services;
+using DAL.Models;
 
 namespace Manee.INV.Controllers
 {
@@ -21,6 +23,7 @@ namespace Manee.INV.Controllers
 
         public ActionResult Details(int id)
         {
+
             return View();
         }
 
@@ -29,6 +32,7 @@ namespace Manee.INV.Controllers
 
         public ActionResult Create()
         {
+
             return View();
         }
 
@@ -40,8 +44,9 @@ namespace Manee.INV.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
-
+                DeliveryNotes dn = new DeliveryNotes();
+                DeliveryNoteService deliveryNoteService = new DeliveryNoteService();
+                deliveryNoteService.CreateDeliveryNote(dn);
                 return RedirectToAction("Index");
             }
             catch
