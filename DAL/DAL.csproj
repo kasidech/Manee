@@ -1,16 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{3D299C56-2C65-4174-AD10-87DDF12DB226}</ProjectGuid>
+    <ProjectGuid>{5AF7D480-D2E2-48F4-A9AB-D471AA5A3461}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DAL</RootNamespace>
     <AssemblyName>DAL</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -31,7 +30,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
@@ -43,47 +46,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Car.cs">
-      <DependentUpon>ManeeEntity.tt</DependentUpon>
+    <Compile Include="Car.cs">
+      <DependentUpon>TOCPPEntityDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\CarType.cs">
-      <DependentUpon>ManeeEntity.tt</DependentUpon>
+    <Compile Include="CarType.cs">
+      <DependentUpon>TOCPPEntityDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\DeliveryNotes.cs">
-      <DependentUpon>ManeeEntity.tt</DependentUpon>
+    <Compile Include="Class1.cs" />
+    <Compile Include="DeliveryNote.cs">
+      <DependentUpon>TOCPPEntityDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Location.cs">
-      <DependentUpon>ManeeEntity.tt</DependentUpon>
+    <Compile Include="Location.cs">
+      <DependentUpon>TOCPPEntityDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\LocationType.cs">
-      <DependentUpon>ManeeEntity.tt</DependentUpon>
+    <Compile Include="LocationType.cs">
+      <DependentUpon>TOCPPEntityDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ManeeEntity.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ManeeEntity.Context.tt</DependentUpon>
+    <Compile Include="Method.cs">
+      <DependentUpon>TOCPPEntityDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ManeeEntity.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ManeeEntity.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ManeeEntityDataModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ManeeEntityDataModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Method.cs">
-      <DependentUpon>ManeeEntity.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\NoteLineItem.cs">
-      <DependentUpon>ManeeEntity.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ReceitpNote.cs">
-      <DependentUpon>ManeeEntity.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Worker.cs">
-      <DependentUpon>ManeeEntity.tt</DependentUpon>
+    <Compile Include="NoteLineItemSet.cs">
+      <DependentUpon>TOCPPEntityDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -91,34 +74,61 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Services\BaseService.cs" />
-    <Compile Include="Services\DeliveryNoteService.cs" />
-    <Compile Include="Services\ReceiptNoteService.cs" />
+    <Compile Include="ReceitpNote.cs">
+      <DependentUpon>TOCPPEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
+      <DependentUpon>TOCPPEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TOCPPEntityDataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TOCPPEntityDataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TOCPPEntityDataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TOCPPEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TOCPPEntityDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TOCPPEntityDataModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Worker.cs">
+      <DependentUpon>TOCPPEntityDataModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <EntityDeploy Include="Models\ManeeEntityDataModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ManeeEntityDataModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="Models\ManeeEntity.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ManeeEntity.Context.cs</LastGenOutput>
-    </None>
-    <None Include="Models\ManeeEntity.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ManeeEntity.cs</LastGenOutput>
-    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <EntityDeploy Include="TOCPPEntityDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TOCPPEntityDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="TOCPPEntityDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TOCPPEntityDataModel.edmx</DependentUpon>
+      <LastGenOutput>TOCPPEntityDataModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="TOCPPEntityDataModel.edmx.diagram">
+      <DependentUpon>TOCPPEntityDataModel.edmx</DependentUpon>
+    </None>
+    <None Include="TOCPPEntityDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TOCPPEntityDataModel.edmx</DependentUpon>
+      <LastGenOutput>TOCPPEntityDataModel.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Models\ManeeEntityDataModel.edmx.sql" />
+    <Content Include="TOCPPEntityDataModel.edmx.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

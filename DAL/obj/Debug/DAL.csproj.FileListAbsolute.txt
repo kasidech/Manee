@@ -1,5 +1,7 @@
-C:\Users\Mo\Documents\GitHub\manee\DAL\bin\Debug\DAL.dll.config
-C:\Users\Mo\Documents\GitHub\manee\DAL\bin\Debug\DAL.dll
-C:\Users\Mo\Documents\GitHub\manee\DAL\bin\Debug\DAL.pdb
-C:\Users\Mo\Documents\GitHub\manee\DAL\obj\Debug\DAL.dll
-C:\Users\Mo\Documents\GitHub\manee\DAL\obj\Debug\DAL.pdb
+C:\Users\Mo\Documents\GitHub\Manee.INV\Manee.INV\DAL\bin\Debug\DAL.dll.config
+C:\Users\Mo\Documents\GitHub\Manee.INV\Manee.INV\DAL\bin\Debug\DAL.dll
+C:\Users\Mo\Documents\GitHub\Manee.INV\Manee.INV\DAL\bin\Debug\DAL.pdb
+C:\Users\Mo\Documents\GitHub\Manee.INV\Manee.INV\DAL\bin\Debug\EntityFramework.dll
+C:\Users\Mo\Documents\GitHub\Manee.INV\Manee.INV\DAL\bin\Debug\EntityFramework.xml
+C:\Users\Mo\Documents\GitHub\Manee.INV\Manee.INV\DAL\obj\Debug\DAL.dll
+C:\Users\Mo\Documents\GitHub\Manee.INV\Manee.INV\DAL\obj\Debug\DAL.pdb
