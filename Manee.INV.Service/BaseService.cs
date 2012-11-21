@@ -9,6 +9,6 @@ namespace Manee.INV.Service
 {
     public class BaseService
     {
-        protected TOCPPEntities db = new TOCPPEntities(); 
+        protected TOCPPEntities db = new TOCPPEntities();
     }
 }
