@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DAL
+namespace Manee.INV.DAL.Entity
 {
     using System;
     using System.Collections.Generic;

@@ -7,8 +7,8 @@
     <ProjectGuid>{5AF7D480-D2E2-48F4-A9AB-D471AA5A3461}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DAL</RootNamespace>
-    <AssemblyName>DAL</AssemblyName>
+    <RootNamespace>Manee.INV.DAL.Entity</RootNamespace>
+    <AssemblyName>Manee.INV.DAL.Entity</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -52,7 +52,6 @@
     <Compile Include="CarType.cs">
       <DependentUpon>TOCPPEntityDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Class1.cs" />
     <Compile Include="DeliveryNote.cs">
       <DependentUpon>TOCPPEntityDataModel.tt</DependentUpon>
     </Compile>
@@ -62,10 +61,7 @@
     <Compile Include="LocationType.cs">
       <DependentUpon>TOCPPEntityDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Method.cs">
-      <DependentUpon>TOCPPEntityDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="NoteLineItemSet.cs">
+    <Compile Include="NoteLineItem.cs">
       <DependentUpon>TOCPPEntityDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -96,6 +92,9 @@
       <DependentUpon>TOCPPEntityDataModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Worker.cs">
+      <DependentUpon>TOCPPEntityDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkerMethod.cs">
       <DependentUpon>TOCPPEntityDataModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -130,6 +129,7 @@
   <ItemGroup>
     <Content Include="TOCPPEntityDataModel.edmx.sql" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

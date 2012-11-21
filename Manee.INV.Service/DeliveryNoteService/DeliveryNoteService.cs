@@ -5,29 +5,27 @@ using System.Text;
 using System.Threading.Tasks;
 using Manee.INV.Service;
 using System.Data.Entity;
-using DAL;
+using Manee.INV.DAL;
+using Manee.INV.DAL.DaoInf;
+using Manee.INV.DAL.Entity;
 
 namespace Manee.INV.Service.DeliveryNoteService
 {
-    public class DeliveryNoteService:BaseService
-    {
-        public void CreateDeliveryNote() {
 
-            DeliveryNote dn = new DeliveryNote() ;
-            
-            
-            db.DeliveryNotes.Add(dn);
-            db.SaveChanges();
-                
-            
+    public class DeliveryNoteService
+    {
+        private IDeliveryNoteDAO dao = (IDeliveryNoteDAO)DaoFactory.getDao("DELIVERY_NOTE");
+
+        public void CreateDeliveryNote(DeliveryNote dn) {         
+            dao.Create(dn);
         }
 
-        public void DeleteDeliveryNote() {
+        public void DeleteDeliveryNote(int NoteId) {
+            dao.Delete(NoteId);
+        }
 
-            DeliveryNote dn = new DeliveryNote();
-
-            db.DeliveryNotes.Remove(dn);
-
+        public void UpdateDeliveryNote(DeliveryNote Note) {
+            dao.Update(Note);
         }
     }
 }

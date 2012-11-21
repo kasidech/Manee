@@ -10,16 +10,16 @@
         <EntityTypeShape EntityType="TOCPPModel.DeliveryNote" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="TOCPPModel.Location" Width="1.5" PointX="5.75" PointY="6" IsExpanded="true" />
         <EntityTypeShape EntityType="TOCPPModel.LocationType" Width="1.5" PointX="8" PointY="6.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="TOCPPModel.Method" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="TOCPPModel.NoteLineItemSet" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TOCPPModel.WorkerMethod" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TOCPPModel.NoteLineItem" Width="1.5" PointX="5.5" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="TOCPPModel.ReceitpNote" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
         <EntityTypeShape EntityType="TOCPPModel.sysdiagram" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TOCPPModel.Worker" Width="1.5" PointX="3" PointY="6" IsExpanded="true" />
-        <AssociationConnector Association="TOCPPModel.FK_CarCarType" ManuallyRouted="false" />
-        <AssociationConnector Association="TOCPPModel.FK_DeliveryNotesNoteLineItem" ManuallyRouted="false" />
-        <AssociationConnector Association="TOCPPModel.FK_DeliveryNotesReceitpNote" ManuallyRouted="false" />
-        <AssociationConnector Association="TOCPPModel.FK_LocationTypeLocation" ManuallyRouted="false" />
-        <AssociationConnector Association="TOCPPModel.FK_WorkerMethod" ManuallyRouted="false" />
+        <AssociationConnector Association="TOCPPModel.CarTypeCar" />
+        <AssociationConnector Association="TOCPPModel.LocationLocationType" />
+        <AssociationConnector Association="TOCPPModel.WorkerMethodWorker" />
+        <AssociationConnector Association="TOCPPModel.ReceitpNoteDeliveryNote" />
+        <AssociationConnector Association="TOCPPModel.DeliveryNoteNoteLineItem" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

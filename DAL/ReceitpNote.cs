@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DAL
+namespace Manee.INV.DAL.Entity
 {
     using System;
     using System.Collections.Generic;
@@ -16,9 +16,10 @@ namespace DAL
     {
         public decimal Id { get; set; }
         public string Code { get; set; }
-        public Nullable<decimal> DeliveryNoteId { get; set; }
         public string ReceiverCode { get; set; }
         public string ReceiverName { get; set; }
         public Nullable<System.DateTime> ReceiveDate { get; set; }
+    
+        public virtual DeliveryNote DeliveryNote { get; set; }
     }
 }

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DAL
+namespace Manee.INV.DAL.Entity
 {
     using System;
     using System.Collections.Generic;
@@ -17,8 +17,9 @@ namespace DAL
         public decimal Id { get; set; }
         public string Code { get; set; }
         public string Name { get; set; }
-        public decimal LocationTypeId { get; set; }
         public string Address { get; set; }
         public Nullable<decimal> ProjectManagerId { get; set; }
+    
+        public virtual LocationType LocationType { get; set; }
     }
 }

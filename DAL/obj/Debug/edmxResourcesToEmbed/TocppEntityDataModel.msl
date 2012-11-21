@@ -5,9 +5,7 @@
       <EntityTypeMapping TypeName="IsTypeOf(TOCPPModel.Car)">
         <MappingFragment StoreEntitySet="Cars">
           <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="CarTypeId" ColumnName="CarTypeId" />
           <ScalarProperty Name="CarLicensePlate" ColumnName="CarLicensePlate" />
-          <ScalarProperty Name="CarTypes_Id" ColumnName="CarTypes_Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -41,7 +39,6 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Code" ColumnName="Code" />
           <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="LocationTypeId" ColumnName="LocationTypeId" />
           <ScalarProperty Name="Address" ColumnName="Address" />
           <ScalarProperty Name="ProjectManagerId" ColumnName="ProjectManagerId" />
         </MappingFragment>
@@ -52,28 +49,26 @@
         <MappingFragment StoreEntitySet="LocationTypes">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="LocationTypeName" ColumnName="LocationTypeName" />
-          <ScalarProperty Name="Locations_Id" ColumnName="Locations_Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Methods">
-      <EntityTypeMapping TypeName="IsTypeOf(TOCPPModel.Method)">
-        <MappingFragment StoreEntitySet="Methods">
+    <EntitySetMapping Name="WorkerMethods">
+      <EntityTypeMapping TypeName="IsTypeOf(TOCPPModel.WorkerMethod)">
+        <MappingFragment StoreEntitySet="WorkerMethods">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="MethodName" ColumnName="MethodName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="NoteLineItemSets">
-      <EntityTypeMapping TypeName="IsTypeOf(TOCPPModel.NoteLineItemSet)">
-        <MappingFragment StoreEntitySet="NoteLineItemSets">
+    <EntitySetMapping Name="NoteLineItems">
+      <EntityTypeMapping TypeName="IsTypeOf(TOCPPModel.NoteLineItem)">
+        <MappingFragment StoreEntitySet="NoteLineItems">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
           <ScalarProperty Name="Qty" ColumnName="Qty" />
           <ScalarProperty Name="Unit" ColumnName="Unit" />
           <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="DeliveryNoteId" ColumnName="DeliveryNoteId" />
-          <ScalarProperty Name="DeliveryNotes_Id" ColumnName="DeliveryNotes_Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -82,7 +77,6 @@
         <MappingFragment StoreEntitySet="ReceitpNotes">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Code" ColumnName="Code" />
-          <ScalarProperty Name="DeliveryNoteId" ColumnName="DeliveryNoteId" />
           <ScalarProperty Name="ReceiverCode" ColumnName="ReceiverCode" />
           <ScalarProperty Name="ReceiverName" ColumnName="ReceiverName" />
           <ScalarProperty Name="ReceiveDate" ColumnName="ReceiveDate" />
@@ -107,19 +101,40 @@
           <ScalarProperty Name="FullName" ColumnName="FullName" />
           <ScalarProperty Name="Code" ColumnName="Code" />
           <ScalarProperty Name="IdCardNumber" ColumnName="IdCardNumber" />
-          <ScalarProperty Name="MethodId" ColumnName="MethodId" />
-          <ScalarProperty Name="Methods_Id" ColumnName="Methods_Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="FK_DeliveryNotesReceitpNote" TypeName="TOCPPModel.FK_DeliveryNotesReceitpNote" StoreEntitySet="DeliveryNotes">
-      <EndProperty Name="ReceitpNotes">
-        <ScalarProperty Name="Id" ColumnName="FK_DeliveryNotesReceitpNote_DeliveryNotes_Id" />
+    <AssociationSetMapping Name="CarTypeCar" TypeName="TOCPPModel.CarTypeCar" StoreEntitySet="Cars">
+      <EndProperty Name="CarType">
+        <ScalarProperty Name="Id" ColumnName="CarType_Id" />
       </EndProperty>
-      <EndProperty Name="DeliveryNotes">
+      <EndProperty Name="Car">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
-      <Condition ColumnName="FK_DeliveryNotesReceitpNote_DeliveryNotes_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="LocationLocationType" TypeName="TOCPPModel.LocationLocationType" StoreEntitySet="Locations">
+      <EndProperty Name="LocationType">
+        <ScalarProperty Name="Id" ColumnName="LocationType_Id" />
+      </EndProperty>
+      <EndProperty Name="Location">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="WorkerMethodWorker" TypeName="TOCPPModel.WorkerMethodWorker" StoreEntitySet="Workers">
+      <EndProperty Name="WorkerMethod">
+        <ScalarProperty Name="Id" ColumnName="WorkerMethod_Id" />
+      </EndProperty>
+      <EndProperty Name="Worker">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ReceitpNoteDeliveryNote" TypeName="TOCPPModel.ReceitpNoteDeliveryNote" StoreEntitySet="ReceitpNotes">
+      <EndProperty Name="DeliveryNote">
+        <ScalarProperty Name="Id" ColumnName="DeliveryNote_Id" />
+      </EndProperty>
+      <EndProperty Name="ReceitpNote">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
     </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

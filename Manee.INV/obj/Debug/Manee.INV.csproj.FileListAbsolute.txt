@@ -61,7 +61,6 @@ C:\Users\Mo\Documents\GitHub\manee\Manee.INV\bin\DotNetOpenAuth.OAuth.dll
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV\bin\DotNetOpenAuth.OpenId.dll
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV\bin\DotNetOpenAuth.OpenId.RelyingParty.dll
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV\bin\EntityFramework.dll
-C:\Users\Mo\Documents\GitHub\manee\Manee.INV\bin\Manee.INV.Service.dll
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV\bin\Microsoft.Web.WebPages.OAuth.dll
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV\bin\Newtonsoft.Json.dll
@@ -78,8 +77,6 @@ C:\Users\Mo\Documents\GitHub\manee\Manee.INV\bin\System.Web.WebPages.Razor.dll
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV\bin\WebGrease.dll
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV\bin\WebMatrix.Data.dll
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV\bin\WebMatrix.WebData.dll
-C:\Users\Mo\Documents\GitHub\manee\Manee.INV\bin\DAL.dll
-C:\Users\Mo\Documents\GitHub\manee\Manee.INV\bin\Manee.INV.Service.pdb
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV\bin\EntityFramework.xml
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV\bin\Newtonsoft.Json.xml
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV\bin\System.Net.Http.Formatting.xml
@@ -100,7 +97,8 @@ C:\Users\Mo\Documents\GitHub\manee\Manee.INV\bin\DotNetOpenAuth.OAuth.Consumer.x
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV\bin\DotNetOpenAuth.OAuth.xml
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV\bin\DotNetOpenAuth.OpenId.xml
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
-C:\Users\Mo\Documents\GitHub\manee\Manee.INV\bin\DAL.pdb
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV\obj\Debug\Manee.INV.csprojResolveAssemblyReference.cache
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV\obj\Debug\Manee.INV.dll
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV\obj\Debug\Manee.INV.pdb
+C:\Users\Mo\Documents\GitHub\manee\Manee.INV\bin\Manee.INV.DAL.dll
+C:\Users\Mo\Documents\GitHub\manee\Manee.INV\bin\Manee.INV.DAL.pdb

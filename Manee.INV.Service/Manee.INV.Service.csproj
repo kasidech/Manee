@@ -7,8 +7,8 @@
     <ProjectGuid>{F136F119-E450-408B-BC19-C8531EE51631}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Manee.INV.Service</RootNamespace>
-    <AssemblyName>Manee.INV.Service</AssemblyName>
+    <RootNamespace>Manee.INV</RootNamespace>
+    <AssemblyName>Manee.INV</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -47,15 +47,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseService.cs" />
     <Compile Include="DeliveryNoteService\DeliveryNoteService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DAL\DAL.csproj">
-      <Project>{5af7d480-d2e2-48f4-a9ab-d471aa5a3461}</Project>
-      <Name>DAL</Name>
-    </ProjectReference>
+    <Compile Include="ReceiveNoteService\ReceiveNoteService.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
@@ -67,6 +61,13 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Manee.INV.DAL.EntityInf\Manee.INV.DAL.csproj">
+      <Project>{0927dec7-0e18-4018-a0ea-a9780fbebe1d}</Project>
+      <Name>Manee.INV.DAL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

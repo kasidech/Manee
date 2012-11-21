@@ -31,8 +31,8 @@ namespace Manee.INV.Controllers
 
         public ActionResult Create()
         {
-            DeliveryNoteService delSer = new DeliveryNoteService();
-            delSer.CreateDeliveryNote();
+           
+            
             
             return View();
         }

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DAL
+namespace Manee.INV.DAL.Entity
 {
     using System;
     using System.Collections.Generic;
@@ -15,8 +15,8 @@ namespace DAL
     public partial class Car
     {
         public decimal Id { get; set; }
-        public decimal CarTypeId { get; set; }
         public string CarLicensePlate { get; set; }
-        public decimal CarTypes_Id { get; set; }
+    
+        public virtual CarType CarType { get; set; }
     }
 }

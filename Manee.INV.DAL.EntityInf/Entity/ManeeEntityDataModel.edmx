@@ -1,0 +1,527 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ManeeEntityDataModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="ManeeEntityDataModelStoreContainer">
+    <EntitySet Name="Cars" EntityType="ManeeEntityDataModel.Store.Cars" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CarTypes" EntityType="ManeeEntityDataModel.Store.CarTypes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="DeliveryNotes" EntityType="ManeeEntityDataModel.Store.DeliveryNotes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Locations" EntityType="ManeeEntityDataModel.Store.Locations" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="LocationTypes" EntityType="ManeeEntityDataModel.Store.LocationTypes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WorkerMethods" EntityType="ManeeEntityDataModel.Store.WorkerMethods" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="NoteLineItems" EntityType="ManeeEntityDataModel.Store.NoteLineItems" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ReceiveNotes" EntityType="ManeeEntityDataModel.Store.ReceiveNotes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysdiagrams" EntityType="ManeeEntityDataModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Workers" EntityType="ManeeEntityDataModel.Store.Workers" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="CarTypeCar" Association="ManeeEntityDataModel.Store.CarTypeCar">
+      <End Role="CarType" EntitySet="CarTypes" />
+      <End Role="Car" EntitySet="Cars" />
+    </AssociationSet>
+    <AssociationSet Name="DeliveryNoteNoteLineItem" Association="ManeeEntityDataModel.Store.DeliveryNoteNoteLineItem">
+      <End Role="DeliveryNote" EntitySet="DeliveryNotes" />
+      <End Role="NoteLineItem" EntitySet="NoteLineItems" />
+    </AssociationSet>
+    <AssociationSet Name="LocationLocationType" Association="ManeeEntityDataModel.Store.LocationLocationType">
+      <End Role="Location" EntitySet="Locations" />
+      <End Role="LocationType" EntitySet="LocationTypes" />
+    </AssociationSet>
+    <AssociationSet Name="WorkerMethodWorker" Association="ManeeEntityDataModel.Store.WorkerMethodWorker">
+      <End Role="WorkerMethod" EntitySet="WorkerMethods" />
+      <End Role="Worker" EntitySet="Workers" />
+    </AssociationSet>
+    <AssociationSet Name="DeliveryNoteReceiveNote" Association="ManeeEntityDataModel.Store.DeliveryNoteReceiveNote">
+      <End Role="DeliveryNote" EntitySet="DeliveryNotes" />
+      <End Role="ReceiveNote" EntitySet="ReceiveNotes" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Cars">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CarLicensePlate" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CarType_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CarTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CarTypeName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DeliveryNotes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OriginId" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="DestinationId" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="DeliveryDate" Type="datetime" Nullable="true" />
+    <Property Name="DocumentDate" Type="datetime" Nullable="true" />
+    <Property Name="SenderName" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="SenderCode" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="CarType" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="CarLicensePlate" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Code" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Locations">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Code" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ProjectManagerId" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="LocationType_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LocationTypes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LocationTypeName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WorkerMethods">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MethodName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NoteLineItems">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ItemCode" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Qty" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="Unit" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Status" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="DeliveryNoteId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ReceiveNotes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Code" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ReceiverCode" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ReceiverName" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ReceiveDate" Type="datetime" Nullable="true" />
+    <Property Name="DeliveryNoteId" Type="int" Nullable="false" />
+    <Property Name="DeliveryNote_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" Nullable="true" />
+    <Property Name="definition" Type="varbinary(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Workers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FullName" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Code" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="IdCardNumber" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="WorkerMethod_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="CarTypeCar">
+    <End Role="CarType" Type="ManeeEntityDataModel.Store.CarTypes" Multiplicity="1" />
+    <End Role="Car" Type="ManeeEntityDataModel.Store.Cars" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CarType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Car">
+        <PropertyRef Name="CarType_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DeliveryNoteNoteLineItem">
+    <End Role="DeliveryNote" Type="ManeeEntityDataModel.Store.DeliveryNotes" Multiplicity="1" />
+    <End Role="NoteLineItem" Type="ManeeEntityDataModel.Store.NoteLineItems" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DeliveryNote">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="NoteLineItem">
+        <PropertyRef Name="DeliveryNoteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LocationLocationType">
+    <End Role="Location" Type="ManeeEntityDataModel.Store.Locations" Multiplicity="*" />
+    <End Role="LocationType" Type="ManeeEntityDataModel.Store.LocationTypes" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="LocationType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Location">
+        <PropertyRef Name="LocationType_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="WorkerMethodWorker">
+    <End Role="WorkerMethod" Type="ManeeEntityDataModel.Store.WorkerMethods" Multiplicity="1" />
+    <End Role="Worker" Type="ManeeEntityDataModel.Store.Workers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WorkerMethod">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Worker">
+        <PropertyRef Name="WorkerMethod_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DeliveryNoteReceiveNote">
+    <End Role="DeliveryNote" Type="ManeeEntityDataModel.Store.DeliveryNotes" Multiplicity="1" />
+    <End Role="ReceiveNote" Type="ManeeEntityDataModel.Store.ReceiveNotes" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DeliveryNote">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ReceiveNote">
+        <PropertyRef Name="DeliveryNote_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="ManeeEntityDataModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="ManeeDataContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cars" EntityType="ManeeEntityDataModel.Car" />
+          <EntitySet Name="CarTypes" EntityType="ManeeEntityDataModel.CarType" />
+          <EntitySet Name="DeliveryNotes" EntityType="ManeeEntityDataModel.DeliveryNote" />
+          <EntitySet Name="Locations" EntityType="ManeeEntityDataModel.Location" />
+          <EntitySet Name="LocationTypes" EntityType="ManeeEntityDataModel.LocationType" />
+          <EntitySet Name="WorkerMethods" EntityType="ManeeEntityDataModel.WorkerMethod" />
+          <EntitySet Name="NoteLineItems" EntityType="ManeeEntityDataModel.NoteLineItem" />
+          <EntitySet Name="ReceiveNotes" EntityType="ManeeEntityDataModel.ReceiveNote" />
+          <EntitySet Name="sysdiagrams" EntityType="ManeeEntityDataModel.sysdiagram" />
+          <EntitySet Name="Workers" EntityType="ManeeEntityDataModel.Worker" />
+          <AssociationSet Name="CarTypeCar" Association="ManeeEntityDataModel.CarTypeCar">
+            <End Role="CarType" EntitySet="CarTypes" />
+            <End Role="Car" EntitySet="Cars" />
+          </AssociationSet>
+          <AssociationSet Name="DeliveryNoteNoteLineItem" Association="ManeeEntityDataModel.DeliveryNoteNoteLineItem">
+            <End Role="DeliveryNote" EntitySet="DeliveryNotes" />
+            <End Role="NoteLineItem" EntitySet="NoteLineItems" />
+          </AssociationSet>
+          <AssociationSet Name="LocationLocationType" Association="ManeeEntityDataModel.LocationLocationType">
+            <End Role="Location" EntitySet="Locations" />
+            <End Role="LocationType" EntitySet="LocationTypes" />
+          </AssociationSet>
+          <AssociationSet Name="WorkerMethodWorker" Association="ManeeEntityDataModel.WorkerMethodWorker">
+            <End Role="WorkerMethod" EntitySet="WorkerMethods" />
+            <End Role="Worker" EntitySet="Workers" />
+          </AssociationSet>
+          <AssociationSet Name="DeliveryNoteReceiveNote" Association="ManeeEntityDataModel.DeliveryNoteReceiveNote">
+            <End Role="DeliveryNote" EntitySet="DeliveryNotes" />
+            <End Role="ReceiveNote" EntitySet="ReceiveNotes" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Car">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="CarLicensePlate" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CarType" Relationship="ManeeEntityDataModel.CarTypeCar" FromRole="Car" ToRole="CarType" />
+        </EntityType>
+        <EntityType Name="CarType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="CarTypeName" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="DeliveryNote">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Decimal" Name="OriginId" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="DestinationId" Precision="18" Scale="0" />
+          <Property Type="DateTime" Name="DeliveryDate" Precision="3" />
+          <Property Type="DateTime" Name="DocumentDate" Precision="3" />
+          <Property Type="String" Name="SenderName" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SenderCode" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CarType" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CarLicensePlate" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="NoteLineItems" Relationship="ManeeEntityDataModel.DeliveryNoteNoteLineItem" FromRole="DeliveryNote" ToRole="NoteLineItem" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Address" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="ProjectManagerId" Precision="18" Scale="0" />
+          <NavigationProperty Name="LocationType" Relationship="ManeeEntityDataModel.LocationLocationType" FromRole="Location" ToRole="LocationType" />
+        </EntityType>
+        <EntityType Name="LocationType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="LocationTypeName" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Location" Relationship="ManeeEntityDataModel.LocationLocationType" FromRole="LocationType" ToRole="Location" />
+        </EntityType>
+        <EntityType Name="WorkerMethod">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="MethodName" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="NoteLineItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ItemCode" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="Qty" Precision="18" Scale="0" />
+          <Property Type="String" Name="Unit" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="Status" Precision="18" Scale="0" />
+          <Property Type="Int32" Name="DeliveryNoteId" Nullable="false" />
+          <NavigationProperty Name="DeliveryNote" Relationship="ManeeEntityDataModel.DeliveryNoteNoteLineItem" FromRole="NoteLineItem" ToRole="DeliveryNote" />
+        </EntityType>
+        <EntityType Name="ReceiveNote">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Code" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ReceiverCode" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ReceiverName" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="ReceiveDate" Precision="3" />
+          <Property Type="Int32" Name="DeliveryNoteId" Nullable="false" />
+          <NavigationProperty Name="DeliveryNote" Relationship="ManeeEntityDataModel.DeliveryNoteReceiveNote" FromRole="ReceiveNote" ToRole="DeliveryNote" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Type="String" Name="name" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="principal_id" Nullable="false" />
+          <Property Type="Int32" Name="diagram_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="version" />
+          <Property Type="Binary" Name="definition" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Worker">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="FullName" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Code" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="IdCardNumber" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="WorkerMethod" Relationship="ManeeEntityDataModel.WorkerMethodWorker" FromRole="Worker" ToRole="WorkerMethod" />
+        </EntityType>
+        <Association Name="CarTypeCar">
+          <End Type="ManeeEntityDataModel.CarType" Role="CarType" Multiplicity="1" />
+          <End Type="ManeeEntityDataModel.Car" Role="Car" Multiplicity="*" />
+        </Association>
+        <Association Name="DeliveryNoteNoteLineItem">
+          <End Type="ManeeEntityDataModel.DeliveryNote" Role="DeliveryNote" Multiplicity="1" />
+          <End Type="ManeeEntityDataModel.NoteLineItem" Role="NoteLineItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DeliveryNote">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="NoteLineItem">
+              <PropertyRef Name="DeliveryNoteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="LocationLocationType">
+          <End Type="ManeeEntityDataModel.Location" Role="Location" Multiplicity="*" />
+          <End Type="ManeeEntityDataModel.LocationType" Role="LocationType" Multiplicity="1" />
+        </Association>
+        <Association Name="WorkerMethodWorker">
+          <End Type="ManeeEntityDataModel.WorkerMethod" Role="WorkerMethod" Multiplicity="1" />
+          <End Type="ManeeEntityDataModel.Worker" Role="Worker" Multiplicity="*" />
+        </Association>
+        <Association Name="DeliveryNoteReceiveNote">
+          <End Type="ManeeEntityDataModel.DeliveryNote" Role="DeliveryNote" Multiplicity="1" />
+          <End Type="ManeeEntityDataModel.ReceiveNote" Role="ReceiveNote" Multiplicity="0..1" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ManeeEntityDataModelStoreContainer" CdmEntityContainer="ManeeDataContainer">
+    <EntitySetMapping Name="Cars">
+      <EntityTypeMapping TypeName="IsTypeOf(ManeeEntityDataModel.Car)">
+        <MappingFragment StoreEntitySet="Cars">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CarLicensePlate" ColumnName="CarLicensePlate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CarTypes">
+      <EntityTypeMapping TypeName="IsTypeOf(ManeeEntityDataModel.CarType)">
+        <MappingFragment StoreEntitySet="CarTypes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CarTypeName" ColumnName="CarTypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DeliveryNotes">
+      <EntityTypeMapping TypeName="IsTypeOf(ManeeEntityDataModel.DeliveryNote)">
+        <MappingFragment StoreEntitySet="DeliveryNotes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="OriginId" ColumnName="OriginId" />
+          <ScalarProperty Name="DestinationId" ColumnName="DestinationId" />
+          <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
+          <ScalarProperty Name="DocumentDate" ColumnName="DocumentDate" />
+          <ScalarProperty Name="SenderName" ColumnName="SenderName" />
+          <ScalarProperty Name="SenderCode" ColumnName="SenderCode" />
+          <ScalarProperty Name="CarType" ColumnName="CarType" />
+          <ScalarProperty Name="CarLicensePlate" ColumnName="CarLicensePlate" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Locations">
+      <EntityTypeMapping TypeName="IsTypeOf(ManeeEntityDataModel.Location)">
+        <MappingFragment StoreEntitySet="Locations">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="ProjectManagerId" ColumnName="ProjectManagerId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LocationTypes">
+      <EntityTypeMapping TypeName="IsTypeOf(ManeeEntityDataModel.LocationType)">
+        <MappingFragment StoreEntitySet="LocationTypes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="LocationTypeName" ColumnName="LocationTypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkerMethods">
+      <EntityTypeMapping TypeName="IsTypeOf(ManeeEntityDataModel.WorkerMethod)">
+        <MappingFragment StoreEntitySet="WorkerMethods">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="MethodName" ColumnName="MethodName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NoteLineItems">
+      <EntityTypeMapping TypeName="IsTypeOf(ManeeEntityDataModel.NoteLineItem)">
+        <MappingFragment StoreEntitySet="NoteLineItems">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="DeliveryNoteId" ColumnName="DeliveryNoteId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReceiveNotes">
+      <EntityTypeMapping TypeName="IsTypeOf(ManeeEntityDataModel.ReceiveNote)">
+        <MappingFragment StoreEntitySet="ReceiveNotes">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="ReceiverCode" ColumnName="ReceiverCode" />
+          <ScalarProperty Name="ReceiverName" ColumnName="ReceiverName" />
+          <ScalarProperty Name="ReceiveDate" ColumnName="ReceiveDate" />
+          <ScalarProperty Name="DeliveryNoteId" ColumnName="DeliveryNoteId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="IsTypeOf(ManeeEntityDataModel.sysdiagram)">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Workers">
+      <EntityTypeMapping TypeName="IsTypeOf(ManeeEntityDataModel.Worker)">
+        <MappingFragment StoreEntitySet="Workers">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="IdCardNumber" ColumnName="IdCardNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="CarTypeCar" TypeName="ManeeEntityDataModel.CarTypeCar" StoreEntitySet="Cars">
+      <EndProperty Name="CarType">
+        <ScalarProperty Name="Id" ColumnName="CarType_Id" />
+      </EndProperty>
+      <EndProperty Name="Car">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="LocationLocationType" TypeName="ManeeEntityDataModel.LocationLocationType" StoreEntitySet="Locations">
+      <EndProperty Name="LocationType">
+        <ScalarProperty Name="Id" ColumnName="LocationType_Id" />
+      </EndProperty>
+      <EndProperty Name="Location">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="WorkerMethodWorker" TypeName="ManeeEntityDataModel.WorkerMethodWorker" StoreEntitySet="Workers">
+      <EndProperty Name="WorkerMethod">
+        <ScalarProperty Name="Id" ColumnName="WorkerMethod_Id" />
+      </EndProperty>
+      <EndProperty Name="Worker">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="DeliveryNoteReceiveNote" TypeName="ManeeEntityDataModel.DeliveryNoteReceiveNote" StoreEntitySet="ReceiveNotes">
+      <EndProperty Name="DeliveryNote">
+        <ScalarProperty Name="Id" ColumnName="DeliveryNote_Id" />
+      </EndProperty>
+      <EndProperty Name="ReceiveNote">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

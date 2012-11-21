@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DAL
+namespace Manee.INV.DAL.Entity
 {
     using System;
     using System.Data.Entity;
@@ -30,10 +30,15 @@ namespace DAL
         public DbSet<DeliveryNote> DeliveryNotes { get; set; }
         public DbSet<Location> Locations { get; set; }
         public DbSet<LocationType> LocationTypes { get; set; }
-        public DbSet<Method> Methods { get; set; }
-        public DbSet<NoteLineItemSet> NoteLineItemSets { get; set; }
+        public DbSet<WorkerMethod> WorkerMethods { get; set; }
+        public DbSet<NoteLineItem> NoteLineItems { get; set; }
         public DbSet<ReceitpNote> ReceitpNotes { get; set; }
         public DbSet<sysdiagram> sysdiagrams { get; set; }
         public DbSet<Worker> Workers { get; set; }
+
+        public void SaveChanges()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

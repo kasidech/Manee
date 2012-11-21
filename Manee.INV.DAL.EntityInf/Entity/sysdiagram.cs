@@ -7,19 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DAL
+namespace Manee.INV.DAL.Entity
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class NoteLineItemSet
+    public partial class sysdiagram
     {
-        public decimal Id { get; set; }
-        public string ItemCode { get; set; }
-        public Nullable<decimal> Qty { get; set; }
-        public string Unit { get; set; }
-        public Nullable<decimal> Status { get; set; }
-        public Nullable<decimal> DeliveryNoteId { get; set; }
-        public decimal DeliveryNotes_Id { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

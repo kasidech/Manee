@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DAL
+namespace Manee.INV.DAL.Entity
 {
     using System;
     using System.Collections.Generic;
@@ -18,7 +18,7 @@ namespace DAL
         public string FullName { get; set; }
         public string Code { get; set; }
         public string IdCardNumber { get; set; }
-        public decimal MethodId { get; set; }
-        public decimal Methods_Id { get; set; }
+    
+        public virtual WorkerMethod WorkerMethod { get; set; }
     }
 }

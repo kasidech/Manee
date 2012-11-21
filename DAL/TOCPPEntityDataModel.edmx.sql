@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 11/20/2012 17:08:51
--- Generated from EDMX file: C:\Users\Mo\Documents\GitHub\Manee.INV\Manee.INV\DAL\TOCPPEntityDataModel.edmx
+-- Date Created: 11/21/2012 14:05:00
+-- Generated from EDMX file: C:\Users\Mo\Documents\GitHub\manee\DAL\TOCPPEntityDataModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -17,20 +17,20 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[FK_CarCarType]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Cars] DROP CONSTRAINT [FK_CarCarType];
+IF OBJECT_ID(N'[dbo].[FK_CarTypeCar]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Cars] DROP CONSTRAINT [FK_CarTypeCar];
 GO
-IF OBJECT_ID(N'[dbo].[FK_DeliveryNotesNoteLineItem]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[NoteLineItemSets] DROP CONSTRAINT [FK_DeliveryNotesNoteLineItem];
+IF OBJECT_ID(N'[dbo].[FK_LocationLocationType]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Locations] DROP CONSTRAINT [FK_LocationLocationType];
 GO
-IF OBJECT_ID(N'[dbo].[FK_DeliveryNotesReceitpNote]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[DeliveryNotes] DROP CONSTRAINT [FK_DeliveryNotesReceitpNote];
+IF OBJECT_ID(N'[dbo].[FK_WorkerMethodWorker]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Workers] DROP CONSTRAINT [FK_WorkerMethodWorker];
 GO
-IF OBJECT_ID(N'[dbo].[FK_LocationTypeLocation]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[LocationTypes] DROP CONSTRAINT [FK_LocationTypeLocation];
+IF OBJECT_ID(N'[dbo].[FK_ReceitpNoteDeliveryNote]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ReceitpNotes] DROP CONSTRAINT [FK_ReceitpNoteDeliveryNote];
 GO
-IF OBJECT_ID(N'[dbo].[FK_WorkerMethod]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Workers] DROP CONSTRAINT [FK_WorkerMethod];
+IF OBJECT_ID(N'[dbo].[FK_DeliveryNoteNoteLineItem]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[NoteLineItems] DROP CONSTRAINT [FK_DeliveryNoteNoteLineItem];
 GO
 
 -- --------------------------------------------------
@@ -52,11 +52,11 @@ GO
 IF OBJECT_ID(N'[dbo].[LocationTypes]', 'U') IS NOT NULL
     DROP TABLE [dbo].[LocationTypes];
 GO
-IF OBJECT_ID(N'[dbo].[Methods]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[Methods];
+IF OBJECT_ID(N'[dbo].[WorkerMethods]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[WorkerMethods];
 GO
-IF OBJECT_ID(N'[dbo].[NoteLineItemSets]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[NoteLineItemSets];
+IF OBJECT_ID(N'[dbo].[NoteLineItems]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[NoteLineItems];
 GO
 IF OBJECT_ID(N'[dbo].[ReceitpNotes]', 'U') IS NOT NULL
     DROP TABLE [dbo].[ReceitpNotes];
@@ -75,9 +75,8 @@ GO
 -- Creating table 'Cars'
 CREATE TABLE [dbo].[Cars] (
     [Id] decimal(18,0) IDENTITY(1,1) NOT NULL,
-    [CarTypeId] decimal(18,0)  NOT NULL,
     [CarLicensePlate] nvarchar(max)  NOT NULL,
-    [CarTypes_Id] decimal(18,0)  NOT NULL
+    [CarType_Id] decimal(18,0)  NOT NULL
 );
 GO
 
@@ -99,8 +98,7 @@ CREATE TABLE [dbo].[DeliveryNotes] (
     [SenderCode] nvarchar(max)  NULL,
     [CarType] nvarchar(max)  NULL,
     [CarLicensePlate] nvarchar(max)  NULL,
-    [Code] nvarchar(max)  NOT NULL,
-    [FK_DeliveryNotesReceitpNote_DeliveryNotes_Id] decimal(18,0)  NULL
+    [Code] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -109,36 +107,34 @@ CREATE TABLE [dbo].[Locations] (
     [Id] decimal(18,0) IDENTITY(1,1) NOT NULL,
     [Code] nvarchar(max)  NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
-    [LocationTypeId] decimal(18,0)  NOT NULL,
     [Address] nvarchar(max)  NOT NULL,
-    [ProjectManagerId] decimal(18,0)  NULL
+    [ProjectManagerId] decimal(18,0)  NULL,
+    [LocationType_Id] decimal(18,0)  NOT NULL
 );
 GO
 
 -- Creating table 'LocationTypes'
 CREATE TABLE [dbo].[LocationTypes] (
     [Id] decimal(18,0) IDENTITY(1,1) NOT NULL,
-    [LocationTypeName] nvarchar(max)  NOT NULL,
-    [Locations_Id] decimal(18,0)  NOT NULL
+    [LocationTypeName] nvarchar(max)  NOT NULL
 );
 GO
 
--- Creating table 'Methods'
-CREATE TABLE [dbo].[Methods] (
+-- Creating table 'WorkerMethods'
+CREATE TABLE [dbo].[WorkerMethods] (
     [Id] decimal(18,0) IDENTITY(1,1) NOT NULL,
     [MethodName] nvarchar(max)  NOT NULL
 );
 GO
 
--- Creating table 'NoteLineItemSets'
-CREATE TABLE [dbo].[NoteLineItemSets] (
+-- Creating table 'NoteLineItems'
+CREATE TABLE [dbo].[NoteLineItems] (
     [Id] decimal(18,0) IDENTITY(1,1) NOT NULL,
     [ItemCode] nvarchar(max)  NULL,
     [Qty] decimal(18,0)  NULL,
     [Unit] nvarchar(max)  NULL,
     [Status] decimal(18,0)  NULL,
-    [DeliveryNoteId] decimal(18,0)  NULL,
-    [DeliveryNotes_Id] decimal(18,0)  NOT NULL
+    [DeliveryNoteId] decimal(18,0)  NOT NULL
 );
 GO
 
@@ -146,10 +142,10 @@ GO
 CREATE TABLE [dbo].[ReceitpNotes] (
     [Id] decimal(18,0) IDENTITY(1,1) NOT NULL,
     [Code] nvarchar(max)  NULL,
-    [DeliveryNoteId] decimal(18,0)  NULL,
     [ReceiverCode] nvarchar(max)  NULL,
     [ReceiverName] nvarchar(max)  NULL,
-    [ReceiveDate] datetime  NULL
+    [ReceiveDate] datetime  NULL,
+    [DeliveryNote_Id] decimal(18,0)  NOT NULL
 );
 GO
 
@@ -169,8 +165,7 @@ CREATE TABLE [dbo].[Workers] (
     [FullName] nvarchar(max)  NULL,
     [Code] nvarchar(max)  NULL,
     [IdCardNumber] nvarchar(max)  NULL,
-    [MethodId] decimal(18,0)  NOT NULL,
-    [Methods_Id] decimal(18,0)  NOT NULL
+    [WorkerMethod_Id] decimal(18,0)  NOT NULL
 );
 GO
 
@@ -208,15 +203,15 @@ ADD CONSTRAINT [PK_LocationTypes]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Id] in table 'Methods'
-ALTER TABLE [dbo].[Methods]
-ADD CONSTRAINT [PK_Methods]
+-- Creating primary key on [Id] in table 'WorkerMethods'
+ALTER TABLE [dbo].[WorkerMethods]
+ADD CONSTRAINT [PK_WorkerMethods]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Id] in table 'NoteLineItemSets'
-ALTER TABLE [dbo].[NoteLineItemSets]
-ADD CONSTRAINT [PK_NoteLineItemSets]
+-- Creating primary key on [Id] in table 'NoteLineItems'
+ALTER TABLE [dbo].[NoteLineItems]
+ADD CONSTRAINT [PK_NoteLineItems]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -242,74 +237,74 @@ GO
 -- Creating all FOREIGN KEY constraints
 -- --------------------------------------------------
 
--- Creating foreign key on [CarTypes_Id] in table 'Cars'
+-- Creating foreign key on [CarType_Id] in table 'Cars'
 ALTER TABLE [dbo].[Cars]
-ADD CONSTRAINT [FK_CarCarType]
-    FOREIGN KEY ([CarTypes_Id])
+ADD CONSTRAINT [FK_CarTypeCar]
+    FOREIGN KEY ([CarType_Id])
     REFERENCES [dbo].[CarTypes]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 
--- Creating non-clustered index for FOREIGN KEY 'FK_CarCarType'
-CREATE INDEX [IX_FK_CarCarType]
+-- Creating non-clustered index for FOREIGN KEY 'FK_CarTypeCar'
+CREATE INDEX [IX_FK_CarTypeCar]
 ON [dbo].[Cars]
-    ([CarTypes_Id]);
+    ([CarType_Id]);
 GO
 
--- Creating foreign key on [DeliveryNotes_Id] in table 'NoteLineItemSets'
-ALTER TABLE [dbo].[NoteLineItemSets]
-ADD CONSTRAINT [FK_DeliveryNotesNoteLineItem]
-    FOREIGN KEY ([DeliveryNotes_Id])
+-- Creating foreign key on [LocationType_Id] in table 'Locations'
+ALTER TABLE [dbo].[Locations]
+ADD CONSTRAINT [FK_LocationLocationType]
+    FOREIGN KEY ([LocationType_Id])
+    REFERENCES [dbo].[LocationTypes]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_LocationLocationType'
+CREATE INDEX [IX_FK_LocationLocationType]
+ON [dbo].[Locations]
+    ([LocationType_Id]);
+GO
+
+-- Creating foreign key on [WorkerMethod_Id] in table 'Workers'
+ALTER TABLE [dbo].[Workers]
+ADD CONSTRAINT [FK_WorkerMethodWorker]
+    FOREIGN KEY ([WorkerMethod_Id])
+    REFERENCES [dbo].[WorkerMethods]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_WorkerMethodWorker'
+CREATE INDEX [IX_FK_WorkerMethodWorker]
+ON [dbo].[Workers]
+    ([WorkerMethod_Id]);
+GO
+
+-- Creating foreign key on [DeliveryNote_Id] in table 'ReceitpNotes'
+ALTER TABLE [dbo].[ReceitpNotes]
+ADD CONSTRAINT [FK_ReceitpNoteDeliveryNote]
+    FOREIGN KEY ([DeliveryNote_Id])
     REFERENCES [dbo].[DeliveryNotes]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 
--- Creating non-clustered index for FOREIGN KEY 'FK_DeliveryNotesNoteLineItem'
-CREATE INDEX [IX_FK_DeliveryNotesNoteLineItem]
-ON [dbo].[NoteLineItemSets]
-    ([DeliveryNotes_Id]);
+-- Creating non-clustered index for FOREIGN KEY 'FK_ReceitpNoteDeliveryNote'
+CREATE INDEX [IX_FK_ReceitpNoteDeliveryNote]
+ON [dbo].[ReceitpNotes]
+    ([DeliveryNote_Id]);
 GO
 
--- Creating foreign key on [FK_DeliveryNotesReceitpNote_DeliveryNotes_Id] in table 'DeliveryNotes'
-ALTER TABLE [dbo].[DeliveryNotes]
-ADD CONSTRAINT [FK_DeliveryNotesReceitpNote]
-    FOREIGN KEY ([FK_DeliveryNotesReceitpNote_DeliveryNotes_Id])
-    REFERENCES [dbo].[ReceitpNotes]
+-- Creating foreign key on [DeliveryNoteId] in table 'NoteLineItems'
+ALTER TABLE [dbo].[NoteLineItems]
+ADD CONSTRAINT [FK_DeliveryNoteNoteLineItem]
+    FOREIGN KEY ([DeliveryNoteId])
+    REFERENCES [dbo].[DeliveryNotes]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 
--- Creating non-clustered index for FOREIGN KEY 'FK_DeliveryNotesReceitpNote'
-CREATE INDEX [IX_FK_DeliveryNotesReceitpNote]
-ON [dbo].[DeliveryNotes]
-    ([FK_DeliveryNotesReceitpNote_DeliveryNotes_Id]);
-GO
-
--- Creating foreign key on [Locations_Id] in table 'LocationTypes'
-ALTER TABLE [dbo].[LocationTypes]
-ADD CONSTRAINT [FK_LocationTypeLocation]
-    FOREIGN KEY ([Locations_Id])
-    REFERENCES [dbo].[Locations]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_LocationTypeLocation'
-CREATE INDEX [IX_FK_LocationTypeLocation]
-ON [dbo].[LocationTypes]
-    ([Locations_Id]);
-GO
-
--- Creating foreign key on [Methods_Id] in table 'Workers'
-ALTER TABLE [dbo].[Workers]
-ADD CONSTRAINT [FK_WorkerMethod]
-    FOREIGN KEY ([Methods_Id])
-    REFERENCES [dbo].[Methods]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- Creating non-clustered index for FOREIGN KEY 'FK_WorkerMethod'
-CREATE INDEX [IX_FK_WorkerMethod]
-ON [dbo].[Workers]
-    ([Methods_Id]);
+-- Creating non-clustered index for FOREIGN KEY 'FK_DeliveryNoteNoteLineItem'
+CREATE INDEX [IX_FK_DeliveryNoteNoteLineItem]
+ON [dbo].[NoteLineItems]
+    ([DeliveryNoteId]);
 GO
 
 -- --------------------------------------------------

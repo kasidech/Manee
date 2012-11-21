@@ -7,13 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DAL
+namespace Manee.INV.DAL.Entity
 {
     using System;
     using System.Collections.Generic;
     
     public partial class DeliveryNote
     {
+        public DeliveryNote()
+        {
+            this.NoteLineItems = new HashSet<NoteLineItem>();
+        }
+    
         public decimal Id { get; set; }
         public Nullable<decimal> OriginId { get; set; }
         public Nullable<decimal> DestinationId { get; set; }
@@ -24,5 +29,7 @@ namespace DAL
         public string CarType { get; set; }
         public string CarLicensePlate { get; set; }
         public string Code { get; set; }
+    
+        public virtual ICollection<NoteLineItem> NoteLineItems { get; set; }
     }
 }

@@ -6,30 +6,30 @@
     <EntitySet Name="DeliveryNotes" EntityType="TOCPPModel.Store.DeliveryNotes" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Locations" EntityType="TOCPPModel.Store.Locations" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="LocationTypes" EntityType="TOCPPModel.Store.LocationTypes" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Methods" EntityType="TOCPPModel.Store.Methods" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="NoteLineItemSets" EntityType="TOCPPModel.Store.NoteLineItemSets" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="WorkerMethods" EntityType="TOCPPModel.Store.WorkerMethods" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="NoteLineItems" EntityType="TOCPPModel.Store.NoteLineItems" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ReceitpNotes" EntityType="TOCPPModel.Store.ReceitpNotes" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="sysdiagrams" EntityType="TOCPPModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Workers" EntityType="TOCPPModel.Store.Workers" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="FK_CarCarType" Association="TOCPPModel.Store.FK_CarCarType">
-      <End Role="CarTypes" EntitySet="CarTypes" />
-      <End Role="Cars" EntitySet="Cars" />
+    <AssociationSet Name="CarTypeCar" Association="TOCPPModel.Store.CarTypeCar">
+      <End Role="CarType" EntitySet="CarTypes" />
+      <End Role="Car" EntitySet="Cars" />
     </AssociationSet>
-    <AssociationSet Name="FK_DeliveryNotesNoteLineItem" Association="TOCPPModel.Store.FK_DeliveryNotesNoteLineItem">
-      <End Role="DeliveryNotes" EntitySet="DeliveryNotes" />
-      <End Role="NoteLineItemSet" EntitySet="NoteLineItemSets" />
+    <AssociationSet Name="LocationLocationType" Association="TOCPPModel.Store.LocationLocationType">
+      <End Role="Location" EntitySet="Locations" />
+      <End Role="LocationType" EntitySet="LocationTypes" />
     </AssociationSet>
-    <AssociationSet Name="FK_DeliveryNotesReceitpNote" Association="TOCPPModel.Store.FK_DeliveryNotesReceitpNote">
-      <End Role="ReceitpNotes" EntitySet="ReceitpNotes" />
-      <End Role="DeliveryNotes" EntitySet="DeliveryNotes" />
+    <AssociationSet Name="WorkerMethodWorker" Association="TOCPPModel.Store.WorkerMethodWorker">
+      <End Role="WorkerMethod" EntitySet="WorkerMethods" />
+      <End Role="Worker" EntitySet="Workers" />
     </AssociationSet>
-    <AssociationSet Name="FK_LocationTypeLocation" Association="TOCPPModel.Store.FK_LocationTypeLocation">
-      <End Role="Locations" EntitySet="Locations" />
-      <End Role="LocationTypes" EntitySet="LocationTypes" />
+    <AssociationSet Name="ReceitpNoteDeliveryNote" Association="TOCPPModel.Store.ReceitpNoteDeliveryNote">
+      <End Role="ReceitpNote" EntitySet="ReceitpNotes" />
+      <End Role="DeliveryNote" EntitySet="DeliveryNotes" />
     </AssociationSet>
-    <AssociationSet Name="FK_WorkerMethod" Association="TOCPPModel.Store.FK_WorkerMethod">
-      <End Role="Methods" EntitySet="Methods" />
-      <End Role="Workers" EntitySet="Workers" />
+    <AssociationSet Name="DeliveryNoteNoteLineItem" Association="TOCPPModel.Store.DeliveryNoteNoteLineItem">
+      <End Role="DeliveryNote" EntitySet="DeliveryNotes" />
+      <End Role="NoteLineItem" EntitySet="NoteLineItems" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Cars">
@@ -37,9 +37,8 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="decimal" StoreGeneratedPattern="Identity" Nullable="false" Precision="18" Scale="0" />
-    <Property Name="CarTypeId" Type="decimal" Nullable="false" Precision="18" Scale="0" />
     <Property Name="CarLicensePlate" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="CarTypes_Id" Type="decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="CarType_Id" Type="decimal" Precision="18" Scale="0" Nullable="false" />
   </EntityType>
   <EntityType Name="CarTypes">
     <Key>
@@ -52,7 +51,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="decimal" StoreGeneratedPattern="Identity" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="Id" Type="decimal" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="OriginId" Type="decimal" Nullable="true" Precision="18" Scale="0" />
     <Property Name="DestinationId" Type="decimal" Nullable="true" Precision="18" Scale="0" />
     <Property Name="DeliveryDate" Type="datetime" Nullable="true" />
@@ -62,7 +61,6 @@
     <Property Name="CarType" Type="nvarchar(max)" Nullable="true" />
     <Property Name="CarLicensePlate" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Code" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="FK_DeliveryNotesReceitpNote_DeliveryNotes_Id" Type="decimal" Precision="18" Scale="0" Nullable="true" />
   </EntityType>
   <EntityType Name="Locations">
     <Key>
@@ -71,9 +69,9 @@
     <Property Name="Id" Type="decimal" StoreGeneratedPattern="Identity" Nullable="false" Precision="18" Scale="0" />
     <Property Name="Code" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="LocationTypeId" Type="decimal" Nullable="false" Precision="18" Scale="0" />
     <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
     <Property Name="ProjectManagerId" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="LocationType_Id" Type="decimal" Precision="18" Scale="0" Nullable="false" />
   </EntityType>
   <EntityType Name="LocationTypes">
     <Key>
@@ -81,16 +79,15 @@
     </Key>
     <Property Name="Id" Type="decimal" StoreGeneratedPattern="Identity" Nullable="false" Precision="18" Scale="0" />
     <Property Name="LocationTypeName" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Locations_Id" Type="decimal" Nullable="false" Precision="18" Scale="0" />
   </EntityType>
-  <EntityType Name="Methods">
+  <EntityType Name="WorkerMethods">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="decimal" StoreGeneratedPattern="Identity" Nullable="false" Precision="18" Scale="0" />
     <Property Name="MethodName" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
-  <EntityType Name="NoteLineItemSets">
+  <EntityType Name="NoteLineItems">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
@@ -99,8 +96,7 @@
     <Property Name="Qty" Type="decimal" Nullable="true" Precision="18" Scale="0" />
     <Property Name="Unit" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Status" Type="decimal" Nullable="true" Precision="18" Scale="0" />
-    <Property Name="DeliveryNoteId" Type="decimal" Nullable="true" Precision="18" Scale="0" />
-    <Property Name="DeliveryNotes_Id" Type="decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="DeliveryNoteId" Type="decimal" Nullable="false" />
   </EntityType>
   <EntityType Name="ReceitpNotes">
     <Key>
@@ -108,10 +104,10 @@
     </Key>
     <Property Name="Id" Type="decimal" StoreGeneratedPattern="Identity" Nullable="false" Precision="18" Scale="0" />
     <Property Name="Code" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="DeliveryNoteId" Type="decimal" Nullable="true" Precision="18" Scale="0" />
     <Property Name="ReceiverCode" Type="nvarchar(max)" Nullable="true" />
     <Property Name="ReceiverName" Type="nvarchar(max)" Nullable="true" />
     <Property Name="ReceiveDate" Type="datetime" Nullable="true" />
+    <Property Name="DeliveryNote_Id" Type="decimal" Nullable="false" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -131,66 +127,65 @@
     <Property Name="FullName" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Code" Type="nvarchar(max)" Nullable="true" />
     <Property Name="IdCardNumber" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="MethodId" Type="decimal" Nullable="false" Precision="18" Scale="0" />
-    <Property Name="Methods_Id" Type="decimal" Nullable="false" Precision="18" Scale="0" />
+    <Property Name="WorkerMethod_Id" Type="decimal" Precision="18" Scale="0" Nullable="false" />
   </EntityType>
-  <Association Name="FK_CarCarType">
-    <End Role="CarTypes" Type="TOCPPModel.Store.CarTypes" Multiplicity="1" />
-    <End Role="Cars" Type="TOCPPModel.Store.Cars" Multiplicity="*" />
+  <Association Name="CarTypeCar">
+    <End Role="CarType" Type="TOCPPModel.Store.CarTypes" Multiplicity="1" />
+    <End Role="Car" Type="TOCPPModel.Store.Cars" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="CarTypes">
+      <Principal Role="CarType">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="Cars">
-        <PropertyRef Name="CarTypes_Id" />
+      <Dependent Role="Car">
+        <PropertyRef Name="CarType_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_DeliveryNotesNoteLineItem">
-    <End Role="DeliveryNotes" Type="TOCPPModel.Store.DeliveryNotes" Multiplicity="1" />
-    <End Role="NoteLineItemSet" Type="TOCPPModel.Store.NoteLineItemSets" Multiplicity="*" />
+  <Association Name="LocationLocationType">
+    <End Role="Location" Type="TOCPPModel.Store.Locations" Multiplicity="*" />
+    <End Role="LocationType" Type="TOCPPModel.Store.LocationTypes" Multiplicity="1" />
     <ReferentialConstraint>
-      <Principal Role="DeliveryNotes">
+      <Principal Role="LocationType">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="NoteLineItemSet">
-        <PropertyRef Name="DeliveryNotes_Id" />
+      <Dependent Role="Location">
+        <PropertyRef Name="LocationType_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_DeliveryNotesReceitpNote">
-    <End Role="ReceitpNotes" Type="TOCPPModel.Store.ReceitpNotes" Multiplicity="0..1" />
-    <End Role="DeliveryNotes" Type="TOCPPModel.Store.DeliveryNotes" Multiplicity="*" />
+  <Association Name="WorkerMethodWorker">
+    <End Role="WorkerMethod" Type="TOCPPModel.Store.WorkerMethods" Multiplicity="1" />
+    <End Role="Worker" Type="TOCPPModel.Store.Workers" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="ReceitpNotes">
+      <Principal Role="WorkerMethod">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="DeliveryNotes">
-        <PropertyRef Name="FK_DeliveryNotesReceitpNote_DeliveryNotes_Id" />
+      <Dependent Role="Worker">
+        <PropertyRef Name="WorkerMethod_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_LocationTypeLocation">
-    <End Role="Locations" Type="TOCPPModel.Store.Locations" Multiplicity="1" />
-    <End Role="LocationTypes" Type="TOCPPModel.Store.LocationTypes" Multiplicity="*" />
+  <Association Name="ReceitpNoteDeliveryNote">
+    <End Role="ReceitpNote" Type="TOCPPModel.Store.ReceitpNotes" Multiplicity="*" />
+    <End Role="DeliveryNote" Type="TOCPPModel.Store.DeliveryNotes" Multiplicity="1" />
     <ReferentialConstraint>
-      <Principal Role="Locations">
+      <Principal Role="DeliveryNote">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="LocationTypes">
-        <PropertyRef Name="Locations_Id" />
+      <Dependent Role="ReceitpNote">
+        <PropertyRef Name="DeliveryNote_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_WorkerMethod">
-    <End Role="Methods" Type="TOCPPModel.Store.Methods" Multiplicity="1" />
-    <End Role="Workers" Type="TOCPPModel.Store.Workers" Multiplicity="*" />
+  <Association Name="DeliveryNoteNoteLineItem">
+    <End Role="DeliveryNote" Type="TOCPPModel.Store.DeliveryNotes" Multiplicity="1" />
+    <End Role="NoteLineItem" Type="TOCPPModel.Store.NoteLineItems" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Methods">
+      <Principal Role="DeliveryNote">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="Workers">
-        <PropertyRef Name="Methods_Id" />
+      <Dependent Role="NoteLineItem">
+        <PropertyRef Name="DeliveryNoteId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
