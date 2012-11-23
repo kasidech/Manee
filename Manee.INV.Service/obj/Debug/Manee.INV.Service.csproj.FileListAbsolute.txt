@@ -11,10 +11,10 @@ C:\Users\Mo\Documents\GitHub\Manee.INV\Manee.INV\Manee.INV.Service\obj\Debug\Man
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV.Service\bin\Debug\EntityFramework.dll
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV.Service\bin\Debug\EntityFramework.xml
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV.Service\obj\Debug\Manee.INV.Service.csprojResolveAssemblyReference.cache
-C:\Users\Mo\Documents\GitHub\manee\Manee.INV.Service\bin\Debug\Manee.INV.dll.config
-C:\Users\Mo\Documents\GitHub\manee\Manee.INV.Service\bin\Debug\Manee.INV.dll
-C:\Users\Mo\Documents\GitHub\manee\Manee.INV.Service\bin\Debug\Manee.INV.pdb
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV.Service\bin\Debug\Manee.INV.DAL.dll
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV.Service\bin\Debug\Manee.INV.DAL.pdb
-C:\Users\Mo\Documents\GitHub\manee\Manee.INV.Service\obj\Debug\Manee.INV.dll
-C:\Users\Mo\Documents\GitHub\manee\Manee.INV.Service\obj\Debug\Manee.INV.pdb
+C:\Users\Mo\Documents\GitHub\manee\Manee.INV.Service\bin\Debug\Manee.INV.Service.dll.config
+C:\Users\Mo\Documents\GitHub\manee\Manee.INV.Service\bin\Debug\Manee.INV.Service.dll
+C:\Users\Mo\Documents\GitHub\manee\Manee.INV.Service\bin\Debug\Manee.INV.Service.pdb
+C:\Users\Mo\Documents\GitHub\manee\Manee.INV.Service\obj\Debug\Manee.INV.Service.dll
+C:\Users\Mo\Documents\GitHub\manee\Manee.INV.Service\obj\Debug\Manee.INV.Service.pdb

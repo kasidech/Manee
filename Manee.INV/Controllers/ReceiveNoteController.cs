@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Manee.INV.DAL.Entity;
+using Manee.INV.Service.ServiceInf;
+using Manee.INV.Service;
 
 namespace Manee.INV.Controllers
 {
-    public class ReceiptNoteController : Controller
+    public class ReceiveNoteController : Controller
     {
+        private IReceiveNoteService iService = (IReceiveNoteService) ServiceFactory.GetService("RECEIVE_NOTE");  
         //
-        // GET: /ReceiptNote/
+        // GET: /ReceiveNote/
 
         public ActionResult Index()
         {
@@ -17,7 +21,7 @@ namespace Manee.INV.Controllers
         }
 
         //
-        // GET: /ReceiptNote/Details/5
+        // GET: /ReceiveNote/Details/5
 
         public ActionResult Details(int id)
         {
@@ -25,7 +29,7 @@ namespace Manee.INV.Controllers
         }
 
         //
-        // GET: /ReceiptNote/Create
+        // GET: /ReceiveNote/Create
 
         public ActionResult Create()
         {
@@ -33,7 +37,7 @@ namespace Manee.INV.Controllers
         }
 
         //
-        // POST: /ReceiptNote/Create
+        // POST: /ReceiveNote/Create
 
         [HttpPost]
         public ActionResult Create(FormCollection collection)
@@ -51,7 +55,7 @@ namespace Manee.INV.Controllers
         }
 
         //
-        // GET: /ReceiptNote/Edit/5
+        // GET: /ReceiveNote/Edit/5
 
         public ActionResult Edit(int id)
         {
@@ -59,7 +63,7 @@ namespace Manee.INV.Controllers
         }
 
         //
-        // POST: /ReceiptNote/Edit/5
+        // POST: /ReceiveNote/Edit/5
 
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
@@ -77,7 +81,7 @@ namespace Manee.INV.Controllers
         }
 
         //
-        // GET: /ReceiptNote/Delete/5
+        // GET: /ReceiveNote/Delete/5
 
         public ActionResult Delete(int id)
         {
@@ -85,7 +89,7 @@ namespace Manee.INV.Controllers
         }
 
         //
-        // POST: /ReceiptNote/Delete/5
+        // POST: /ReceiveNote/Delete/5
 
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)

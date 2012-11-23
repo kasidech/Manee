@@ -9,10 +9,13 @@ namespace Manee.INV.DAL.DaoInf
 {
     public interface IDeliveryNoteDAO
     {
-         void Create(DeliveryNote note);
-         void Delete(int noteId);
-         void Update(DeliveryNote note);
-         DeliveryNote FindById(int id);
-         List<DeliveryNote> FindByCriteria(DeliveryNote noteCriteria);
+        void Create(DeliveryNote note);
+        void Delete(int noteId);
+        void Update(DeliveryNote note);
+        DeliveryNote FindById(int id);
+        List<DeliveryNote> FindByCriteria(DeliveryNote noteCriteria);
+        int CountDeliveryNote(string code);
+        int CountDeliveryNoteTableRow();
+        
     }    
 }

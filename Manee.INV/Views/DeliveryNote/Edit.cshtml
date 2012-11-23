@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Edit";
+    var viewData = ViewData;
+    
+    
+}
+
+<h2>Edit</h2>
+<form name="collection" >
+
+    <div id="SearchGrid">SearchGrid</div>
+    <div id="DeliveryNote">DeliveryNote
+        <div id="InputForm">InputForm
+            <input type="text" name="sendername"/>
+            <input type="text" name ="origin"/>
+            <input type="text" name="destination"/>
+             <input type="text" hidden="hidden" name="destination2"/>
+            <input type="submit" value="Save" onclick="saveData()" />
+           
+        </div>
+        <div id="InputGrid" >InputGrid
+            <input id="deliveryNoteItemJson" type="hidden" name="deliveryNoteItemJson" value="" />
+
+            <button onclick="saveData()"> dada</button>
+        </div>
+        
+    </div>
+    <div id="LogGrid">LogGrid</div>
+</form>

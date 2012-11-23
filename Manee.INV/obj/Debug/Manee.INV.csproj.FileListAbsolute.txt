@@ -102,3 +102,5 @@ C:\Users\Mo\Documents\GitHub\manee\Manee.INV\obj\Debug\Manee.INV.dll
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV\obj\Debug\Manee.INV.pdb
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV\bin\Manee.INV.DAL.dll
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV\bin\Manee.INV.DAL.pdb
+C:\Users\Mo\Documents\GitHub\manee\Manee.INV\bin\Manee.INV.Service.dll
+C:\Users\Mo\Documents\GitHub\manee\Manee.INV\bin\Manee.INV.Service.pdb

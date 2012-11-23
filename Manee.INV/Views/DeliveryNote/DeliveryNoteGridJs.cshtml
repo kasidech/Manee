@@ -15,6 +15,9 @@
     }
 </style>
 <script type="text/javascript">
+
+
+    var gridForm;
     Ext.Loader.setConfig({
         enabled: true
     });
@@ -100,63 +103,26 @@ var storeSearch;
 
 
 
-
+        
         /*
         * Here is where we create the Form
         */
-        var gridForm = Ext.create('Ext.form.Panel', {
-            id: 'company-form',
+        gridForm = Ext.create('Ext.grid.Panel', {
+            id: 'Itemgrid',
             frame: true,
             minHeight: 80,
            // title: 'DeliveryNote',
             //bodyPadding: 5,
-            defaults: {
-                    layout: 'anchor',
-                    defaults: {
-                        anchor: '100%'
-                    }
-                },
-           
+            
             //layout: 'column',    // Specifies that the items will now be arranged in columns
+            columnWidth: 1.00,
+            xtype: 'gridpanel',
+            store: ds,
+            minHeight: 400,
+            autoScroll: true,
 
-            fieldDefaults: {
-                labelAlign: 'left',
-                msgTarget: 'side'
-            },
 
-            items: [
-            {
-                columnWidth: 1.00,
-                margin: '0 0 0 0',
-                xtype: 'fieldset',
-                title: 'Company details',
-                defaults: {
-                    width: 500,
-                    flex: 1,
-                    labelWidth: 0.50
 
-                },
-                defaultType: 'textfield',
-                items: [{
-                    fieldLabel: 'Del No. ',
-                    name: 'DelNo'
-                }, {
-                    xtype: 'datefield',
-                    fieldLabel: 'Date ',
-                    name: 'lastChange'
-                }, {
-                    fieldLabel: 'From ',
-                    name: 'From'
-                }, {
-                    fieldLabel: 'To ',
-                    name: 'To'
-                }]
-            }, {
-                columnWidth: 1.00,
-                xtype: 'gridpanel',
-                store: ds,
-                minHeight: 400,
-                autoScroll: true, 
 
                 columns: [
                     new Ext.grid.RowNumberer(),
@@ -240,35 +206,15 @@ var storeSearch;
                     dataIndex: 'Remark',
                     editor: {}
                 }
-            ],bbar: [
-                   {xtype:'textfield',fieldLabel:'Sender',dataIndex:'Sender',height:25,editor: {}},
-                   {xtype:'textfield',fieldLabel:'Receiver',dataIndex:'Receiver',height:25,editor: {}},
-                   {xtype:'textfield',fieldLabel:'Truck No.',dataIndex:'TruckNo',height:25,editor: {}}]
+            ]
                 
                ,plugins: [cellEditing] 
-               
-            }],
-            dockedItems: [{
-            xtype: 'toolbar',
-            dock: 'bottom',
-            ui: 'footer',
-            layout: {
-                pack: 'center'
-            },
-            items: [{
-                minWidth: 80,
-                text: 'Save',
-                handler: function() {
-                    
-                }
-            },{
-                minWidth: 80,
-                text: 'Cancel'
-            }]
-        }]
-            //renderTo: 'r',
+              ,renderTo: 'InputGrid'
             
         });
+
+
+
         var searchData = [['PO: 0000000 HHHSSS', '20-1-12', 'SCG', 'SCG \n Description \n'],
                           ['OD: 0000000 HHHSSS', '20-1-12', 'SCG', ' Description Description Description Description ...']];
          storeSearch = Ext.create('Ext.data.ArrayStore', {
@@ -345,7 +291,15 @@ var storeSearch;
                
         });
    
-        var sm = Ext.create('Ext.selection.CheckboxModel',{ injectCheckbox: 'last'});
+   var sm = Ext.create('Ext.selection.CheckboxModel', {
+
+       injectCheckbox: 'last',
+       listener: {
+           onclick: function () {
+               alert(1);
+           }
+       }
+   });
         var searchGrid = Ext.create('Ext.grid.Panel', {
         width:300,
         selModel: sm,
@@ -387,10 +341,10 @@ var storeSearch;
             width: 25,
             align: 'right',
             editor: {
-                click:{}
+                click: function (b) {}
             }
             //sortable: true
-        }]
+        }], renderTo: 'SearchGrid'
         
        
     });
@@ -444,62 +398,7 @@ var storeSearch;
         
        
     });
-        Ext.create('Ext.Viewport', 
-            {
-            layout:'border',
-            title:'Ext Layout Browser',
-            items:[{
-                    layout: 'border',
-                    id: 'searchField',
-                    collapsible: true,
-                    floatable: false,
-                    region:'west',
-                    border: false,
-                    split:true,
-                    width: 300,
-                    minSize: 100,
-                    maxSize: 500,
-                    margins: '2 0 5 5',
-                    autoScroll: true,
-                    items:[searchGrid2]        
-                 },{    
-                    //layout: 'border',
-                    id: 'layout-browser-grid',
-            
-                    floatable: true,
-                    region:'center',
-                    border: false,
-                    split:false,
-                    margins: '2 0 5 5',
-                    defaults: {
-                    layout: 'anchor',
-                    defaults: {
-                        anchor: '100%'
-                    }
-                },
-                    autoScroll: true,
-                   items:[gridForm] 
-            
-                }
-                ,{
-                    layout: 'border',
-                    id: 'layout-browser-east',
-                    collapsible: true,
-                    floatable: true,
-                    region:'east',
-                    border: false,
-                    split:false,
-                    margins: '2 0 5 5',
-                    width: 275,
-                    minSize: 100,
-                    maxSize: 500,
-                    autoScroll: true,
-                   items:[]        
-                }
-            ],
-            renderTo:'r'
-            
-        });
+       
     });
 </script>
 

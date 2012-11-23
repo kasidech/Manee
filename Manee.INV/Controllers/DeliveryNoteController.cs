@@ -3,13 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Manee.INV.Service.DeliveryNoteService;
+using Manee.INV.Service.ServiceInf;
+using Manee.INV.DAL.Entity;
+using Manee.INV.Service;
+using Manee.INV.Models;
+
 
 
 namespace Manee.INV.Controllers
 {
     public class DeliveryNoteController : Controller
     {
+        IDeliveryNoteService iservice =(IDeliveryNoteService)ServiceFactory.GetService("DELIVERY_NOTE");
         //
         // GET: /DeliveryNote/
 
@@ -31,9 +36,7 @@ namespace Manee.INV.Controllers
 
         public ActionResult Create()
         {
-           
-            
-            
+          
             return View();
         }
 
@@ -41,13 +44,17 @@ namespace Manee.INV.Controllers
         // POST: /DeliveryNote/Create
 
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(FormCollection collection, string deliveryNoteItemJson)
         {
+            var d = collection["InputGrid"];
             try
             {
+                DeliveryNote note = new DeliveryNote();
+                note.SenderName = collection["senderName"];
+                
                 // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                iservice.CreateDeliveryNote(note);
+                return View();
             }
             catch
             {
@@ -60,7 +67,11 @@ namespace Manee.INV.Controllers
 
         public ActionResult Edit(int id)
         {
-            return View();
+            
+            DeliveryNote Data = iservice.FindDeliveryNoteById(id);
+            DeliveryNoteViewModel viewData = new DeliveryNoteViewModel();
+            viewData.DeliveryNote = Data;
+            return View(viewData);
         }
 
         //

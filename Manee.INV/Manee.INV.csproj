@@ -164,11 +164,13 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DeliveryNoteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ReceiveNoteController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\DeliveryNoteViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -5389,6 +5391,7 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\DeliveryNote\Create.cshtml" />
     <Content Include="Views\DeliveryNote\DeliveryNoteGridJs.cshtml" />
+    <Content Include="Views\DeliveryNote\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -5399,10 +5402,17 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Manee.INV.DAL.EntityInf\Manee.INV.DAL.csproj">
+      <Project>{0927dec7-0e18-4018-a0ea-a9780fbebe1d}</Project>
+      <Name>Manee.INV.DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Manee.INV.Service\Manee.INV.Service.csproj">
       <Project>{f136f119-e450-408b-bc19-c8531ee51631}</Project>
       <Name>Manee.INV.Service</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -5420,7 +5430,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>1967</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:1562/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

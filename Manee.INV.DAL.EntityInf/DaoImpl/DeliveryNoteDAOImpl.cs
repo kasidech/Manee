@@ -52,7 +52,37 @@ namespace Manee.INV.DAL.DaoImpl
 
          List<Entity.DeliveryNote> IDeliveryNoteDAO.FindByCriteria(Entity.DeliveryNote noteCriteria)
         {
-            throw new NotImplementedException();
+             List<Entity.DeliveryNote> resultList = new List<DeliveryNote>();
+
+
+
+             resultList=context.DeliveryNotes.Where(
+                 b => (!string.IsNullOrEmpty(b.Code) && b.Code.Contains(noteCriteria.Code))
+                 ||(!string.IsNullOrEmpty(b.CarLicensePlate) && b.CarLicensePlate.Contains(noteCriteria.CarLicensePlate))
+                 ||(!string.IsNullOrEmpty(b.CarType) && b.CarType.Contains(noteCriteria.CarType))
+                 ||(b.DeliveryDate==noteCriteria.DeliveryDate)
+                 ||(b.DestinationId==noteCriteria.DestinationId)
+                 ||(b.OriginId==noteCriteria.OriginId)
+                 ||(!string.IsNullOrEmpty(b.SenderCode) && b.SenderCode.Contains(noteCriteria.SenderCode))
+                 ||(!string.IsNullOrEmpty(b.SenderName)&& b.SenderName.Contains(noteCriteria.SenderName))
+                 ).ToList();
+             return resultList;
         }
+
+
+
+
+         int IDeliveryNoteDAO.CountDeliveryNote(string code)
+         {
+             int row = context.DeliveryNotes.Where(b => b.Code == code).Count();
+             return row;
+         }
+
+
+         int IDeliveryNoteDAO.CountDeliveryNoteTableRow()
+         {
+             int row = context.DeliveryNotes.Count();
+             return row;
+         }
     }
 }

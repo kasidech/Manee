@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 11/21/2012 17:44:06
+-- Date Created: 11/22/2012 14:01:19
 -- Generated from EDMX file: C:\Users\Mo\Documents\GitHub\manee\Manee.INV.DAL.EntityInf\Entity\ManeeEntityDataModel.edmx
 -- --------------------------------------------------
 
@@ -28,6 +28,9 @@ IF OBJECT_ID(N'[dbo].[FK_LocationLocationType]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_WorkerMethodWorker]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Workers] DROP CONSTRAINT [FK_WorkerMethodWorker];
+GO
+IF OBJECT_ID(N'[dbo].[FK_DeliveryNoteReceiveNote]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ReceiveNotes] DROP CONSTRAINT [FK_DeliveryNoteReceiveNote];
 GO
 
 -- --------------------------------------------------
@@ -95,7 +98,7 @@ CREATE TABLE [dbo].[DeliveryNotes] (
     [SenderCode] nvarchar(max)  NULL,
     [CarType] nvarchar(max)  NULL,
     [CarLicensePlate] nvarchar(max)  NULL,
-    [Code] nvarchar(max)  NOT NULL
+    [Code] nvarchar(max)  NULL
 );
 GO
 

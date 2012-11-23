@@ -7,8 +7,8 @@
     <ProjectGuid>{F136F119-E450-408B-BC19-C8531EE51631}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Manee.INV</RootNamespace>
-    <AssemblyName>Manee.INV</AssemblyName>
+    <RootNamespace>Manee.INV.Service</RootNamespace>
+    <AssemblyName>Manee.INV.Service</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -47,15 +47,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DeliveryNoteService\DeliveryNoteService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReceiveNoteService\ReceiveNoteService.cs" />
+    <Compile Include="ServiceFactory.cs" />
+    <Compile Include="ServiceImpl\DeliveryNoteServiceImpl.cs" />
+    <Compile Include="ServiceImpl\ReceiveNoteImpl.cs" />
+    <Compile Include="ServiceInf\IDeliveryNoteService.cs" />
+    <Compile Include="ServiceInf\IReceiveNoteService.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
+    <None Include="Copy of App.Config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

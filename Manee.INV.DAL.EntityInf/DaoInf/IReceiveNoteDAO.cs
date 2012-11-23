@@ -9,7 +9,7 @@ namespace Manee.INV.DAL.DaoInf
 {
     public interface IReceiveNoteDAO
     {
-        void Create(ReceiveNote note,int dnId);
+        void Create(ReceiveNote note);
         void Delete(int noteId);
         void Update(ReceiveNote note);
         ReceiveNote FindById(int id);

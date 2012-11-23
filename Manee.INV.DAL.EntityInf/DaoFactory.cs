@@ -8,7 +8,7 @@ using Manee.INV.DAL.DaoImpl;
 
 namespace Manee.INV.DAL
 {
-    public class DaoFactory
+    public class DAOFactory
     {
         public static Object getDao(String daoName)
         {

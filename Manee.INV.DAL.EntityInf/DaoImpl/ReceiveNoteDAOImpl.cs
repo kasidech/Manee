@@ -12,9 +12,9 @@ namespace Manee.INV.DAL.DaoImpl
     class ReceiveNoteDAOImpl: IReceiveNoteDAO
     {
         private ManeeDataContainer context = new ManeeDataContainer();
-        public void Create(Entity.ReceiveNote note,int dnId)
+        public void Create(Entity.ReceiveNote note)
         {
-            note.DeliveryNoteId = dnId;
+            
             context.ReceiveNotes.Add(note);
             context.SaveChanges();
         }
@@ -48,34 +48,6 @@ namespace Manee.INV.DAL.DaoImpl
             return new List<ReceiveNote>();
         }
 
-        public void Create(ReceiveNote note)
-        {
-           throw new NotImplementedException();
-        }
-
-        void IReceiveNoteDAO.Create(ReceiveNote note, int dnId)
-        {
-            throw new NotImplementedException();
-        }
-
-        void IReceiveNoteDAO.Delete(int noteId)
-        {
-            throw new NotImplementedException();
-        }
-
-        void IReceiveNoteDAO.Update(ReceiveNote note)
-        {
-            throw new NotImplementedException();
-        }
-
-        ReceiveNote IReceiveNoteDAO.FindById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        List<ReceiveNote> IReceiveNoteDAO.FindByCriteria(ReceiveNote noteCriteria)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }

@@ -65,7 +65,7 @@
     <Property Name="SenderCode" Type="nvarchar(max)" Nullable="true" />
     <Property Name="CarType" Type="nvarchar(max)" Nullable="true" />
     <Property Name="CarLicensePlate" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="Code" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Code" Type="nvarchar(max)" Nullable="true" />
   </EntityType>
   <EntityType Name="Locations">
     <Key>
@@ -251,15 +251,15 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Decimal" Name="OriginId" Precision="18" Scale="0" />
-          <Property Type="Decimal" Name="DestinationId" Precision="18" Scale="0" />
+          <Property Type="Decimal" Name="OriginId" Precision="18" Scale="0" Nullable="true" />
+          <Property Type="Decimal" Name="DestinationId" Precision="18" Scale="0" Nullable="true" />
           <Property Type="DateTime" Name="DeliveryDate" Precision="3" />
-          <Property Type="DateTime" Name="DocumentDate" Precision="3" />
-          <Property Type="String" Name="SenderName" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="SenderCode" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="CarType" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="CarLicensePlate" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Code" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="DocumentDate" Precision="3" Nullable="true" />
+          <Property Type="String" Name="SenderName" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="true" />
+          <Property Type="String" Name="SenderCode" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="true" />
+          <Property Type="String" Name="CarType" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="true" />
+          <Property Type="String" Name="CarLicensePlate" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="true" />
+          <Property Type="String" Name="Code" Nullable="true" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="NoteLineItems" Relationship="ManeeEntityDataModel.DeliveryNoteNoteLineItem" FromRole="DeliveryNote" ToRole="NoteLineItem" />
         </EntityType>
         <EntityType Name="Location">
