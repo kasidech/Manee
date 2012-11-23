@@ -212,24 +212,33 @@ var storeSearch;
               ,renderTo: 'InputGrid'
             
         });
-
-
-
-        var searchData = [['PO: 0000000 HHHSSS', '20-1-12', 'SCG', 'SCG \n Description \n'],
-                          ['OD: 0000000 HHHSSS', '20-1-12', 'SCG', ' Description Description Description Description ...']];
+        
+        var searchData = [['1', '0001', 'o1', 'n1', 'Steal bar',1,'10','r1..........','2010-23-11'],
+                          ['2', '0002', 'o2', 'n2', ' Description Description Description Description ...', 2, '20', 'r2..........', '2010-23-11'],
+                          ['3', '0003', 'o3', 'n3', ' 0003Description Description Description Description ...',3, '30', 'r3..........', '2010-23-11'],
+                          ['4', '0004', 'o4', 'n4', ' 0004Description Description Description Description ...' ,4, '40', 'r4..........', '2010-23-11'],
+                          ['5', '0005', 'o5', 'n5', ' 0005Description Description Description Description ...', 5, '50', 'r5..........', '2010-23-11'],
+                          ['6', '0006', 'o6', 'n6', ' 0006Description Description Description Description ...', 6, '60', 'r6..........', '2010-23-11'],
+                          ['7', '0007', 'o7', 'n7', ' 0007Description Description Description Description ...', 7, '70', 'r7..........', '2010-23-11'],
+        ];
          storeSearch = Ext.create('Ext.data.ArrayStore', {
             
             fields: [
-                { name: 'title' },
-                { name: 'lastpost', type: 'date', dateFormat: 'timestamp' },
-                { name: 'ProjectName' },
-                { name: 'excerpt' }
-               
+             { name: 'Id' },
+             { name: 'RequestNo' },
+             { name: 'OldCode' },
+             { name: 'NewCode' },
+             { name: 'ItemDetail' },
+             { name: 'Qty', type: 'int' },
+             { name: 'Unit' },
+             { name: 'Remark' },
+             { name: 'Date', type: 'date', dateFormat: 'n/j h:ia' }
+
             ],
             data: searchData
         });
      
-
+   
 
 
     // pluggable renders
@@ -249,54 +258,16 @@ var storeSearch;
             return '<img src="../../Scripts/extjs/ext-4.1.1a/resources/themes/images/gray/dd/drop-no.gif" />';//Add Picture For Other status
         }
         
+     }
         
-       // return '<a style="background:url(../../Scripts/extjs/ext-4.1.1a/resources/themes/images/gray/dd/drop-add.gif)"></a>';
-       // return Ext.String.format('{0}<br/>by {1}', Ext.Date.dateFormat(value, 'M j, Y, g:i a'), r.get('lastposter'));
-    }
 
-  
-   
-
-    
-    // create the Grid, see Ext. 
-   var searchForm = Ext.create('Ext.form.Panel', {
-            id: 'search-form',
-            frame: true,
-            region:'north',
-            //title: 'DeliveryNote',
-            //bodyPadding: 5,
-            width: 300,
-           
-            layout: 'column',    // Specifies that the items will now be arranged in columns
-
-            fieldDefaults: {
-                labelAlign: 'top',
-                msgTarget: 'side'
-            },
-
-            items: [{
-                
-                xtype:'textfield',
-                fieldLabel: 'Search ',
-                name: 'Search'
-                
-            },{
-                
-                xtype:'textfield',
-                fieldLabel: 'filter ',
-                name: 'filter'
-                
-            }]
-                
-               
-        });
    
    var sm = Ext.create('Ext.selection.CheckboxModel', {
 
        injectCheckbox: 'last',
        listener: {
-           onclick: function () {
-               alert(1);
+           select:function(view, record, index, eOpts ) {
+               console.log(view, record, index, eOpts);
            }
        }
    });
@@ -319,7 +290,7 @@ var storeSearch;
             stripeRows: false,
             plugins: [{
                 ptype: 'preview',
-                bodyField: 'excerpt',
+                bodyField: 'ItemDetail',
                 expanded: true,
                 pluginId: 'preview'
             }]
@@ -328,15 +299,15 @@ var storeSearch;
         columns:[{
             
             id: 'topic',
-            text: "Topic",
-            dataIndex: 'title',
+            text: "RequestNo",
+            dataIndex: 'RequestNo',
             flex: 1,
            //renderer: renderTopic,
             sortable: false
         },{
             id: 'last',
-            text: "Last Post",
-            dataIndex: 'lastpost',
+            text: "NewCode",
+            dataIndex: 'NewCode',
             renderer: renderLast,
             width: 25,
             align: 'right',
@@ -349,55 +320,7 @@ var storeSearch;
        
     });
    
-           var sm2 = Ext.create('Ext.selection.CheckboxModel',{ injectCheckbox: 'last'});
-        var searchGrid2 = Ext.create('Ext.ux.LiveSearchGridPanel', {
-        width:300,
-        selModel: sm2,
-        
-       iconCls: 'icon-grid',
-        height:400,
-        region:'center',
-        //title: 'ExtJS.com - Browse Forums',
-        layout: 'column',
-        store: storeSearch,
-        //disableSelection: true,
-        loadMask: true,
-        
-        viewConfig: {
-            
-            trackOver: false,
-            stripeRows: true,
-            plugins: [{
-                ptype: 'preview',
-                bodyField: 'excerpt',
-                expanded: true,
-                pluginId: 'preview'
-            }]
-        },
-        // grid columns
-        columns:[{
-            
-            
-            text: "Topic",
-            dataIndex: 'title',
-            flex: 1,
-           //renderer: renderTopic,
-            sortable: false
-        },{
-            
-            text: "Last Post",
-            dataIndex: 'lastpost',
-            renderer: renderLast,
-            width: 25,
-            align: 'right',
-            editor: {
-                click:{}
-            }
-            //sortable: true
-        }]
-        
-       
-    });
+
        
     });
 </script>

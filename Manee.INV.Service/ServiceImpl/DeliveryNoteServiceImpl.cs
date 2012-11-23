@@ -14,14 +14,16 @@ namespace Manee.INV.Service.ServiceImpl
     public class DeliveryNoteServiceImpl : IDeliveryNoteService
     {
 
-        private IDeliveryNoteDAO dao = (IDeliveryNoteDAO)DAOFactory.getDao("DELIVERY_NOTE");
+        //private IDeliveryNoteDAO dao = (IDeliveryNoteDAO)DAOFactory.getDao("DELIVERY_NOTE");
+        private IDeliveryNoteDAO dnDAO;
+
 
         public void CreateDeliveryNote(DeliveryNote dn)
         {
             //Business Logic Here
 
 
-            dao.Create(dn);
+            dnDAO.Create(dn);
 
 
         }
@@ -29,18 +31,18 @@ namespace Manee.INV.Service.ServiceImpl
         public void DeleteDeliveryNote(int noteId)
         {
             //Business Logic Here
-            dao.Delete(noteId);
+            dnDAO.Delete(noteId);
         }
 
         public void UpdateDeliveryNote(DeliveryNote Note)
         {
             //Business Logic Here
-            dao.Update(Note);
+            dnDAO.Update(Note);
         }
         public DeliveryNote FindDeliveryNoteById(int NoteId)
         {
             //Business Logic Here
-            DeliveryNote result = dao.FindById(NoteId);
+            DeliveryNote result = dnDAO.FindById(NoteId);
             return result;
         }
 

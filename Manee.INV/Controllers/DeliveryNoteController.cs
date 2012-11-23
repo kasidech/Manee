@@ -8,13 +8,11 @@ using Manee.INV.DAL.Entity;
 using Manee.INV.Service;
 using Manee.INV.Models;
 
-
-
 namespace Manee.INV.Controllers
 {
-    public class DeliveryNoteController : Controller
+    public class DeliveryNoteController : BaseController
     {
-        IDeliveryNoteService iservice =(IDeliveryNoteService)ServiceFactory.GetService("DELIVERY_NOTE");
+       // IDeliveryNoteService iservice =(IDeliveryNoteService)ServiceFactory.GetService("DELIVERY_NOTE");
         //
         // GET: /DeliveryNote/
 
@@ -46,6 +44,8 @@ namespace Manee.INV.Controllers
         [HttpPost]
         public ActionResult Create(FormCollection collection, string deliveryNoteItemJson)
         {
+            IDeliveryNoteService service = (IDeliveryNoteService)applicationContext.GetObject("DeliveryNoteService");
+
             var d = collection["InputGrid"];
             try
             {
@@ -53,7 +53,7 @@ namespace Manee.INV.Controllers
                 note.SenderName = collection["senderName"];
                 
                 // TODO: Add insert logic here
-                iservice.CreateDeliveryNote(note);
+                service.CreateDeliveryNote(note);
                 return View();
             }
             catch
@@ -67,8 +67,9 @@ namespace Manee.INV.Controllers
 
         public ActionResult Edit(int id)
         {
+            IDeliveryNoteService service = (IDeliveryNoteService)applicationContext.GetObject("DeliveryNoteService");
             
-            DeliveryNote Data = iservice.FindDeliveryNoteById(id);
+            DeliveryNote Data = service.FindDeliveryNoteById(id);
             DeliveryNoteViewModel viewData = new DeliveryNoteViewModel();
             viewData.DeliveryNote = Data;
             return View(viewData);

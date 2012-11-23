@@ -50,3 +50,5 @@ C:\Users\Mo\Documents\GitHub\manee\Manee.INV.Tests\bin\Debug\Manee.INV.Service.d
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV.Tests\bin\Debug\Manee.INV.DAL.dll
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV.Tests\bin\Debug\Manee.INV.Service.pdb
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV.Tests\bin\Debug\Manee.INV.DAL.pdb
+C:\Users\Mo\Documents\GitHub\manee\Manee.INV.Tests\bin\Debug\Spring.Core.dll
+C:\Users\Mo\Documents\GitHub\manee\Manee.INV.Tests\bin\Debug\Common.Logging.dll
