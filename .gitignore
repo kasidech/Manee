@@ -2,9 +2,6 @@
 ## Eclipse
 #################
 
-Manee.INV/bin/*
-Manee.INV.service/bin/*
-DAL/bin/*
 Manee.INV/obj/*
 
 *.pydevproject

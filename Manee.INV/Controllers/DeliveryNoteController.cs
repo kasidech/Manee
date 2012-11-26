@@ -53,7 +53,7 @@ namespace Manee.INV.Controllers
                 note.SenderName = collection["senderName"];
                 
                 // TODO: Add insert logic here
-                service.CreateDeliveryNote(note);
+                //service.CreateDeliveryNote(note);
                 return View();
             }
             catch
