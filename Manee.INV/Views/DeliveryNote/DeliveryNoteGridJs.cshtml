@@ -2,18 +2,18 @@
     ViewBag.Title = "DeliveryNoteGridJs";
 }
 
-<h2>DeliveryNoteGridJs</h2>
-
 <script src="@Url.Content("~/Scripts/extjs/ext-4.1.1a/ext-all.js")" type="text/javascript"></script>
 <script src="@Url.Content("~/Scripts/extjs/ext-4.1.1a/bootstrap.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/extjs/ext-4.1.1a/example/shared/examples.js")" type="text/javascript"></script>
 <link href="@Url.Content("~/Scripts/extjs/ext-4.1.1a/resources/css/ext-all.css")" rel="stylesheet" type="text/css"/>
 
 
 <style type="text/css">
     #icon-grid {
-        visibility: hidden;  
+        visibility: hidden;
     }
 </style>
+
 <script type="text/javascript">
 
 
@@ -21,313 +21,119 @@
     Ext.Loader.setConfig({
         enabled: true
     });
-    Ext.Loader.setPath('Ext.ux', '../Scripts/extjs/ext-4.1.1a/examples/ux');
 
-    Ext.Loader.setConfig({
-        enabled: true
-    });
+    Ext.Loader.setPath('Ext.ux', '../Scripts/extjs/ext-4.1.1a/examples/ux');
+    Ext.Loader.setConfig({ enabled: true });
+
     Ext.require([
-    'Ext.tip.QuickTipManager',
-    'Ext.container.Viewport',
-    'Ext.layout.*',
-    'Ext.form.Panel',
-    'Ext.form.Label',
+
     'Ext.grid.*',
     'Ext.data.*',
+    'Ext.dd.*',
+    'Ext.ux.statusbar.StatusBar'
+    ]);
 
-    
-    'Ext.tree.*',
-    'Ext.selection.*',
-    'Ext.tab.Panel',
-    'Ext.ux.layout.Center',
-    'Ext.util.*',
-    'Ext.state.*',
-    'Ext.selection.CellModel',
-        'Ext.form.*',
-    'Ext.ux.CheckColumn',
-    
-    'Ext.selection.CheckboxModel',
-    'Ext.panel.Panel',
-    'Ext.view.View',
-    'Ext.layout.container.Fit',
-    'Ext.toolbar.Paging',
-    'Ext.ux.form.SearchField',
-    'Ext.toolbar.TextItem',
-        'Ext.form.field.Checkbox',
-        'Ext.form.field.Text',
-        'Ext.ux.statusbar.StatusBar',
 
-    'Ext.toolbar.Paging',
-    'Ext.ux.PreviewPlugin',
-    'Ext.ModelManager',
-    'Ext.tip.QuickTipManager'
-]);
+    Ext.define('DataObject', {
+        extend: 'Ext.data.Model',
+        fields: ['DeliveryNoteNo',
+        'RequestNo',
+        'OldCode',
+        'NewCode',
+        'ItemDetail',
+        'Qty',
+        'Unit',
+        'Remark',
+        'Date'
+        ]
+    });
 
-var storeSearch;
-     Ext.onReady(function () {
+    //var storeSearch;
 
-        Ext.QuickTips.init();
+    Ext.onReady(function () {
 
-        var bd = Ext.getBody();
-        
-        // sample static data for the store
-        var myData = [[
-            2,
-            '001',
-            20,
-            's1000',
-            'Noo9',
-            'FishSouce',
-            3,
-            'ton',
-            '',
-            '']];
+        var myData = [
+            { DeliveryNoteNo: "1", RequestNo: "0001", OldCode: "o1", NewCode: "n1", ItemDetail: "Steal bar ...", Qty: "1", Unit: "10", Remark: "r1..........", Date: "2010-23-11" },
+            { DeliveryNoteNo: "2", RequestNo: "0002", OldCode: "o2", NewCode: "n2", ItemDetail: "0002 Description ...", Qty: "2", Unit: "20", Remark: "r2..........", Date: "2010-23-11" },
+            { DeliveryNoteNo: "3", RequestNo: "0003", OldCode: "o3", NewCode: "n3", ItemDetail: "0003 Description ...", Qty: "3", Unit: "30", Remark: "r3..........", Date: "2010-23-11" },
+            { DeliveryNoteNo: "4", RequestNo: "0004", OldCode: "o4", NewCode: "n4", ItemDetail: "0004 Description ...", Qty: "4", Unit: "40", Remark: "r4..........", Date: "2010-23-11" },
+            { DeliveryNoteNo: "5", RequestNo: "0005", OldCode: "o5", NewCode: "n5", ItemDetail: "0005 Description ...", Qty: "5", Unit: "50", Remark: "r5..........", Date: "2010-23-11" }
+        ];
 
-        var cellEditing = Ext.create('Ext.grid.plugin.CellEditing', {
-            clicksToEdit: 1
-        });
-        var ds = Ext.create('Ext.data.ArrayStore', {
-            fields: [
-            { name:'Id' },
-            { name: 'DeliveryNoteNo' },
-            { name: 'RequestNo' },
-            { name: 'OldCode' },
-            { name: 'NewCode' },
-            { name: 'ItemDetail' },
-            { name: 'Qty', type: 'int' },
-            { name: 'Unit' },
-            { name: 'Remark' },
-            { name: 'Date', type: 'date', dateFormat: 'n/j h:ia' }
-
-        ],
+        // create the data store
+        var firstGridStore = Ext.create('Ext.data.Store', {
+            model: 'DataObject',
             data: myData
         });
 
-
-        // example of custom renderer function
-      
-
-
-
-        
-        /*
-        * Here is where we create the Form
-        */
-        gridForm = Ext.create('Ext.grid.Panel', {
-            id: 'Itemgrid',
-            frame: true,
-            minHeight: 80,
-           // title: 'DeliveryNote',
-            //bodyPadding: 5,
-            
-            //layout: 'column',    // Specifies that the items will now be arranged in columns
-            columnWidth: 1.00,
-            xtype: 'gridpanel',
-            store: ds,
-            minHeight: 400,
-            autoScroll: true,
-
-
-
-
-                columns: [
-                    new Ext.grid.RowNumberer(),
-               
-                {
-                    header: 'Request No',
-                    
-                    dataIndex: 'RnNo',
-                    flex: 1,
-                    sortable: true,
-                    
-                    editor: new Ext.form.field.ComboBox({
-                        typeAhead: true,
-                        triggerAction: 'all',
-                        selectOnTab: true,
-                        store: [
-                    ['Shade', 'Shade'],
-                    ['Mostly Shady', 'Mostly Shady'],
-                    ['Sun or Shade', 'Sun or Shade'],
-                    ['Mostly Sunny', 'Mostly Sunny'],
-                    ['Sunny', 'Sunny']
-                ],
-                        lazyRender: true,
-                        listClass: "x-combo-list-small"
-                    })
-                },
-                {
-                    header: 'Old Code',
-                    
-                    flex: 1,
-                    editor: {}
-                    
-                },
-                {
-                    header: 'New Code',
-                    
-                    flex: 1,
-                    sortable: true,
-                    editor: {}
-                },
-                {
-                    header: 'รายการ',
-                    dataIndex: 'ItemDetail',
-                    
-                    flex: 1,
-                    sortable: true,
-                    
-                    editor: new Ext.form.field.ComboBox({
-                        typeAhead: true,
-                        triggerAction: 'all',
-                        selectOnTab: true,
-                        store: [
-                    ['Shade', 'Shade'],
-                    ['Mostly Shady', 'Mostly Shady'],
-                    ['Sun or Shade', 'Sun or Shade'],
-                    ['Mostly Sunny', 'Mostly Sunny'],
-                    ['Sunny', 'Sunny']
-                ],
-                        lazyRender: true,
-                        listClass: "x-combo-list-small"
-                    })
-                },
-                {
-                    header: 'Qty',
-                    
-                    flex: 1,
-                    dataIndex: 'Qty',
-                    editor: {}
-                },
-                {
-                    header: 'Unit',
-                    
-                    flex: 1,
-                    dataIndex: 'ItemUnit',
-                    editor: {}
-                },
-                {
-                    header: 'Remark',
-                    
-                    sortable: true,
-                    dataIndex: 'Remark',
-                    editor: {}
-                }
-            ]
-                
-               ,plugins: [cellEditing] 
-              ,renderTo: 'InputGrid'
-            
-        });
-        
-        var searchData = [['1', '0001', 'o1', 'n1', 'Steal bar',1,'10','r1..........','2010-23-11'],
-                          ['2', '0002', 'o2', 'n2', ' Description Description Description Description ...', 2, '20', 'r2..........', '2010-23-11'],
-                          ['3', '0003', 'o3', 'n3', ' 0003Description Description Description Description ...',3, '30', 'r3..........', '2010-23-11'],
-                          ['4', '0004', 'o4', 'n4', ' 0004Description Description Description Description ...' ,4, '40', 'r4..........', '2010-23-11'],
-                          ['5', '0005', 'o5', 'n5', ' 0005Description Description Description Description ...', 5, '50', 'r5..........', '2010-23-11'],
-                          ['6', '0006', 'o6', 'n6', ' 0006Description Description Description Description ...', 6, '60', 'r6..........', '2010-23-11'],
-                          ['7', '0007', 'o7', 'n7', ' 0007Description Description Description Description ...', 7, '70', 'r7..........', '2010-23-11'],
+        // Column Model shortcut array
+        var columns = [
+            { text: "Request No", width: 70, sortable: true, dataIndex: 'RequestNo' },
+            { text: "Old Code", width: 70, sortable: true, dataIndex: 'OldCode' },
+            { text: "New Code", width: 70, sortable: true, dataIndex: 'NewCode' },
+            { text: "Item Detail", flex: 1, sortable: true, dataIndex: 'ItemDetail' },
+            { text: "Qty", width: 70, sortable: true, dataIndex: 'Qty' },
+            { text: "Unit", width: 70, sortable: true, dataIndex: 'Unit' },
+            { text: "Remark", width: 70, sortable: true, dataIndex: 'Remark' },
+            { text: "Date", width: 70, sortable: true, dataIndex: 'Date' }
         ];
-         storeSearch = Ext.create('Ext.data.ArrayStore', {
-            
-            fields: [
-             { name: 'Id' },
-             { name: 'RequestNo' },
-             { name: 'OldCode' },
-             { name: 'NewCode' },
-             { name: 'ItemDetail' },
-             { name: 'Qty', type: 'int' },
-             { name: 'Unit' },
-             { name: 'Remark' },
-             { name: 'Date', type: 'date', dateFormat: 'n/j h:ia' }
 
-            ],
-            data: searchData
+        // declare the source Grid
+        var firstGrid = Ext.create('Ext.grid.Panel', {
+            renderTo: 'SearchGrid',
+            multiSelect: true,
+            viewConfig: {
+                plugins: {
+                    ptype: 'gridviewdragdrop',
+                    dragGroup: 'firstGridDDGroup',
+                    dropGroup: 'secondGridDDGroup'
+                },
+                listeners: {
+                    drop: function (node, data, dropRec, dropPosition) {
+                        alert("firstGrid");
+
+                        var dropOn = dropRec ? ' ' + dropPosition + ' ' + dropRec.get('DeliveryNoteNo') : ' on empty view';
+                        // Ext.example.msg("Drag from right to left", 'Dropped ' + data.records[0].get('DeliveryNoteNo') + dropOn);
+                    }
+                }
+            },
+            store: firstGridStore,
+            columns: columns,
+            stripeRows: true,
+            title: 'GridSearch',
+            margins: '0 2 0 0'
         });
-     
-   
 
 
-    // pluggable renders
-    function renderTopic(value, p, record) {
-        return Ext.String.format(
+        var secondGridStore = Ext.create('Ext.data.Store', {
+            model: 'DataObject'
+        });
 
-        );
-    }
+        // create the destination Grid
+        var secondGrid = Ext.create('Ext.grid.Panel', {
+            renderTo: 'panel',
+            viewConfig: {
+                plugins: {
+                    ptype: 'gridviewdragdrop',
+                    dragGroup: 'secondGridDDGroup',
+                    dropGroup: 'firstGridDDGroup'
+                },
+                listeners: {
+                    drop: function (node, data, dropRec, dropPosition) {
+                         alert("secondGrid");
+                        var dropOn = dropRec ? ' ' + dropPosition + ' ' + dropRec.get('DeliveryNoteNo') : ' on empty view';
+                       
+                        // Ext.example.msg("Drag from left to right", 'Dropped ' + data.records[0].get('DeliveryNoteNo') + dropOn);
+                    }
+                }
+            },
+            store: secondGridStore,
+            columns: columns,
+            stripeRows: true,
+            title: 'GridPanel',
+            margins: '0 0 0 3'
+        });
 
-    function renderLast(value, p, r) {
-        
-        var isAttach =2;
-        if (isAttach==1) {
-            return '<img src="../../Scripts/extjs/ext-4.1.1a/resources/themes/images/gray/dd/drop-add.gif" />';//Add Picture For Attrachment
-        } 
-        else if (isAttach==2) {
-            return '<img src="../../Scripts/extjs/ext-4.1.1a/resources/themes/images/gray/dd/drop-no.gif" />';//Add Picture For Other status
-        }
-        
-     }
-        
-
-   
-   var sm = Ext.create('Ext.selection.CheckboxModel', {
-
-       injectCheckbox: 'last',
-       listener: {
-           select:function(view, record, index, eOpts ) {
-               console.log(view, record, index, eOpts);
-           }
-       }
-   });
-        var searchGrid = Ext.create('Ext.grid.Panel', {
-        width:300,
-        selModel: sm,
-        
-        iconCls: 'icon-grid',
-        height:400,
-        region:'center',
-        //title: 'ExtJS.com - Browse Forums',
-        layout: 'column',
-        store: storeSearch,
-        //disableSelection: true,
-        loadMask: true,
-        
-        viewConfig: {
-            id: 'gv',
-            trackOver: false,
-            stripeRows: false,
-            plugins: [{
-                ptype: 'preview',
-                bodyField: 'ItemDetail',
-                expanded: true,
-                pluginId: 'preview'
-            }]
-        },
-        // grid columns
-        columns:[{
-            
-            id: 'topic',
-            text: "RequestNo",
-            dataIndex: 'RequestNo',
-            flex: 1,
-           //renderer: renderTopic,
-            sortable: false
-        },{
-            id: 'last',
-            text: "NewCode",
-            dataIndex: 'NewCode',
-            renderer: renderLast,
-            width: 25,
-            align: 'right',
-            editor: {
-                click: function (b) {}
-            }
-            //sortable: true
-        }], renderTo: 'SearchGrid'
-        
-       
-    });
-       
-
-       
     });
 </script>
 
