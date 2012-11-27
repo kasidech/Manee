@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 using Manee.INV.DAL.Entity;
 using Manee.INV.Service.ServiceInf;
 using Manee.INV.Service;
-using Manee.INV.DAL.DaoInf;
+using Manee.INV.DAL.DAOInf;
 using Manee.INV.DAL;
 
 
 namespace Manee.INV.Service.ServiceImpl
 {
-    class ReceiveNoteImpl : IReceiveNoteService
+    class ReceiveNoteServiceImpl : IReceiveNoteService
     {
         private IReceiveNoteDAO dao = (IReceiveNoteDAO)DAOFactory.getDao("RECEIVE_NOTE");
 

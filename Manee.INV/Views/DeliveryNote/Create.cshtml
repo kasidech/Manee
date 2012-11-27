@@ -1,7 +1,7 @@
 ﻿@{
     ViewBag.Title = "Create";
-        Html.RenderPartial("DeliveryNoteGridJs");
-    
+    Html.RenderPartial("DeliveryNoteGridJs");
+    //ml.RenderPartial("DeliveryNoteFormJs");
 }
 
 @{using (Html.BeginForm())
@@ -13,14 +13,14 @@
 
              var gridData = [];
 
+             console.log(gridForm.store.count());
              
-             
-             for (var i = 1; i >= gridForm.store.count() ;i++)
-             {
-                 var recData = gridForm.store.data;
+             gridForm.store.each(function (record) {
+                 var recData = Ext.apply({}, record.data);
                  var jsonRecord = Ext.encode(recData);
                  gridData.push(jsonRecord);
-             }
+             });
+             
              
              var deliveryNoteItemJson = '[' + gridData.join(',') + ']';
 
@@ -30,23 +30,36 @@
              //document.getElementById();
              //collection.deliveryNoteItemJson.value = "hh";
              //gridForm.store.data.items[0].data.senderName;
-             document.getElementById('deliveryNoteItemJson').value = gridForm.store.data.items[0].data.ItemDetail;;
-             //gridForm.getForm().submit();
-
+             document.getElementById('deliveryNoteItemJson').value = deliveryNoteItemJson;
+             
+             document.getElementById('DeliveryNoteId').value = "108";
+             document.getElementById('DestinationId').value = "2";
+             gridForm.getForm().submit();
+             
          }
-</script> 
-     
+</script>
+         
 <h2>Create</h2>
-<form name="collection" >
+     
+       
+
+<html>
+
+    <body>
+       
+        
+<form id="collection" >
 
     <div id="SearchGrid">SearchGrid</div>
+     
     <div id="DeliveryNote">DeliveryNote
         <div id="InputForm">InputForm
-            <input type="text" name="sendername"/>
-            <input type="text" name ="origin"/>
-            <input type="text" name="destination"/>
-             <input type="text" hidden="hidden" name="destination2"/>
-            <input type="submit" value="Save" onclick="saveData()" />
+            <input id="DeliveryNoteId" type="hidden"name="DeliveryNoteId" value=""  />
+            <input id="DestinationId" type="hidden" name="DestinationId" value="" />
+           
+                      
+             
+            
            
         </div>
         <div id="InputGrid" >InputGrid
@@ -58,4 +71,6 @@
     </div>
     <div id="LogGrid">LogGrid</div>
 </form>
+        </body>
+</html>
   }}
