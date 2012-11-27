@@ -101,7 +101,7 @@
     <Property Name="Qty" Type="decimal" Nullable="true" Precision="18" Scale="0" />
     <Property Name="Unit" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Status" Type="decimal" Nullable="true" Precision="18" Scale="0" />
-    <Property Name="DeliveryNoteId" Type="int" Nullable="false" />
+    <Property Name="DeliveryNoteId" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="ReceiveNotes">
     <Key>
@@ -148,7 +148,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="DeliveryNoteNoteLineItem">
-    <End Role="DeliveryNote" Type="ManeeEntityDataModel.Store.DeliveryNotes" Multiplicity="1" />
+    <End Role="DeliveryNote" Type="ManeeEntityDataModel.Store.DeliveryNotes" Multiplicity="0..1" />
     <End Role="NoteLineItem" Type="ManeeEntityDataModel.Store.NoteLineItems" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="DeliveryNote">
@@ -297,7 +297,7 @@
           <Property Type="Decimal" Name="Qty" Precision="18" Scale="0" />
           <Property Type="String" Name="Unit" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="Decimal" Name="Status" Precision="18" Scale="0" />
-          <Property Type="Int32" Name="DeliveryNoteId" Nullable="false" />
+          <Property Type="Int32" Name="DeliveryNoteId" Nullable="true" />
           <NavigationProperty Name="DeliveryNote" Relationship="ManeeEntityDataModel.DeliveryNoteNoteLineItem" FromRole="NoteLineItem" ToRole="DeliveryNote" />
         </EntityType>
         <EntityType Name="ReceiveNote">
@@ -337,7 +337,7 @@
           <End Type="ManeeEntityDataModel.Car" Role="Car" Multiplicity="*" />
         </Association>
         <Association Name="DeliveryNoteNoteLineItem">
-          <End Type="ManeeEntityDataModel.DeliveryNote" Role="DeliveryNote" Multiplicity="1" />
+          <End Type="ManeeEntityDataModel.DeliveryNote" Role="DeliveryNote" Multiplicity="0..1" />
           <End Type="ManeeEntityDataModel.NoteLineItem" Role="NoteLineItem" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DeliveryNote">

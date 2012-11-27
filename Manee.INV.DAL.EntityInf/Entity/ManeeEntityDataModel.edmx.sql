@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 11/22/2012 14:01:19
--- Generated from EDMX file: C:\Users\Mo\Documents\GitHub\manee\Manee.INV.DAL.EntityInf\Entity\ManeeEntityDataModel.edmx
+-- Date Created: 11/27/2012 14:09:10
+-- Generated from EDMX file: D:\LonGKonG\Manee\Manee.INV.DAL.EntityInf\Entity\ManeeEntityDataModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -134,7 +134,7 @@ CREATE TABLE [dbo].[NoteLineItems] (
     [Qty] decimal(18,0)  NULL,
     [Unit] nvarchar(max)  NULL,
     [Status] decimal(18,0)  NULL,
-    [DeliveryNoteId] int  NOT NULL
+    [DeliveryNoteId] int  NULL
 );
 GO
 
