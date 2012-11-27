@@ -7,6 +7,7 @@ using Manee.INV.Service.ServiceInf;
 using Manee.INV.DAL.Entity;
 using Manee.INV.Service;
 using Manee.INV.Models;
+using Newtonsoft.Json;
 
 namespace Manee.INV.Controllers
 {
@@ -45,10 +46,25 @@ namespace Manee.INV.Controllers
         public ActionResult Create(FormCollection collection, string deliveryNoteItemJson)
         {
             IDeliveryNoteService service = (IDeliveryNoteService)applicationContext.GetObject("DeliveryNoteService");
+            INoteLineItemService nliService = (INoteLineItemService)applicationContext.GetObject("NoteLineItemService");
 
-            var d = collection["InputGrid"];
+
+            var submittedDntItems = deliveryNoteItemJson == "" ? new List<NoteLineItem>() : JsonConvert.DeserializeObject<IList<NoteLineItem>>(deliveryNoteItemJson);
+
+            
+            int deliveryNoteId = Convert.ToInt32( collection["DeliveryNoteId"]);
+            int destinationId = Convert.ToInt32(collection["DestinationId"]); 
+
+
             try
             {
+                if (!string.IsNullOrEmpty(collection["DeliveryNoteId"]) && (!string.IsNullOrEmpty(collection["DestinationId"])))
+                {
+                    foreach(NoteLineItem item in submittedDntItems){
+                        int itemId = (int)item.Id;
+                        nliService.SetStatusToItem(itemId,deliveryNoteId, destinationId);
+                    }
+                }
                 DeliveryNote note = new DeliveryNote();
                 note.SenderName = collection["senderName"];
                 

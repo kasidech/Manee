@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Manee.INV.DAL.Entity;
 
-namespace Manee.INV.DAL.DaoInf
+namespace Manee.INV.DAL.DAOInf
 {
     public interface IReceiveNoteDAO
     {

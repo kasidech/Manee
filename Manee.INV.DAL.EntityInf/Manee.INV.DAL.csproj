@@ -53,7 +53,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DaoFactory.cs" />
+    <Compile Include="DaoImpl\NoteLineItemDAOImpl.cs" />
     <Compile Include="DaoImpl\ReceiveNoteDAOImpl.cs" />
+    <Compile Include="DaoInf\INoteLineItemDAO.cs" />
     <Compile Include="DaoInf\IReceiveNoteDAO.cs" />
     <Compile Include="Entity\BaseEntity.cs" />
     <Compile Include="Entity\Car.cs">

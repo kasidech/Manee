@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Manee.INV.Service.ServiceInf;
 using Manee.INV.Service;
-using Manee.INV.DAL.DaoInf;
+using Manee.INV.DAL.DAOInf;
 using Manee.INV.DAL;
 using Manee.INV.DAL.Entity;
 

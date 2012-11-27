@@ -20,7 +20,7 @@ namespace Manee.INV.Service
             }
             else if(serviceName.Equals("RECEIVE_NOTE"))
             {
-                IReceiveNoteService service = new ReceiveNoteImpl();
+                IReceiveNoteService service = new ReceiveNoteServiceImpl();
                 return service;
             }
             else

@@ -23,7 +23,9 @@
     });
     Ext.Loader.setPath('Ext.ux', '../Scripts/extjs/ext-4.1.1a/examples/ux');
 
-    Ext.Loader.setConfig({ enabled: true });
+    Ext.Loader.setConfig({
+        enabled: true
+    });
     Ext.require([
     'Ext.tip.QuickTipManager',
     'Ext.container.Viewport',
@@ -32,6 +34,8 @@
     'Ext.form.Label',
     'Ext.grid.*',
     'Ext.data.*',
+
+    
     'Ext.tree.*',
     'Ext.selection.*',
     'Ext.tab.Panel',
@@ -52,7 +56,7 @@
         'Ext.form.field.Checkbox',
         'Ext.form.field.Text',
         'Ext.ux.statusbar.StatusBar',
-     'Ext.ux.LiveSearchGridPanel',
+
     'Ext.toolbar.Paging',
     'Ext.ux.PreviewPlugin',
     'Ext.ModelManager',
@@ -60,7 +64,7 @@
 ]);
 
 var storeSearch;
-    Ext.onReady(function () {
+     Ext.onReady(function () {
 
         Ext.QuickTips.init();
 
@@ -68,6 +72,7 @@ var storeSearch;
         
         // sample static data for the store
         var myData = [[
+            2,
             '001',
             20,
             's1000',
@@ -83,6 +88,7 @@ var storeSearch;
         });
         var ds = Ext.create('Ext.data.ArrayStore', {
             fields: [
+            { name:'Id' },
             { name: 'DeliveryNoteNo' },
             { name: 'RequestNo' },
             { name: 'OldCode' },
@@ -319,7 +325,7 @@ var storeSearch;
         
        
     });
-   
+       
 
        
     });
