@@ -14,7 +14,11 @@ namespace Manee.INV.DAL.Test
     [TestClass]
     public class LocationDAO_Test
     {
+
         ILocationDAO dao = (ILocationDAO)DAOFactory.GetDao("LOCATION");
+
+
+
         ManeeDataContainer context = new ManeeDataContainer();
        
         [TestMethod]
@@ -44,7 +48,7 @@ namespace Manee.INV.DAL.Test
 
             Assert.AreNotEqual(location, locationDB, "Failed");
         }
-
+        [TestMethod]
         public void FindLocationAll()
         {
             List<Location> location = dao.FindLocationAll();

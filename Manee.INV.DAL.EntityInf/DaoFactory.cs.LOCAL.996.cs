@@ -28,13 +28,11 @@ namespace Manee.INV.DAL
                 return dao;
             }
 
-
             else if(daoName.Equals("NOTE_LINE_ITEM"))
             {
                 INoteLineItemDAO dao = new NoteLineItemDAOImpl();
                 return dao;
             }
-
             else if (daoName.Equals("LOCATION"))
             {
                 ILocationDAO dao = new LocationDAOImpl();

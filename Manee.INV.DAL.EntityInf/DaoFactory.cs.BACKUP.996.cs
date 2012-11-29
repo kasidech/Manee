@@ -27,14 +27,15 @@ namespace Manee.INV.DAL
                 ICarDAO dao = new CarDAOImpl();
                 return dao;
             }
-
+<<<<<<< HEAD
 
             else if(daoName.Equals("NOTE_LINE_ITEM"))
             {
                 INoteLineItemDAO dao = new NoteLineItemDAOImpl();
                 return dao;
             }
-
+=======
+>>>>>>> c8cb932983c1b31cf327cc737cc79b872fc4d4c4
             else if (daoName.Equals("LOCATION"))
             {
                 ILocationDAO dao = new LocationDAOImpl();
