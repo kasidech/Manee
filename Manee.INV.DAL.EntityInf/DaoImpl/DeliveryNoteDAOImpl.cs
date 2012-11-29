@@ -9,7 +9,7 @@ using System.Data.Entity;
 
 
 
-namespace Manee.INV.DAL.DaoImpl
+namespace Manee.INV.DAL.DAOImpl
 {
     public class DeliveryNoteDAOImpl : IDeliveryNoteDAO
     {

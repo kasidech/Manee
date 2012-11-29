@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Manee.INV.DAL.DAOInf;
 using Manee.INV.DAL.Entity;
 
-namespace Manee.INV.DAL.DaoImpl
+namespace Manee.INV.DAL.DAOImpl
 {
     public class NoteLineItemDAOImpl :INoteLineItemDAO 
     {

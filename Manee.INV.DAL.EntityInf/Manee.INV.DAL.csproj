@@ -53,10 +53,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DaoFactory.cs" />
-    <Compile Include="DaoImpl\NoteLineItemDAOImpl.cs" />
-    <Compile Include="DaoImpl\ReceiveNoteDAOImpl.cs" />
-    <Compile Include="DaoInf\INoteLineItemDAO.cs" />
-    <Compile Include="DaoInf\IReceiveNoteDAO.cs" />
+    <Compile Include="DAOImpl\CarDAOImpl.cs" />
+    <Compile Include="DAOImpl\NoteLineItemDAOImpl.cs" />
+    <Compile Include="DAOImpl\ReceiveNoteDAOImpl.cs" />
+    <Compile Include="DAOInf\ICarDAO.cs" />
+    <Compile Include="DAOInf\INoteLineItemDAO.cs" />
+    <Compile Include="DAOInf\IReceiveNoteDAO.cs" />
     <Compile Include="Entity\BaseEntity.cs" />
     <Compile Include="Entity\Car.cs">
       <DependentUpon>ManeeDataModel.tt</DependentUpon>
@@ -91,8 +93,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ManeeEntityDataModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="DaoImpl\DeliveryNoteDAOImpl.cs" />
-    <Compile Include="DaoInf\IDeliveryNoteDAO.cs" />
+    <Compile Include="DAOImpl\DeliveryNoteDAOImpl.cs" />
+    <Compile Include="DAOInf\IDeliveryNoteDAO.cs" />
     <Compile Include="Entity\NoteLineItem.cs">
       <DependentUpon>ManeeDataModel.tt</DependentUpon>
     </Compile>

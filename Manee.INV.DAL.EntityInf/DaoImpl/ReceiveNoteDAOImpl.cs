@@ -7,7 +7,7 @@ using Manee.INV.DAL.DAOInf;
 using System.Data.Entity;
 using Manee.INV.DAL.Entity;
 
-namespace Manee.INV.DAL.DaoImpl
+namespace Manee.INV.DAL.DAOImpl
 {
     class ReceiveNoteDAOImpl: IReceiveNoteDAO
     {
