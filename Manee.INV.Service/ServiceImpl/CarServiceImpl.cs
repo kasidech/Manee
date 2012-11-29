@@ -12,7 +12,7 @@ namespace Manee.INV.Service.ServiceImpl
 {
     class CarServiceImpl : ICarService
     {
-        private ICarDAO carDAO = (ICarDAO)DAOFactory.getDao("CAR");
+        private ICarDAO carDAO = (ICarDAO)DAOFactory.GetDao("CAR");
         public List<DAL.Entity.Car> FindCarAll()
         {
             List<Car> cars = carDAO.FindCarAll();

@@ -16,7 +16,7 @@ namespace Manee.INV.DAL.Test
     [TestClass]
     public class CarDAO_Test
     {
-        ICarDAO dao = (ICarDAO)DAOFactory.getDao("CAR");
+        ICarDAO dao = (ICarDAO)DAOFactory.GetDao("CAR");
         ManeeDataContainer context = new ManeeDataContainer();
         [TestMethod]
         public void FindCarsAll_Count()

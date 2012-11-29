@@ -10,7 +10,7 @@ namespace Manee.INV.DAL
 {
     public class DAOFactory
     {
-        public static Object getDao(String daoName)
+        public static Object GetDao(String daoName)
         {
             if (daoName.Equals("DELIVERY_NOTE"))
             {
@@ -27,9 +27,15 @@ namespace Manee.INV.DAL
                 ICarDAO dao = new CarDAOImpl();
                 return dao;
             }
+
             else if(daoName.Equals("NOTE_LINE_ITEM"))
             {
                 INoteLineItemDAO dao = new NoteLineItemDAOImpl();
+                return dao;
+            }
+            else if (daoName.Equals("LOCATION"))
+            {
+                ILocationDAO dao = new LocationDAOImpl();
                 return dao;
             }
             else

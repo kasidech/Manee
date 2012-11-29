@@ -15,7 +15,7 @@ namespace Manee.INV.Service.Test
     public class CarService_Test
     {
         ICarService service = (ICarService)ServiceFactory.GetService("CAR");
-        ICarDAO dao = (ICarDAO)DAOFactory.getDao("CAR");
+        ICarDAO dao = (ICarDAO)DAOFactory.GetDao("CAR");
         [TestMethod]
         public void FindCarAll_Count()
         {

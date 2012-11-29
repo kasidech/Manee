@@ -14,7 +14,7 @@ namespace Manee.INV.Service.ServiceImpl
 {
     class ReceiveNoteServiceImpl : IReceiveNoteService
     {
-        private IReceiveNoteDAO dao = (IReceiveNoteDAO)DAOFactory.getDao("RECEIVE_NOTE");
+        private IReceiveNoteDAO dao = (IReceiveNoteDAO)DAOFactory.GetDao("RECEIVE_NOTE");
 
         public void CreateReceiveNote(ReceiveNote note)
         {

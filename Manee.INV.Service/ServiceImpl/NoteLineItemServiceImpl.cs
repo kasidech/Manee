@@ -11,7 +11,7 @@ namespace Manee.INV.Service.ServiceImpl
 {
     class NoteLineItemServiceImpl : INoteLineItemService
     {
-        private INoteLineItemDAO nliDAO = (INoteLineItemDAO)DAOFactory.getDao("NOTE_LINE_ITEM");
+        private INoteLineItemDAO nliDAO = (INoteLineItemDAO)DAOFactory.GetDao("NOTE_LINE_ITEM");
         public void CreateNoteLineItem(NoteLineItem item)
         {
             nliDAO.CreateNoteLineItem(item);

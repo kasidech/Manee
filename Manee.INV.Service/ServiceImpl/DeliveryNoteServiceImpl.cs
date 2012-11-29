@@ -15,7 +15,7 @@ namespace Manee.INV.Service.ServiceImpl
     public class DeliveryNoteServiceImpl : IDeliveryNoteService
     {
 
-        private IDeliveryNoteDAO dnDAO = (IDeliveryNoteDAO)DAOFactory.getDao("DELIVERY_NOTE");
+        private IDeliveryNoteDAO dnDAO = (IDeliveryNoteDAO)DAOFactory.GetDao("DELIVERY_NOTE");
         
 
 
