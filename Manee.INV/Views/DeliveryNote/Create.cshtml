@@ -1,7 +1,6 @@
 ﻿@{
     ViewBag.Title = "Create";
     Html.RenderPartial("DeliveryNoteGridJs");
-    //ml.RenderPartial("DeliveryNoteFormJs");
 }
 
 @{using (Html.BeginForm())
@@ -39,38 +38,32 @@
          }
 </script>
          
-<h2>Create</h2>
-     
-       
+    <h2>Create</h2>   
+    
 
-<html>
+    <html>
 
     <body>
-       
-        
-<form id="collection" >
+        <form id="collection">
 
-    <div id="SearchGrid">SearchGrid</div>
-     
-    <div id="DeliveryNote">DeliveryNote
-        <div id="InputForm">InputForm
-            <input id="DeliveryNoteId" type="hidden"name="DeliveryNoteId" value=""  />
-            <input id="DestinationId" type="hidden" name="DestinationId" value="" />
-           
-                      
-             
-            
-           
-        </div>
-        <div id="InputGrid" >InputGrid
-            <input id="deliveryNoteItemJson" type="hidden" name="deliveryNoteItemJson" value="" />
+            <div id="DeliveryNote">DeliveryNote
+                <div id="InputForm">InputForm
+                    <input id="DeliveryNoteId" type="hidden" name="DeliveryNoteId" value="" />
+                    <input id="DestinationId" type="hidden" name="DestinationId" value="" />
+                </div>
+                <div id="InputGrid">
+                    InputGrid
+                <input id="deliveryNoteItemJson" type="hidden" name="deliveryNoteItemJson" value="" />
 
-            <button onclick="saveData()"> dada</button>
-        </div>
-        
-    </div>
-    <div id="LogGrid">LogGrid</div>
-</form>
-        </body>
-</html>
+                    <button onclick="saveData()">dada</button>
+                </div>
+
+            </div>
+
+            <div id="SearchGrid">SearchGrid</div><br />
+            <div id="panel">SearchGrid</div><br /><br />
+            <div id="LogGrid">LogGrid</div>
+        </form>
+    </body>
+    </html>
   }}
