@@ -20,8 +20,6 @@ namespace Manee.INV.DAL.Entity
         }
     
         public int Id { get; set; }
-        public Nullable<decimal> OriginId { get; set; }
-        public Nullable<decimal> DestinationId { get; set; }
         public Nullable<System.DateTime> DeliveryDate { get; set; }
         public Nullable<System.DateTime> DocumentDate { get; set; }
         public string SenderName { get; set; }
@@ -31,5 +29,7 @@ namespace Manee.INV.DAL.Entity
         public string Code { get; set; }
     
         public virtual ICollection<NoteLineItem> NoteLineItems { get; set; }
+        public virtual Location Origin { get; set; }
+        public virtual Location Destination { get; set; }
     }
 }

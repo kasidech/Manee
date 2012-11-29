@@ -12,8 +12,15 @@
         <header>
             <div class="content-wrapper">
                 <div class="float-left">
-                   @* <p class="site-title">@Html.ActionLink("your logo here", "Index", "Home")</p>*@
-                    <img src="~/Images/manee/PILLAR2-W.jpg" />
+                    <p class="site-title"><a class='btn-slide' 
+  style='text-align: center; 
+  line-height: 2.8em; 
+  padding: 10px 20px; 
+  font-weight: bold; 
+  text-decoration: none; 
+  background-color: #e8eef4; 
+  color: #034af3;'>Hello TypeScript</a></p>
+                   
                 </div>
                 <div class="float-right">
                     <section id="login">
@@ -33,7 +40,7 @@
         </header>
         <div id="body">
             @RenderSection("featured", required: false)
-            <section class="content-wrapper main-content clear-fix">
+            <section id="main"  class="content-wrapper main-content clear-fix">
                 @RenderBody()
             </section>
         </div>
@@ -46,6 +53,7 @@
         </footer>
 
         @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/typescripts") 
         @RenderSection("scripts", required: false)
     </body>
 </html>

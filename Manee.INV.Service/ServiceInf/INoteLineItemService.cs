@@ -12,7 +12,7 @@ namespace Manee.INV.Service.ServiceInf
         void CreateNoteLineItem(NoteLineItem item);
         void DeleteNoteLineitem(int id);
         NoteLineItem FindNoteLineItemById(int id);
-        void SetStatusToItem(int NLineItemId, int dnId, int destinationId);
+        //void SetStatusToItem(int NLineItemId, int dnId, int destinationId);
 
       
     }

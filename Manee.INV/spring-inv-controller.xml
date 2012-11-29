@@ -2,15 +2,16 @@
 
 <objects xmlns="http://www.springframework.net">
 
-  <object id="dnDAO" type="Manee.INV.DAL.DAOImpl.DeliveryNoteDAOImpl, Manee.INV.DAL" />
+  
+  <object id="dnDAO" type="Manee.INV.DAL.DaoImpl.DeliveryNoteDAOImpl, Manee.INV.DAL" />
 
-  <object id="DeliveryNoteService" type="Manee.INV.Service.ServiceImpl.DeliveryNoteServiceImpl, Manee.INV.Service">
+  <object id="DeliveryNoteSrv" type="Manee.INV.Service.ServiceImpl.DeliveryNoteServiceImpl, Manee.INV.Service">
     <property name="dnDAO" ref="dnDAO"/>
   </object>
 
-  <object id="nliDAO" type="Manee.INV.DAL.DAOImpl.NoteLineItemDAOImpl, Manee.INV.DAL" />
+  <object id="nliDAO" type="Manee.INV.DAL.DaoImpl.NewNoteLineItemDAOImpl, Manee.INV.DAL" />
   
-  <object id="NoteLineItemService" type="Manee.INV.Service.ServiceImpl.NoteLineItemServiceImpl, Manee.INV.Service">
+  <object id="NoteLineItemSrv" type="Manee.INV.Service.ServiceImpl.NoteLineItemServiceImpl, Manee.INV.Service">
     <property name="nliDAO" ref="nliDAO"/>
   </object>
 

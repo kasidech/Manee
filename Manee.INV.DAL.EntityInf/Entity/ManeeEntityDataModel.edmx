@@ -16,25 +16,38 @@
     <EntitySet Name="ReceiveNotes" EntityType="ManeeEntityDataModel.Store.ReceiveNotes" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="sysdiagrams" EntityType="ManeeEntityDataModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Workers" EntityType="ManeeEntityDataModel.Store.Workers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ItemStatus" EntityType="ManeeEntityDataModel.Store.ItemStatus" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="CarTypeCar" Association="ManeeEntityDataModel.Store.CarTypeCar">
       <End Role="CarType" EntitySet="CarTypes" />
       <End Role="Car" EntitySet="Cars" />
     </AssociationSet>
-    <AssociationSet Name="DeliveryNoteNoteLineItem" Association="ManeeEntityDataModel.Store.DeliveryNoteNoteLineItem">
+    <AssociationSet Name="WorkerMethodWorker" Association="ManeeEntityDataModel.Store.WorkerMethodWorker">
+      <End Role="WorkerMethod" EntitySet="WorkerMethods" />
+      <End Role="Worker" EntitySet="Workers" />
+    </AssociationSet>
+    <AssociationSet Name="ReceiveNoteDeliveryNote" Association="ManeeEntityDataModel.Store.ReceiveNoteDeliveryNote">
+      <End Role="ReceiveNote" EntitySet="ReceiveNotes" />
       <End Role="DeliveryNote" EntitySet="DeliveryNotes" />
+    </AssociationSet>
+    <AssociationSet Name="LocationNoteLineItem" Association="ManeeEntityDataModel.Store.LocationNoteLineItem">
+      <End Role="Location" EntitySet="Locations" />
       <End Role="NoteLineItem" EntitySet="NoteLineItems" />
     </AssociationSet>
     <AssociationSet Name="LocationLocationType" Association="ManeeEntityDataModel.Store.LocationLocationType">
       <End Role="Location" EntitySet="Locations" />
       <End Role="LocationType" EntitySet="LocationTypes" />
     </AssociationSet>
-    <AssociationSet Name="WorkerMethodWorker" Association="ManeeEntityDataModel.Store.WorkerMethodWorker">
-      <End Role="WorkerMethod" EntitySet="WorkerMethods" />
-      <End Role="Worker" EntitySet="Workers" />
-    </AssociationSet>
-    <AssociationSet Name="DeliveryNoteReceiveNote" Association="ManeeEntityDataModel.Store.DeliveryNoteReceiveNote">
+    <AssociationSet Name="DeliveryNoteNoteLineItem" Association="ManeeEntityDataModel.Store.DeliveryNoteNoteLineItem">
       <End Role="DeliveryNote" EntitySet="DeliveryNotes" />
-      <End Role="ReceiveNote" EntitySet="ReceiveNotes" />
+      <End Role="NoteLineItem" EntitySet="NoteLineItems" />
+    </AssociationSet>
+    <AssociationSet Name="DeliveryNoteLocation" Association="ManeeEntityDataModel.Store.DeliveryNoteLocation">
+      <End Role="DeliveryNote" EntitySet="DeliveryNotes" />
+      <End Role="Location" EntitySet="Locations" />
+    </AssociationSet>
+    <AssociationSet Name="DeliveryNoteLocation1" Association="ManeeEntityDataModel.Store.DeliveryNoteLocation1">
+      <End Role="DeliveryNote" EntitySet="DeliveryNotes" />
+      <End Role="Location" EntitySet="Locations" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Cars">
@@ -57,8 +70,6 @@
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="OriginId" Type="decimal" Nullable="true" Precision="18" Scale="0" />
-    <Property Name="DestinationId" Type="decimal" Nullable="true" Precision="18" Scale="0" />
     <Property Name="DeliveryDate" Type="datetime" Nullable="true" />
     <Property Name="DocumentDate" Type="datetime" Nullable="true" />
     <Property Name="SenderName" Type="nvarchar(max)" Nullable="true" />
@@ -66,6 +77,8 @@
     <Property Name="CarType" Type="nvarchar(max)" Nullable="true" />
     <Property Name="CarLicensePlate" Type="nvarchar(max)" Nullable="true" />
     <Property Name="Code" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Origin_Id" Type="int" Nullable="false" />
+    <Property Name="Destination_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Locations">
     <Key>
@@ -75,7 +88,7 @@
     <Property Name="Code" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Address" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="ProjectManagerId" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="ProjectManagerId" Type="int" Nullable="true" />
     <Property Name="LocationType_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="LocationTypes">
@@ -98,10 +111,12 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ItemCode" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="Qty" Type="decimal" Nullable="true" Precision="18" Scale="0" />
+    <Property Name="ItemDescription" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Quantity" Type="decimal" Nullable="true" Precision="18" Scale="0" />
     <Property Name="Unit" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="Status" Type="decimal" Nullable="true" Precision="18" Scale="0" />
-    <Property Name="DeliveryNoteId" Type="int" Nullable="true" />
+    <Property Name="Status" Type="int" Nullable="true" />
+    <Property Name="Location_Id" Type="int" Nullable="false" />
+    <Property Name="DeliveryNote_Id" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="ReceiveNotes">
     <Key>
@@ -112,7 +127,6 @@
     <Property Name="ReceiverCode" Type="nvarchar(max)" Nullable="true" />
     <Property Name="ReceiverName" Type="nvarchar(max)" Nullable="true" />
     <Property Name="ReceiveDate" Type="datetime" Nullable="true" />
-    <Property Name="DeliveryNoteId" Type="int" Nullable="false" />
     <Property Name="DeliveryNote_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="sysdiagrams">
@@ -135,6 +149,13 @@
     <Property Name="IdCardNumber" Type="nvarchar(max)" Nullable="true" />
     <Property Name="WorkerMethod_Id" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="ItemStatus">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StatusName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
   <Association Name="CarTypeCar">
     <End Role="CarType" Type="ManeeEntityDataModel.Store.CarTypes" Multiplicity="1" />
     <End Role="Car" Type="ManeeEntityDataModel.Store.Cars" Multiplicity="*" />
@@ -144,30 +165,6 @@
       </Principal>
       <Dependent Role="Car">
         <PropertyRef Name="CarType_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="DeliveryNoteNoteLineItem">
-    <End Role="DeliveryNote" Type="ManeeEntityDataModel.Store.DeliveryNotes" Multiplicity="0..1" />
-    <End Role="NoteLineItem" Type="ManeeEntityDataModel.Store.NoteLineItems" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="DeliveryNote">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="NoteLineItem">
-        <PropertyRef Name="DeliveryNoteId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="LocationLocationType">
-    <End Role="Location" Type="ManeeEntityDataModel.Store.Locations" Multiplicity="*" />
-    <End Role="LocationType" Type="ManeeEntityDataModel.Store.LocationTypes" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="LocationType">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Location">
-        <PropertyRef Name="LocationType_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -183,15 +180,75 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="DeliveryNoteReceiveNote">
-    <End Role="DeliveryNote" Type="ManeeEntityDataModel.Store.DeliveryNotes" Multiplicity="1" />
+  <Association Name="ReceiveNoteDeliveryNote">
     <End Role="ReceiveNote" Type="ManeeEntityDataModel.Store.ReceiveNotes" Multiplicity="*" />
+    <End Role="DeliveryNote" Type="ManeeEntityDataModel.Store.DeliveryNotes" Multiplicity="1" />
     <ReferentialConstraint>
       <Principal Role="DeliveryNote">
         <PropertyRef Name="Id" />
       </Principal>
       <Dependent Role="ReceiveNote">
         <PropertyRef Name="DeliveryNote_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LocationNoteLineItem">
+    <End Role="Location" Type="ManeeEntityDataModel.Store.Locations" Multiplicity="1" />
+    <End Role="NoteLineItem" Type="ManeeEntityDataModel.Store.NoteLineItems" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="NoteLineItem">
+        <PropertyRef Name="Location_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LocationLocationType">
+    <End Role="Location" Type="ManeeEntityDataModel.Store.Locations" Multiplicity="*" />
+    <End Role="LocationType" Type="ManeeEntityDataModel.Store.LocationTypes" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="LocationType">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Location">
+        <PropertyRef Name="LocationType_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DeliveryNoteNoteLineItem">
+    <End Role="DeliveryNote" Type="ManeeEntityDataModel.Store.DeliveryNotes" Multiplicity="0..1" />
+    <End Role="NoteLineItem" Type="ManeeEntityDataModel.Store.NoteLineItems" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DeliveryNote">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="NoteLineItem">
+        <PropertyRef Name="DeliveryNote_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DeliveryNoteLocation">
+    <End Role="DeliveryNote" Type="ManeeEntityDataModel.Store.DeliveryNotes" Multiplicity="*" />
+    <End Role="Location" Type="ManeeEntityDataModel.Store.Locations" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DeliveryNote">
+        <PropertyRef Name="Origin_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DeliveryNoteLocation1">
+    <End Role="DeliveryNote" Type="ManeeEntityDataModel.Store.DeliveryNotes" Multiplicity="*" />
+    <End Role="Location" Type="ManeeEntityDataModel.Store.Locations" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Location">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DeliveryNote">
+        <PropertyRef Name="Destination_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -214,21 +271,34 @@
             <End Role="CarType" EntitySet="CarTypes" />
             <End Role="Car" EntitySet="Cars" />
           </AssociationSet>
-          <AssociationSet Name="DeliveryNoteNoteLineItem" Association="ManeeEntityDataModel.DeliveryNoteNoteLineItem">
+          <AssociationSet Name="WorkerMethodWorker" Association="ManeeEntityDataModel.WorkerMethodWorker">
+            <End Role="WorkerMethod" EntitySet="WorkerMethods" />
+            <End Role="Worker" EntitySet="Workers" />
+          </AssociationSet>
+          <EntitySet Name="ItemStatus" EntityType="ManeeEntityDataModel.ItemStatus" />
+          <AssociationSet Name="ReceiveNoteDeliveryNote" Association="ManeeEntityDataModel.ReceiveNoteDeliveryNote">
+            <End Role="ReceiveNote" EntitySet="ReceiveNotes" />
             <End Role="DeliveryNote" EntitySet="DeliveryNotes" />
+          </AssociationSet>
+          <AssociationSet Name="LocationNoteLineItem" Association="ManeeEntityDataModel.LocationNoteLineItem">
+            <End Role="Location" EntitySet="Locations" />
             <End Role="NoteLineItem" EntitySet="NoteLineItems" />
           </AssociationSet>
           <AssociationSet Name="LocationLocationType" Association="ManeeEntityDataModel.LocationLocationType">
             <End Role="Location" EntitySet="Locations" />
             <End Role="LocationType" EntitySet="LocationTypes" />
           </AssociationSet>
-          <AssociationSet Name="WorkerMethodWorker" Association="ManeeEntityDataModel.WorkerMethodWorker">
-            <End Role="WorkerMethod" EntitySet="WorkerMethods" />
-            <End Role="Worker" EntitySet="Workers" />
-          </AssociationSet>
-          <AssociationSet Name="DeliveryNoteReceiveNote" Association="ManeeEntityDataModel.DeliveryNoteReceiveNote">
+          <AssociationSet Name="DeliveryNoteNoteLineItem" Association="ManeeEntityDataModel.DeliveryNoteNoteLineItem">
             <End Role="DeliveryNote" EntitySet="DeliveryNotes" />
-            <End Role="ReceiveNote" EntitySet="ReceiveNotes" />
+            <End Role="NoteLineItem" EntitySet="NoteLineItems" />
+          </AssociationSet>
+          <AssociationSet Name="DeliveryNoteLocation" Association="ManeeEntityDataModel.DeliveryNoteLocation">
+            <End Role="DeliveryNote" EntitySet="DeliveryNotes" />
+            <End Role="Location" EntitySet="Locations" />
+          </AssociationSet>
+          <AssociationSet Name="DeliveryNoteLocation1" Association="ManeeEntityDataModel.DeliveryNoteLocation1">
+            <End Role="DeliveryNote" EntitySet="DeliveryNotes" />
+            <End Role="Location" EntitySet="Locations" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Car">
@@ -251,8 +321,6 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Decimal" Name="OriginId" Precision="18" Scale="0" Nullable="true" />
-          <Property Type="Decimal" Name="DestinationId" Precision="18" Scale="0" Nullable="true" />
           <Property Type="DateTime" Name="DeliveryDate" Precision="3" />
           <Property Type="DateTime" Name="DocumentDate" Precision="3" Nullable="true" />
           <Property Type="String" Name="SenderName" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="true" />
@@ -261,6 +329,8 @@
           <Property Type="String" Name="CarLicensePlate" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="true" />
           <Property Type="String" Name="Code" Nullable="true" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="NoteLineItems" Relationship="ManeeEntityDataModel.DeliveryNoteNoteLineItem" FromRole="DeliveryNote" ToRole="NoteLineItem" />
+          <NavigationProperty Name="Origin" Relationship="ManeeEntityDataModel.DeliveryNoteLocation" FromRole="DeliveryNote" ToRole="Location" />
+          <NavigationProperty Name="Destination" Relationship="ManeeEntityDataModel.DeliveryNoteLocation1" FromRole="DeliveryNote" ToRole="Location" />
         </EntityType>
         <EntityType Name="Location">
           <Key>
@@ -270,7 +340,7 @@
           <Property Type="String" Name="Code" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Name" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Address" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="Decimal" Name="ProjectManagerId" Precision="18" Scale="0" />
+          <Property Type="Int32" Name="ProjectManagerId" />
           <NavigationProperty Name="LocationType" Relationship="ManeeEntityDataModel.LocationLocationType" FromRole="Location" ToRole="LocationType" />
         </EntityType>
         <EntityType Name="LocationType">
@@ -279,7 +349,6 @@
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="LocationTypeName" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Location" Relationship="ManeeEntityDataModel.LocationLocationType" FromRole="LocationType" ToRole="Location" />
         </EntityType>
         <EntityType Name="WorkerMethod">
           <Key>
@@ -294,10 +363,11 @@
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="ItemCode" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="Decimal" Name="Qty" Precision="18" Scale="0" />
+          <Property Type="String" Name="ItemDescription" Nullable="false" />
+          <Property Type="Decimal" Name="Quantity" Precision="18" Scale="0" />
           <Property Type="String" Name="Unit" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Type="Decimal" Name="Status" Precision="18" Scale="0" />
-          <Property Type="Int32" Name="DeliveryNoteId" Nullable="true" />
+          <Property Type="Int32" Name="Status" />
+          <NavigationProperty Name="Location" Relationship="ManeeEntityDataModel.LocationNoteLineItem" FromRole="NoteLineItem" ToRole="Location" />
           <NavigationProperty Name="DeliveryNote" Relationship="ManeeEntityDataModel.DeliveryNoteNoteLineItem" FromRole="NoteLineItem" ToRole="DeliveryNote" />
         </EntityType>
         <EntityType Name="ReceiveNote">
@@ -309,8 +379,7 @@
           <Property Type="String" Name="ReceiverCode" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="ReceiverName" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="DateTime" Name="ReceiveDate" Precision="3" />
-          <Property Type="Int32" Name="DeliveryNoteId" Nullable="false" />
-          <NavigationProperty Name="DeliveryNote" Relationship="ManeeEntityDataModel.DeliveryNoteReceiveNote" FromRole="ReceiveNote" ToRole="DeliveryNote" />
+          <NavigationProperty Name="DeliveryNote" Relationship="ManeeEntityDataModel.ReceiveNoteDeliveryNote" FromRole="ReceiveNote" ToRole="DeliveryNote" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -336,29 +405,40 @@
           <End Type="ManeeEntityDataModel.CarType" Role="CarType" Multiplicity="1" />
           <End Type="ManeeEntityDataModel.Car" Role="Car" Multiplicity="*" />
         </Association>
-        <Association Name="DeliveryNoteNoteLineItem">
-          <End Type="ManeeEntityDataModel.DeliveryNote" Role="DeliveryNote" Multiplicity="0..1" />
+        <Association Name="WorkerMethodWorker">
+          <End Type="ManeeEntityDataModel.WorkerMethod" Role="WorkerMethod" Multiplicity="1" />
+          <End Type="ManeeEntityDataModel.Worker" Role="Worker" Multiplicity="*" />
+        </Association>
+        <EntityType Name="ItemStatus">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="StatusName" Nullable="false" />
+        </EntityType>
+        <Association Name="ReceiveNoteDeliveryNote">
+          <End Type="ManeeEntityDataModel.ReceiveNote" Role="ReceiveNote" Multiplicity="0..1" />
+          <End Type="ManeeEntityDataModel.DeliveryNote" Role="DeliveryNote" Multiplicity="1" />
+        </Association>
+        <Association Name="LocationNoteLineItem">
+          <End Type="ManeeEntityDataModel.Location" Role="Location" Multiplicity="1" />
           <End Type="ManeeEntityDataModel.NoteLineItem" Role="NoteLineItem" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DeliveryNote">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="NoteLineItem">
-              <PropertyRef Name="DeliveryNoteId" />
-            </Dependent>
-          </ReferentialConstraint>
         </Association>
         <Association Name="LocationLocationType">
           <End Type="ManeeEntityDataModel.Location" Role="Location" Multiplicity="*" />
           <End Type="ManeeEntityDataModel.LocationType" Role="LocationType" Multiplicity="1" />
         </Association>
-        <Association Name="WorkerMethodWorker">
-          <End Type="ManeeEntityDataModel.WorkerMethod" Role="WorkerMethod" Multiplicity="1" />
-          <End Type="ManeeEntityDataModel.Worker" Role="Worker" Multiplicity="*" />
+        <Association Name="DeliveryNoteNoteLineItem">
+          <End Type="ManeeEntityDataModel.DeliveryNote" Role="DeliveryNote" Multiplicity="0..1" />
+          <End Type="ManeeEntityDataModel.NoteLineItem" Role="NoteLineItem" Multiplicity="*" />
         </Association>
-        <Association Name="DeliveryNoteReceiveNote">
-          <End Type="ManeeEntityDataModel.DeliveryNote" Role="DeliveryNote" Multiplicity="1" />
-          <End Type="ManeeEntityDataModel.ReceiveNote" Role="ReceiveNote" Multiplicity="0..1" />
+        <Association Name="DeliveryNoteLocation">
+          <End Type="ManeeEntityDataModel.DeliveryNote" Role="DeliveryNote" Multiplicity="*" />
+          <End Type="ManeeEntityDataModel.Location" Role="Location" Multiplicity="1" />
+        </Association>
+        <Association Name="DeliveryNoteLocation1">
+          <End Type="ManeeEntityDataModel.DeliveryNote" Role="DeliveryNote" Multiplicity="*" />
+          <End Type="ManeeEntityDataModel.Location" Role="Location" Multiplicity="1" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -386,8 +466,6 @@
       <EntityTypeMapping TypeName="IsTypeOf(ManeeEntityDataModel.DeliveryNote)">
         <MappingFragment StoreEntitySet="DeliveryNotes">
           <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="OriginId" ColumnName="OriginId" />
-          <ScalarProperty Name="DestinationId" ColumnName="DestinationId" />
           <ScalarProperty Name="DeliveryDate" ColumnName="DeliveryDate" />
           <ScalarProperty Name="DocumentDate" ColumnName="DocumentDate" />
           <ScalarProperty Name="SenderName" ColumnName="SenderName" />
@@ -430,10 +508,10 @@
         <MappingFragment StoreEntitySet="NoteLineItems">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
-          <ScalarProperty Name="Qty" ColumnName="Qty" />
+          <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
           <ScalarProperty Name="Unit" ColumnName="Unit" />
           <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="DeliveryNoteId" ColumnName="DeliveryNoteId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -445,7 +523,6 @@
           <ScalarProperty Name="ReceiverCode" ColumnName="ReceiverCode" />
           <ScalarProperty Name="ReceiverName" ColumnName="ReceiverName" />
           <ScalarProperty Name="ReceiveDate" ColumnName="ReceiveDate" />
-          <ScalarProperty Name="DeliveryNoteId" ColumnName="DeliveryNoteId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -470,19 +547,19 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="ItemStatus">
+      <EntityTypeMapping TypeName="IsTypeOf(ManeeEntityDataModel.ItemStatus)">
+        <MappingFragment StoreEntitySet="ItemStatus">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <AssociationSetMapping Name="CarTypeCar" TypeName="ManeeEntityDataModel.CarTypeCar" StoreEntitySet="Cars">
       <EndProperty Name="CarType">
         <ScalarProperty Name="Id" ColumnName="CarType_Id" />
       </EndProperty>
       <EndProperty Name="Car">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="LocationLocationType" TypeName="ManeeEntityDataModel.LocationLocationType" StoreEntitySet="Locations">
-      <EndProperty Name="LocationType">
-        <ScalarProperty Name="Id" ColumnName="LocationType_Id" />
-      </EndProperty>
-      <EndProperty Name="Location">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
@@ -494,11 +571,52 @@
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="DeliveryNoteReceiveNote" TypeName="ManeeEntityDataModel.DeliveryNoteReceiveNote" StoreEntitySet="ReceiveNotes">
+    <AssociationSetMapping Name="ReceiveNoteDeliveryNote" TypeName="ManeeEntityDataModel.ReceiveNoteDeliveryNote" StoreEntitySet="ReceiveNotes">
       <EndProperty Name="DeliveryNote">
         <ScalarProperty Name="Id" ColumnName="DeliveryNote_Id" />
       </EndProperty>
       <EndProperty Name="ReceiveNote">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="LocationNoteLineItem" TypeName="ManeeEntityDataModel.LocationNoteLineItem" StoreEntitySet="NoteLineItems">
+      <EndProperty Name="Location">
+        <ScalarProperty Name="Id" ColumnName="Location_Id" />
+      </EndProperty>
+      <EndProperty Name="NoteLineItem">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="LocationLocationType" TypeName="ManeeEntityDataModel.LocationLocationType" StoreEntitySet="Locations">
+      <EndProperty Name="LocationType">
+        <ScalarProperty Name="Id" ColumnName="LocationType_Id" />
+      </EndProperty>
+      <EndProperty Name="Location">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="DeliveryNoteNoteLineItem" TypeName="ManeeEntityDataModel.DeliveryNoteNoteLineItem" StoreEntitySet="NoteLineItems">
+      <EndProperty Name="DeliveryNote">
+        <ScalarProperty Name="Id" ColumnName="DeliveryNote_Id" />
+      </EndProperty>
+      <EndProperty Name="NoteLineItem">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="DeliveryNote_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="DeliveryNoteLocation" TypeName="ManeeEntityDataModel.DeliveryNoteLocation" StoreEntitySet="DeliveryNotes">
+      <EndProperty Name="Location">
+        <ScalarProperty Name="Id" ColumnName="Origin_Id" />
+      </EndProperty>
+      <EndProperty Name="DeliveryNote">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="DeliveryNoteLocation1" TypeName="ManeeEntityDataModel.DeliveryNoteLocation1" StoreEntitySet="DeliveryNotes">
+      <EndProperty Name="Location">
+        <ScalarProperty Name="Id" ColumnName="Destination_Id" />
+      </EndProperty>
+      <EndProperty Name="DeliveryNote">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>

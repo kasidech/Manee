@@ -14,6 +14,7 @@ namespace Manee.INV.Service.ServiceInf
         void UpdateDeliveryNote(DeliveryNote note);
         DeliveryNote FindDeliveryNoteById(int id);
         List<DeliveryNote> FindDeliveryNoteByCriteria(DeliveryNote note);
+        void SetStatusToItem(int dnId, int destinationId);
         
     }
 }

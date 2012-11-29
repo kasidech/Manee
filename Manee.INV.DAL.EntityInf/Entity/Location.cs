@@ -18,7 +18,7 @@ namespace Manee.INV.DAL.Entity
         public string Code { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
-        public Nullable<decimal> ProjectManagerId { get; set; }
+        public Nullable<int> ProjectManagerId { get; set; }
     
         public virtual LocationType LocationType { get; set; }
     }

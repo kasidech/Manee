@@ -34,7 +34,7 @@ namespace Manee.INV.DAL.DaoImpl
             DeliveryNote updateNote = context.DeliveryNotes.FirstOrDefault(p => p.Id == note.Id);
             updateNote.Code = note.Code;
             updateNote.DeliveryDate = note.DeliveryDate;
-            updateNote.DestinationId = note.DestinationId;
+            updateNote.Destination = note.Destination;
             updateNote.DocumentDate = note.DocumentDate;
             updateNote.CarLicensePlate = note.CarLicensePlate;
             updateNote.CarType = note.CarType;
@@ -61,8 +61,8 @@ namespace Manee.INV.DAL.DaoImpl
                  ||(!string.IsNullOrEmpty(b.CarLicensePlate) && b.CarLicensePlate.Contains(noteCriteria.CarLicensePlate))
                  ||(!string.IsNullOrEmpty(b.CarType) && b.CarType.Contains(noteCriteria.CarType))
                  ||(b.DeliveryDate==noteCriteria.DeliveryDate)
-                 ||(b.DestinationId==noteCriteria.DestinationId)
-                 ||(b.OriginId==noteCriteria.OriginId)
+                 ||(b.Destination==noteCriteria.Destination)
+                 ||(b.Origin==noteCriteria.Origin)
                  ||(!string.IsNullOrEmpty(b.SenderCode) && b.SenderCode.Contains(noteCriteria.SenderCode))
                  ||(!string.IsNullOrEmpty(b.SenderName)&& b.SenderName.Contains(noteCriteria.SenderName))
                  ).ToList();
@@ -84,5 +84,8 @@ namespace Manee.INV.DAL.DaoImpl
              int row = context.DeliveryNotes.Count();
              return row;
          }
+
+         
+
     }
 }

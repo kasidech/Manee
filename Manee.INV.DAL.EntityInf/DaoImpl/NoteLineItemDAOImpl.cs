@@ -32,14 +32,7 @@ namespace Manee.INV.DAL.DaoImpl
 
 
 
-        public void SetStatusToItem(int NLineItemId, int dnId, int destinationId)
-        {
-            NoteLineItem selectedItem = context.NoteLineItems.FirstOrDefault(p => p.Id == NLineItemId);
-            selectedItem.DeliveryNoteId = dnId;
-            selectedItem.Status = destinationId;
-            
-            context.SaveChanges();
-        }
+
 
 
     }

@@ -16,11 +16,12 @@ namespace Manee.INV.DAL.Entity
     {
         public int Id { get; set; }
         public string ItemCode { get; set; }
-        public Nullable<decimal> Qty { get; set; }
+        public string ItemDescription { get; set; }
+        public Nullable<decimal> Quantity { get; set; }
         public string Unit { get; set; }
-        public Nullable<decimal> Status { get; set; }
-        public int DeliveryNoteId { get; set; }
+        public Nullable<int> Status { get; set; }
     
+        public virtual Location Location { get; set; }
         public virtual DeliveryNote DeliveryNote { get; set; }
     }
 }

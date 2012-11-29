@@ -103,10 +103,6 @@ namespace Manee.INV.Controllers
             }
         }
 
-        public void SetStatusToItem(int itemId,int dnId,int destinationId)
-        {
-            INoteLineItemService service = (INoteLineItemService)applicationContext.GetObject("NoteLineItemService");
-            service.SetStatusToItem(itemId, dnId, destinationId);
-        }
+
     }
 }

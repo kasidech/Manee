@@ -38,6 +38,8 @@ namespace Manee.INV
                         "~/Content/themes/base/jquery.ui.datepicker.css",
                         "~/Content/themes/base/jquery.ui.progressbar.css",
                         "~/Content/themes/base/jquery.ui.theme.css"));
+            bundles.Add(new ScriptBundle("~/bundles/typescripts").Include(
+  "~/Scripts/ts-site.js"));
         }
     }
 }

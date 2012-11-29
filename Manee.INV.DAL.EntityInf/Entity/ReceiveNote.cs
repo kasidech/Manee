@@ -19,7 +19,6 @@ namespace Manee.INV.DAL.Entity
         public string ReceiverCode { get; set; }
         public string ReceiverName { get; set; }
         public Nullable<System.DateTime> ReceiveDate { get; set; }
-        public int DeliveryNoteId { get; set; }
     
         public virtual DeliveryNote DeliveryNote { get; set; }
     }

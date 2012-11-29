@@ -62,7 +62,7 @@ namespace Manee.INV.Controllers
                 {
                     foreach(NoteLineItem item in submittedDntItems){
                         int itemId = (int)item.Id;
-                        nliService.SetStatusToItem(itemId,deliveryNoteId, destinationId);
+                        service.SetStatusToItem(deliveryNoteId, destinationId);
                     }
                 }
                 DeliveryNote note = new DeliveryNote();

@@ -23,8 +23,8 @@ namespace UnitTestProject1
             DeliveryNote note = new DeliveryNote();
             note.Code = "DN001";
             note.DeliveryDate = DateTime.Now;
-            note.DestinationId = 1;
-            note.OriginId = 2;
+            note.Destination.Id = 1;
+            note.Origin.Id = 2;
             note.SenderCode = "Sender1";
             note.SenderName = "SS";
             note.CarType = "Car";
@@ -53,8 +53,8 @@ namespace UnitTestProject1
             DeliveryNote note = new DeliveryNote();
             note.Code = "DN002";
             note.DeliveryDate = DateTime.Now;
-            note.DestinationId = 1;
-            note.OriginId = 2;
+            note.Destination.Id = 1;
+            note.Origin.Id = 2;
             note.SenderCode = "Sender1";
             note.SenderName = "SS";
             note.CarType = "Car";

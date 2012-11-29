@@ -14,14 +14,7 @@ namespace Manee.INV.DAL.Entity
     
     public partial class LocationType
     {
-        public LocationType()
-        {
-            this.Location = new HashSet<Location>();
-        }
-    
         public int Id { get; set; }
         public string LocationTypeName { get; set; }
-    
-        public virtual ICollection<Location> Location { get; set; }
     }
 }

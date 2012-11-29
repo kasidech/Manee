@@ -4,22 +4,26 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d23cc7b11c9749ac8a461b804c97074a" Name="Diagram1" ZoomLevel="89" >
+      <Diagram DiagramId="d23cc7b11c9749ac8a461b804c97074a" Name="Diagram1" ZoomLevel="102" >
         <EntityTypeShape EntityType="ManeeEntityDataModel.Car" Width="1.5" PointX="1.25" PointY="1.125" />
         <EntityTypeShape EntityType="ManeeEntityDataModel.CarType" Width="1.5" PointX="1.25" PointY="3.5" />
         <EntityTypeShape EntityType="ManeeEntityDataModel.DeliveryNote" Width="1.5" PointX="6" PointY="1" />
-        <EntityTypeShape EntityType="ManeeEntityDataModel.Location" Width="1.5" PointX="0.75" PointY="8.875" />
-        <EntityTypeShape EntityType="ManeeEntityDataModel.LocationType" Width="1.5" PointX="3" PointY="9.25" />
-        <EntityTypeShape EntityType="ManeeEntityDataModel.WorkerMethod" Width="1.5" PointX="3.75" PointY="6.25" />
+        <EntityTypeShape EntityType="ManeeEntityDataModel.Location" Width="1.5" PointX="10.375" PointY="0.875" />
+        <EntityTypeShape EntityType="ManeeEntityDataModel.LocationType" Width="1.5" PointX="12.125" PointY="1" />
+        <EntityTypeShape EntityType="ManeeEntityDataModel.WorkerMethod" Width="1.5" PointX="4" PointY="4.375" />
         <EntityTypeShape EntityType="ManeeEntityDataModel.NoteLineItem" Width="1.5" PointX="8.25" PointY="0.875" />
         <EntityTypeShape EntityType="ManeeEntityDataModel.ReceiveNote" Width="1.5" PointX="3.875" PointY="1" />
-        <EntityTypeShape EntityType="ManeeEntityDataModel.sysdiagram" Width="1.5" PointX="8.75" PointY="4.75" />
-        <EntityTypeShape EntityType="ManeeEntityDataModel.Worker" Width="1.5" PointX="6" PointY="5.875" />
+        <EntityTypeShape EntityType="ManeeEntityDataModel.sysdiagram" Width="1.5" PointX="10.625" PointY="5.125" />
+        <EntityTypeShape EntityType="ManeeEntityDataModel.Worker" Width="1.5" PointX="5.875" PointY="4.375" />
         <AssociationConnector Association="ManeeEntityDataModel.CarTypeCar" />
-        <AssociationConnector Association="ManeeEntityDataModel.DeliveryNoteNoteLineItem" />
-        <AssociationConnector Association="ManeeEntityDataModel.LocationLocationType" />
         <AssociationConnector Association="ManeeEntityDataModel.WorkerMethodWorker" />
-        <AssociationConnector Association="ManeeEntityDataModel.DeliveryNoteReceiveNote" />
+        <EntityTypeShape EntityType="ManeeEntityDataModel.ItemStatus" Width="1.5" PointX="8.125" PointY="4.5" />
+        <AssociationConnector Association="ManeeEntityDataModel.ReceiveNoteDeliveryNote" />
+        <AssociationConnector Association="ManeeEntityDataModel.LocationNoteLineItem" />
+        <AssociationConnector Association="ManeeEntityDataModel.LocationLocationType" />
+        <AssociationConnector Association="ManeeEntityDataModel.DeliveryNoteNoteLineItem" />
+        <AssociationConnector Association="ManeeEntityDataModel.DeliveryNoteLocation" />
+        <AssociationConnector Association="ManeeEntityDataModel.DeliveryNoteLocation1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

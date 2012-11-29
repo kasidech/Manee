@@ -35,9 +35,9 @@ namespace Manee.INV.Service.ServiceImpl
 
 
 
-        public void SetStatusToItem(int NLineItemId, int dnId, int destinationId)
-        {
-            nliDAO.SetStatusToItem(NLineItemId, dnId, destinationId);
-        }
+        //public void SetStatusToItem(int NLineItemId, int dnId, int destinationId)
+        //{
+        //    nliDAO.SetStatusToItem(NLineItemId, dnId, destinationId);
+        //}
     }
 }

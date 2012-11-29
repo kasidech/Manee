@@ -67,6 +67,10 @@
       <Project>{f136f119-e450-408b-bc19-c8531ee51631}</Project>
       <Name>Manee.INV.Service</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Manee.INV\Manee.INV.csproj">
+      <Project>{d154c0c9-e568-42fc-bc23-e6af3e5e27a0}</Project>
+      <Name>Manee.INV</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />

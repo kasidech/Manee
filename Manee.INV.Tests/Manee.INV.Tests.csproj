@@ -106,10 +106,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Manee.INV.DAL.EntityInf\Manee.INV.DAL.csproj">
+      <Project>{0927dec7-0e18-4018-a0ea-a9780fbebe1d}</Project>
+      <Name>Manee.INV.DAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Manee.INV\Manee.INV.csproj">
       <Project>{D154C0C9-E568-42FC-BC23-E6AF3E5E27A0}</Project>
       <Name>Manee.INV</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

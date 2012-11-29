@@ -67,6 +67,9 @@
     <Compile Include="Entity\DeliveryNote.cs">
       <DependentUpon>ManeeDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entity\ItemStatus.cs">
+      <DependentUpon>ManeeDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entity\Location.cs">
       <DependentUpon>ManeeDataModel.tt</DependentUpon>
     </Compile>
@@ -88,6 +91,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ManeeEntityDataModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="DaoImpl\DeliveryNoteDAOImpl.cs" />
+    <Compile Include="DaoInf\IDeliveryNoteDAO.cs" />
     <Compile Include="Entity\NoteLineItem.cs">
       <DependentUpon>ManeeDataModel.tt</DependentUpon>
     </Compile>
@@ -103,8 +108,6 @@
     <Compile Include="Entity\WorkerMethod.cs">
       <DependentUpon>ManeeDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DaoImpl\DeliveryNoteDAOImpl.cs" />
-    <Compile Include="DaoInf\IDeliveryNoteDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>

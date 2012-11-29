@@ -35,5 +35,6 @@ namespace Manee.INV.DAL.Entity
         public DbSet<ReceiveNote> ReceiveNotes { get; set; }
         public DbSet<sysdiagram> sysdiagrams { get; set; }
         public DbSet<Worker> Workers { get; set; }
+        public DbSet<ItemStatus> ItemStatus { get; set; }
     }
 }
