@@ -47,7 +47,9 @@ namespace Manee.INV.Service.ServiceImpl
         /// <returns></returns>
         public List<NoteLineItem> FindNoteLineItemByCriteria(NoteLineItem itemCriteria)
         {
-            
+            List<NoteLineItem> noteLineItemsAll = nliDAO.FindNoteLineItemByCriteria(itemCriteria);
+
+            return noteLineItemsAll;
         }
     }
 }

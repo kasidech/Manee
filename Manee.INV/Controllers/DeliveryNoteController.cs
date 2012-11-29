@@ -33,13 +33,16 @@ namespace Manee.INV.Controllers
         //
         // GET: /DeliveryNote/Create
 
-        public ActionResult Create(int locationId)
+        public ActionResult Create()
         {
+            NoteLineItem itemCriteria = new NoteLineItem();
+
+
             ICarService carService = (ICarService)applicationContext.GetObject("CarSrv");
-            IDeliveryNoteService service = (IDeliveryNoteService)applicationContext.GetObject("NoteLineItemSrv");
+            IDeliveryNoteService service = (IDeliveryNoteService)applicationContext.GetObject("DeliveryNoteSrv");
             INoteLineItemService nliService = (INoteLineItemService)applicationContext.GetObject("NoteLineItemSrv");
             ViewData["cars"] = carService.FindCarAll();
-            ViewData["NoteLineItems"] = nliService.
+            //ViewData["NoteLineItems"] = nliService.FindNoteLineItemByCriteria(itemCriteria);
             return View();
         }
 

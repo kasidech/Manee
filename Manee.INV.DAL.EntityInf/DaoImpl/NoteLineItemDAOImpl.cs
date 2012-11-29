@@ -35,5 +35,20 @@ namespace Manee.INV.DAL.DAOImpl
 
 
 
+
+
+        public List<NoteLineItem> FindNoteLineItemByCriteria(NoteLineItem itemCriteria)
+        {
+            List<NoteLineItem> resultList = new List<NoteLineItem>();
+
+            resultList = context.NoteLineItems.Where(b => (!string.IsNullOrEmpty(b.ItemCode) && b.ItemCode.Contains(itemCriteria.ItemCode))
+                || (!string.IsNullOrEmpty(b.ItemDescription) && b.ItemDescription.Contains(itemCriteria.ItemDescription))
+                || (b.Location.Id != null && b.Location.Id == itemCriteria.Location.Id)
+                || (b.Quantity != null && b.Quantity == itemCriteria.Quantity)
+                || (b.Status != null && b.Status == itemCriteria.Status)).ToList();
+
+            return resultList;
+        }
+        
     }
 }
