@@ -27,6 +27,11 @@ namespace Manee.INV.DAL
                 ICarDAO dao = new CarDAOImpl();
                 return dao;
             }
+            else if(daoName.Equals("NOTE_LINE_ITEM"))
+            {
+                INoteLineItemDAO dao = new NoteLineItemDAOImpl();
+                return dao;
+            }
             else
             {
                 return null;

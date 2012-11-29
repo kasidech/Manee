@@ -13,6 +13,7 @@ namespace Manee.INV.DAL.DAOImpl
         private ManeeDataContainer context = new ManeeDataContainer();
         public void CreateNoteLineItem(Entity.NoteLineItem item)
         {
+
             context.NoteLineItems.Add(item);
             context.SaveChanges();
         }
@@ -25,30 +26,18 @@ namespace Manee.INV.DAL.DAOImpl
         }
 
 
-        NoteLineItem INoteLineItemDAO.FindNoteLineItemById(int id)
+
+
+
+
+
+
+
+
+        public List<NoteLineItem> FindNoteLineItemAll()
         {
-            throw new NotImplementedException();
+            List<NoteLineItem> result = context.NoteLineItems.ToList();
+            return result;
         }
-
-
-
-
-
-
-
-
-        public List<NoteLineItem> FindNoteLineItemByCriteria(NoteLineItem itemCriteria)
-        {
-            List<NoteLineItem> resultList = new List<NoteLineItem>();
-
-            resultList = context.NoteLineItems.Where(b => (!string.IsNullOrEmpty(b.ItemCode) && b.ItemCode.Contains(itemCriteria.ItemCode))
-                || (!string.IsNullOrEmpty(b.ItemDescription) && b.ItemDescription.Contains(itemCriteria.ItemDescription))
-                || (b.Location.Id != null && b.Location.Id == itemCriteria.Location.Id)
-                || (b.Quantity != null && b.Quantity == itemCriteria.Quantity)
-                || (b.Status != null && b.Status == itemCriteria.Status)).ToList();
-
-            return resultList;
-        }
-        
     }
 }

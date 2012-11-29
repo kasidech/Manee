@@ -12,8 +12,13 @@ namespace Manee.INV.Service.ServiceInf
         void CreateNoteLineItem(NoteLineItem item);
         void DeleteNoteLineitem(int id);
         NoteLineItem FindNoteLineItemById(int id);
-        //void SetStatusToItem(int NLineItemId, int dnId, int destinationId);
-        List<NoteLineItem> FindNoteLineItemByCriteria(NoteLineItem itemCriteria);
+
+        /// <summary>
+        /// เรียก NoteLineItem ที่อยู่ภายใน Location นั้นๆ
+        /// </summary>
+        /// <param name="location_Id"></param>
+        /// <returns></returns>
+        List<NoteLineItem> FindNoteLineItemByLocation(int location_Id);
       
     }
 }

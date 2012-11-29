@@ -35,6 +35,7 @@ namespace Manee.INV.Controllers
 
         public ActionResult Create()
         {
+            int location_Id = 2;
             NoteLineItem itemCriteria = new NoteLineItem();
 
 
@@ -42,7 +43,8 @@ namespace Manee.INV.Controllers
             IDeliveryNoteService service = (IDeliveryNoteService)applicationContext.GetObject("DeliveryNoteSrv");
             INoteLineItemService nliService = (INoteLineItemService)applicationContext.GetObject("NoteLineItemSrv");
             ViewData["cars"] = carService.FindCarAll();
-            //ViewData["NoteLineItems"] = nliService.FindNoteLineItemByCriteria(itemCriteria);
+            ViewData["NoteLineItem"] = nliService.FindNoteLineItemByLocation(location_Id);
+         
             return View();
         }
 
