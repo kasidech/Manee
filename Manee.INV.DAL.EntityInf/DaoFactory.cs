@@ -27,6 +27,11 @@ namespace Manee.INV.DAL
                 ICarDAO dao = new CarDAOImpl();
                 return dao;
             }
+            else if (daoName.Equals("LOCATION"))
+            {
+                ILocationDAO dao = new LocationDAOImpl();
+                return dao;
+            }
             else
             {
                 return null;

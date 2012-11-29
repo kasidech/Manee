@@ -54,9 +54,11 @@
   <ItemGroup>
     <Compile Include="DaoFactory.cs" />
     <Compile Include="DAOImpl\CarDAOImpl.cs" />
+    <Compile Include="DAOImpl\LocationDAOImpl.cs" />
     <Compile Include="DAOImpl\NoteLineItemDAOImpl.cs" />
     <Compile Include="DAOImpl\ReceiveNoteDAOImpl.cs" />
     <Compile Include="DAOInf\ICarDAO.cs" />
+    <Compile Include="DAOInf\ILocationDAO.cs" />
     <Compile Include="DAOInf\INoteLineItemDAO.cs" />
     <Compile Include="DAOInf\IReceiveNoteDAO.cs" />
     <Compile Include="Entity\BaseEntity.cs" />
