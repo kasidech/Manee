@@ -13,7 +13,9 @@ namespace Manee.INV.Service.ServiceImpl
     class CarServiceImpl : ICarService
     {
 
+
         private ICarDAO carDAO = (ICarDAO)DAOFactory.GetDao("CAR");
+
 
 
 
