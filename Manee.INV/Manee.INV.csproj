@@ -5368,10 +5368,6 @@
     <Content Include="spring-inv-controller.xml">
       <SubType>Designer</SubType>
     </Content>
-    <TypeScriptCompile Include="Views\DeliveryNote\file1.ts" />
-    <Content Include="Views\DeliveryNote\file1.js">
-      <DependentUpon>file1.ts</DependentUpon>
-    </Content>
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

@@ -33,9 +33,13 @@ namespace Manee.INV.Controllers
         //
         // GET: /DeliveryNote/Create
 
-        public ActionResult Create()
+        public ActionResult Create(int locationId)
         {
-          
+            ICarService carService = (ICarService)applicationContext.GetObject("CarSrv");
+            IDeliveryNoteService service = (IDeliveryNoteService)applicationContext.GetObject("NoteLineItemSrv");
+            INoteLineItemService nliService = (INoteLineItemService)applicationContext.GetObject("NoteLineItemSrv");
+            ViewData["cars"] = carService.FindCarAll();
+            ViewData["NoteLineItems"] = nliService.
             return View();
         }
 
@@ -45,8 +49,9 @@ namespace Manee.INV.Controllers
         [HttpPost]
         public ActionResult Create(FormCollection collection, string deliveryNoteItemJson)
         {
-            IDeliveryNoteService service = (IDeliveryNoteService)applicationContext.GetObject("DeliveryNoteService");
-            INoteLineItemService nliService = (INoteLineItemService)applicationContext.GetObject("NoteLineItemService");
+            ICarService carService = (ICarService)applicationContext.GetObject("CarSrv");
+            IDeliveryNoteService service = (IDeliveryNoteService)applicationContext.GetObject("NoteLineItemSrv");
+            INoteLineItemService nliService = (INoteLineItemService)applicationContext.GetObject("NoteLineItemSrv");
 
 
             var submittedDntItems = deliveryNoteItemJson == "" ? new List<NoteLineItem>() : JsonConvert.DeserializeObject<IList<NoteLineItem>>(deliveryNoteItemJson);

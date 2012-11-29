@@ -23,6 +23,11 @@ namespace Manee.INV.Service
                 IReceiveNoteService service = new ReceiveNoteServiceImpl();
                 return service;
             }
+            else if (serviceName.Equals("CAR"))
+            {
+                ICarService service = new CarServiceImpl();
+                return service;
+            }
             else
             {
                 return null;

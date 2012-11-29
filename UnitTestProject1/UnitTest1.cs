@@ -6,7 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Manee.INV.DAL.Entity;
 using Manee.INV.Service.ServiceImpl;
 using Manee.INV.Service.ServiceInf;
-using Manee.INV.DAL.DaoImpl;
+using Manee.INV.DAL.DAOImpl;
 using Manee.INV.DAL.DAOInf;
 using System.Data.Entity;
 

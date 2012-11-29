@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
+
 namespace Manee.INV.Controllers
 {
     public class BaseController : System.Web.Mvc.Controller
@@ -13,7 +14,7 @@ namespace Manee.INV.Controllers
 
         public BaseController()
         {
-            applicationContext = new XmlApplicationContext("~/spring-inv-controller.xml");
+             applicationContext = new XmlApplicationContext("~/spring-inv-controller.xml");
         }
 
     }

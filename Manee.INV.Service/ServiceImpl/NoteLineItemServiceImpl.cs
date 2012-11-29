@@ -39,5 +39,15 @@ namespace Manee.INV.Service.ServiceImpl
         //{
         //    nliDAO.SetStatusToItem(NLineItemId, dnId, destinationId);
         //}
+
+        /// <summary>
+        /// เลือก NoteLineItem จากFilter ต่างๆ
+        /// </summary>
+        /// <param name="itemCriteria"></param>
+        /// <returns></returns>
+        public List<NoteLineItem> FindNoteLineItemByCriteria(NoteLineItem itemCriteria)
+        {
+            
+        }
     }
 }
