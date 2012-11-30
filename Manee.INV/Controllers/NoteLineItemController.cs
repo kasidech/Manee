@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using Manee.INV.Service.ServiceInf;
 using Manee.INV.Service;
+using LongkongStudio.Framework.Controllers;
+
 namespace Manee.INV.Controllers
 {
     public class NoteLineItemController : BaseController

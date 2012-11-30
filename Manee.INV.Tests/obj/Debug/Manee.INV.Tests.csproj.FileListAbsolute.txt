@@ -52,3 +52,5 @@ C:\Users\Mo\Documents\GitHub\manee\Manee.INV.Tests\bin\Debug\DotNetOpenAuth.Open
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV.Tests\bin\Debug\DotNetOpenAuth.OpenId.xml
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV.Tests\obj\Debug\Manee.INV.Tests.dll
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV.Tests\obj\Debug\Manee.INV.Tests.pdb
+C:\Users\Mo\Documents\GitHub\manee\Manee.INV.Tests\bin\Debug\LongkongStudio.Framework.dll
+C:\Users\Mo\Documents\GitHub\manee\Manee.INV.Tests\bin\Debug\LongkongStudio.Framework.pdb

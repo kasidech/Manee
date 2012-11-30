@@ -9,22 +9,23 @@ using Manee.INV.DAL.DAOInf;
 using Manee.INV.DAL;
 using Manee.INV.DAL.Entity;
 using Manee.INV.Service.BL;
+using LongkongStudio.Framework.Service;
+using Spring.Context.Support;
 
 namespace Manee.INV.Service.ServiceImpl
 {
     public class DeliveryNoteServiceImpl : IDeliveryNoteService
     {
 
-        private IDeliveryNoteDAO dnDAO = (IDeliveryNoteDAO)DAOFactory.GetDao("DELIVERY_NOTE");
-        
-
+        private IDeliveryNoteDAO deliveryNoteDao = (IDeliveryNoteDAO)DAOFactory.GetDao("DELIVERY_NOTE");
+        private ILocationDAO locationDao = (ILocationDAO)DAOFactory.GetDao("LOCATION");
 
         public void CreateDeliveryNote(DeliveryNote dn)
         {
             //Business Logic Here
 
-
-            dnDAO.Create(dn);
+            Location site = locationDao.FindLocationAll().Where(b=>b.Id==2).FirstOrDefault();
+            deliveryNoteDao.CreateDeliveryNote(dn);
 
 
         }
@@ -32,18 +33,18 @@ namespace Manee.INV.Service.ServiceImpl
         public void DeleteDeliveryNote(int noteId)
         {
             //Business Logic Here
-            dnDAO.Delete(noteId);
+            deliveryNoteDao.DeleteDeliveryNote(noteId);
         }
 
         public void UpdateDeliveryNote(DeliveryNote Note)
         {
             //Business Logic Here
-            dnDAO.Update(Note);
+            deliveryNoteDao.UpdateDeliveryNote(Note);
         }
         public DeliveryNote FindDeliveryNoteById(int NoteId)
         {
             //Business Logic Here
-            DeliveryNote result = dnDAO.FindById(NoteId);
+            DeliveryNote result = deliveryNoteDao.FindById(NoteId);
             return result;
         }
 
@@ -57,7 +58,7 @@ namespace Manee.INV.Service.ServiceImpl
 
         public void SetStatusToItem(int dnId, int destinationId)
         {
-            DeliveryNote deliveryNote = dnDAO.FindById(dnId);
+            DeliveryNote deliveryNote = deliveryNoteDao.FindById(dnId);
             
             foreach (var item in deliveryNote.NoteLineItems)
             {

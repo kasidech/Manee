@@ -3,10 +3,10 @@
 <objects xmlns="http://www.springframework.net">
 
   
-  <object id="dnDAO" type="Manee.INV.DAL.DAOImpl.DeliveryNoteDAOImpl, Manee.INV.DAL" />
+  <object id="deliveryNoteDAO" type="Manee.INV.DAL.DAOImpl.DeliveryNoteDAOImpl, Manee.INV.DAL" />
 
   <object id="DeliveryNoteSrv" type="Manee.INV.Service.ServiceImpl.DeliveryNoteServiceImpl, Manee.INV.Service">
-    <property name="dnDAO" ref="dnDAO"/>
+    <property name="deliveryNoteDAO" ref="deliveryNoteDAO"/>
   </object>
 
   <object id="nliDAO" type="Manee.INV.DAL.DAOImpl.NoteLineItemDAOImpl, Manee.INV.DAL" />
@@ -21,5 +21,10 @@
     <property name="carDAO" ref="carDAO"/>
   </object>
 
-
+  <object id="calculatorService" type="Manee.INV.Service.ServiceImpl.CalculatorServiceImpl, Manee.INV.Service">
+    <property name="calculatorDAO" ref="calculatorDAO" />
+  </object>
+  <object id="calculatorDAO" type="Manee.INV.Service.ServiceImpl.CalculatorDAOImpl, Manee.INV.Service" />
+  
+  
   </objects>

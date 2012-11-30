@@ -13,10 +13,8 @@ namespace Manee.INV.DAL.DAOInf
     {
         void CreateLocation(Location item);
         void DeleteLocation(int id);
-        Location FindLocationById(int id);
         List<Location> FindLocationAll();
 
-        List<Location> FindByCriteria(Location locationCriteria);
               
     }
 }
