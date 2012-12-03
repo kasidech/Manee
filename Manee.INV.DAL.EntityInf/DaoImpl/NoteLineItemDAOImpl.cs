@@ -13,8 +13,15 @@ namespace Manee.INV.DAL.DAOImpl
         private ManeeDataContainer context = new ManeeDataContainer();
         public void CreateNoteLineItem(Entity.NoteLineItem item)
         {
-
+            
+            //context.Locations.Attach(item.Location);
+            //context.DeliveryNotes.Attach(item.DeliveryNote);
+            //context.LocationTypes.Attach(item.Location.LocationType);
+            context.Locations.Attach(item.Location);
+            //context.DeliveryNotes.Attach(item.DeliveryNote);
             context.NoteLineItems.Add(item);
+            
+            
             context.SaveChanges();
         }
 
@@ -27,7 +34,19 @@ namespace Manee.INV.DAL.DAOImpl
 
 
 
+        public void UpdateNoteLineItem(NoteLineItem item)
+        {
+            //NoteLineItem updateItem = context.NoteLineItems.FirstOrDefault(m => m.Id == item.Id);
 
+            context.DeliveryNotes.Attach(item.DeliveryNote);
+            //context.Locations.Attach(item.Location);
+            //updateItem = item;
+            //updateItem.DeliveryNote.Id = item.DeliveryNote.Id;
+            //context.DeliveryNotes.Attach(updateItem.DeliveryNote);
+            //context.Locations.Attach(updateItem.Location);
+            
+            context.SaveChanges();
+        }
 
 
 
@@ -39,5 +58,8 @@ namespace Manee.INV.DAL.DAOImpl
             List<NoteLineItem> result = context.NoteLineItems.ToList();
             return result;
         }
+
+
+
     }
 }

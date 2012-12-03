@@ -28,6 +28,11 @@ namespace Manee.INV.Service
                 ICarService service = new CarServiceImpl();
                 return service;
             }
+            else if (serviceName.Equals("NOTE_LINE_ITEM"))
+            {
+                INoteLineItemService service = new NoteLineItemServiceImpl();
+                return service;
+            }
             else
             {
                 return null;

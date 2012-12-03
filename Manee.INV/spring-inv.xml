@@ -9,10 +9,10 @@
     <property name="deliveryNoteDAO" ref="deliveryNoteDAO"/>
   </object>
 
-  <object id="nliDAO" type="Manee.INV.DAL.DAOImpl.NoteLineItemDAOImpl, Manee.INV.DAL" />
+  <object id="noteLineItemDAO" type="Manee.INV.DAL.DAOImpl.NoteLineItemDAOImpl, Manee.INV.DAL" />
   
   <object id="NoteLineItemSrv" type="Manee.INV.Service.ServiceImpl.NoteLineItemServiceImpl, Manee.INV.Service">
-    <property name="nliDAO" ref="nliDAO"/>
+    <property name="noteLineItemDAO" ref="noteLineItemDAO"/>
   </object>
 
   <object id="carDAO" type="Manee.INV.DAL.DAOImpl.CarDAOImpl, Manee.INV.DAL" />

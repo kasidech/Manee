@@ -11,6 +11,8 @@ using Newtonsoft.Json;
 using LongkongStudio.Framework.Controllers;
 using Spring.Context;
 using Spring.Context.Support;
+
+
 namespace Manee.INV.Controllers
 {
 
@@ -53,6 +55,8 @@ namespace Manee.INV.Controllers
             ICarService carSrv = (ICarService)appContext.GetObject("CarSrv");
             IDeliveryNoteService service = (IDeliveryNoteService)appContext.GetObject("DeliveryNoteSrv");
             INoteLineItemService nliService = (INoteLineItemService)appContext.GetObject("NoteLineItemSrv");
+            List<NoteLineItem> n = nliService.FindNoteLineItemByLocation(location_Id);
+            
             ViewData["cars"] = carSrv.FindCarAll();
             ViewData["NoteLineItem"] = nliService.FindNoteLineItemByLocation(location_Id);
          
@@ -66,15 +70,17 @@ namespace Manee.INV.Controllers
         public ActionResult Create(FormCollection collection, string deliveryNoteItemJson)
         {
 
-            IDeliveryNoteService DeliveryNoteSrv= (IDeliveryNoteService)appContext.GetObject("NoteLineItemSrv");
+            IDeliveryNoteService DeliveryNoteSrv = (IDeliveryNoteService)appContext.GetObject("DeliveryNoteSrv");
             INoteLineItemService NoteLineItemSrv=(INoteLineItemService)appContext.GetObject("NoteLineItemSrv");
 
-
+            var car = collection["CarType"].ToString();
+            var CarLicensePlate = collection["CarLicensePlate"].ToString();
+            var SenderName = collection["SenderName"].ToString();
             var submittedDntItems = deliveryNoteItemJson == "" ? new List<NoteLineItem>() : JsonConvert.DeserializeObject<IList<NoteLineItem>>(deliveryNoteItemJson);
 
             
-            int deliveryNoteId = Convert.ToInt32( collection["DeliveryNoteId"]);
-            int destinationId = Convert.ToInt32(collection["DestinationId"]); 
+            //int deliveryNoteId = Convert.ToInt32( collection["DeliveryNoteId"]);
+            //int destinationId = Convert.ToInt32(collection["DestinationId"]); 
 
 
             try
@@ -83,14 +89,17 @@ namespace Manee.INV.Controllers
                 {
                     foreach(NoteLineItem item in submittedDntItems){
                         int itemId = (int)item.Id;
-                        DeliveryNoteSrv.SetStatusToItem(deliveryNoteId, destinationId);
+                       // DeliveryNoteSrv.SetStatusToItem(deliveryNoteId, destinationId);
                     }
                 }
                 DeliveryNote note = new DeliveryNote();
-                note.SenderName = collection["senderName"];
+                note.SenderName = SenderName;
+                note.CarType = car;
+                note.CarLicensePlate = CarLicensePlate;
+                note.Id = 0;
                 
                 // TODO: Add insert logic here
-                //service.CreateDeliveryNote(note);
+                //DeliveryNoteSrv.CreateDeliveryNote(note);
                 return View();
             }
             catch

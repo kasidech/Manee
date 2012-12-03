@@ -11,8 +11,9 @@ namespace Manee.INV.DAL.DAOInf
 {
    public interface ILocationDAO
     {
-        void CreateLocation(Location item);
+        void CreateLocation(Location location);
         void DeleteLocation(int id);
+        void UpdateLocation(Location location); 
         List<Location> FindLocationAll();
 
               

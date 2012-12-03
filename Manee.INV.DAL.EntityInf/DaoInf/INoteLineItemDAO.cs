@@ -11,6 +11,7 @@ namespace Manee.INV.DAL.DAOInf
     {
         void CreateNoteLineItem(NoteLineItem item);
         void DeleteNoteLineItem(int id);
+        void UpdateNoteLineItem(NoteLineItem item);
 
         List<NoteLineItem> FindNoteLineItemAll();
     

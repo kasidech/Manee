@@ -51,7 +51,10 @@ namespace Manee.INV.DAL.DAOImpl
             context.SaveChanges();
             
         }
-
+        /// <summary>
+        /// ต้องส่ง note.ID ให้ถูกต้องด้วย
+        /// </summary>
+        /// <param name="note"></param>
         void IDeliveryNoteDAO.UpdateDeliveryNote(Entity.DeliveryNote note)
         {
             DeliveryNote updateNote = context.DeliveryNotes.FirstOrDefault(p => p.Id == note.Id);
@@ -108,7 +111,14 @@ namespace Manee.INV.DAL.DAOImpl
              return row;
          }
 
-         
 
+
+
+
+         public List<DeliveryNote> FindDeliveryNoteAll()
+         {
+             List<DeliveryNote> notes = context.DeliveryNotes.ToList();
+             return notes;
+         }
     }
 }

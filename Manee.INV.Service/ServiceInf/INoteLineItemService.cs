@@ -19,6 +19,7 @@ namespace Manee.INV.Service.ServiceInf
         /// <param name="location_Id"></param>
         /// <returns></returns>
         List<NoteLineItem> FindNoteLineItemByLocation(int location_Id);
+        void SetNoteLineItemToNote(int item_Id, int note_Id);
       
     }
 }

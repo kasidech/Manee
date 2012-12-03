@@ -16,6 +16,7 @@ namespace Manee.INV.DAL.DAOInf
         List<DeliveryNote> FindByCriteria(DeliveryNote noteCriteria);
         int CountDeliveryNote(string code);
         int CountDeliveryNoteTableRow();
+        List<DeliveryNote> FindDeliveryNoteAll();
         
     }    
 }

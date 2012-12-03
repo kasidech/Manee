@@ -9,23 +9,23 @@ using Manee.INV.DAL.DAOInf;
 using Manee.INV.DAL;
 namespace Manee.INV.Service.ServiceImpl
 {
-    class NoteLineItemServiceImpl : INoteLineItemService
+    public class NoteLineItemServiceImpl : INoteLineItemService
     {
-        private INoteLineItemDAO nliDAO = (INoteLineItemDAO)DAOFactory.GetDao("NOTE_LINE_ITEM");
+        private INoteLineItemDAO noteLineItemDAO = (INoteLineItemDAO)DAOFactory.GetDao("NOTE_LINE_ITEM");
         public void CreateNoteLineItem(NoteLineItem item)
         {
-            nliDAO.CreateNoteLineItem(item);
+            noteLineItemDAO.CreateNoteLineItem(item);
         }
 
         public void DeleteNoteLineitem(int id)
         {
             
-            nliDAO.DeleteNoteLineItem(id);
+            noteLineItemDAO.DeleteNoteLineItem(id);
         }
 
         public NoteLineItem FindNoteLineItemById(int id)
         {
-            NoteLineItem result = nliDAO.FindNoteLineItemAll().Where(b=>b.Id==id).FirstOrDefault();
+            NoteLineItem result = noteLineItemDAO.FindNoteLineItemAll().Where(b=>b.Id==id).FirstOrDefault();
             return result;
         }
 
@@ -33,8 +33,31 @@ namespace Manee.INV.Service.ServiceImpl
 
         public List<NoteLineItem> FindNoteLineItemByLocation(int location_Id)
         {
-            List<NoteLineItem> result = nliDAO.FindNoteLineItemAll().Where(b=>b.Location.Id==location_Id).ToList();
+            List<NoteLineItem> result = noteLineItemDAO.FindNoteLineItemAll().Where(b=>b.Location.Id==location_Id).ToList();
             return result;
+        }
+
+        /// <summary>
+        /// ตั้งค่า DeliveryNote Id ให้กับ Item เพื่อให้ Item ผูกกับ DeliveryNote 
+        /// </summary>
+        /// <param name="item_Id"></param>
+        /// <param name="note_Id"></param>
+        /// <returns></returns>
+        public void SetNoteLineItemToNote(int item_Id, int note_Id)
+        {
+            NoteLineItem item = noteLineItemDAO.FindNoteLineItemAll().Where(m=>m.Id==item_Id).FirstOrDefault();
+            IDeliveryNoteDAO deliveryNoteDAO = (IDeliveryNoteDAO)DAOFactory.GetDao("DELIVERY_NOTE");
+            DeliveryNote note = deliveryNoteDAO.FindById(note_Id);
+
+            item.DeliveryNote = new DeliveryNote();
+            item.DeliveryNote.Id = note.Id;
+
+            //note.NoteLineItems = item.;
+            //item.DeliveryNote.Id = note.Id;
+            noteLineItemDAO.UpdateNoteLineItem(item);
+            
+
+            
         }
     }
 }

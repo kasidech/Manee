@@ -14,9 +14,10 @@ namespace Manee.INV.DAL.DAOImpl
     {
         private ManeeDataContainer context = new ManeeDataContainer();
 
-        void ILocationDAO.CreateLocation(Entity.Location item)
+        void ILocationDAO.CreateLocation(Entity.Location location)
         {
-            context.Locations.Add(item);
+            context.LocationTypes.Attach(location.LocationType);
+            context.Locations.Add(location);
             context.SaveChanges();
         }
 
@@ -27,14 +28,15 @@ namespace Manee.INV.DAL.DAOImpl
             context.SaveChanges();
         }
 
+        public void UpdateLocation(Location location)
+        {
+            context.LocationTypes.Attach(location.LocationType);
+        }
 
         List<Entity.Location> ILocationDAO.FindLocationAll()
         {
             return context.Locations.ToList();
         }
-
-
-
 
 
     }

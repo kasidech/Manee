@@ -14,13 +14,14 @@ using System.Data.Entity;
 
 namespace Manee.INV.Service.Test
 {
-        public class PrepareData 
+        public static class PrepareDeliveryNoteData 
         {
-            ManeeDataContainer context = new ManeeDataContainer();
+            
 
 
-            public void DeleteAllSample()
+            public static void DeleteAllSampleData()
             {
+                ManeeDataContainer context = new ManeeDataContainer();
                 List<DeliveryNote> dns = context.DeliveryNotes.Where(b => b.Code == "DN001").ToList();
                 IDeliveryNoteDAO dnDao = (IDeliveryNoteDAO)DAOFactory.GetDao("DELIVERY_NOTE");
                 foreach(DeliveryNote dn in dns)
@@ -29,10 +30,10 @@ namespace Manee.INV.Service.Test
                 }
             }
 
-            public DeliveryNote SampleData()
+            public static DeliveryNote SampleData()
             {
-                
 
+                ManeeDataContainer context = new ManeeDataContainer();
                 DeliveryNote note = new DeliveryNote();
 
                 note.Code = "DN001";
@@ -59,7 +60,7 @@ namespace Manee.INV.Service.Test
 
 
     [TestClass]
-    public class DeliveryNote_Test
+    public class DeliveryNoteService_Test
     {
         
         protected static ILocationDAO lDao = (ILocationDAO)DAOFactory.GetDao("LOCATION");
@@ -74,9 +75,9 @@ namespace Manee.INV.Service.Test
         {
             int expectedRow = 1;
             IDeliveryNoteDAO dao = new DeliveryNoteDAOImpl();
-            PrepareData prepareData = new PrepareData();
-            prepareData.DeleteAllSample();
-            DeliveryNote note = prepareData.SampleData();
+            
+            PrepareDeliveryNoteData.DeleteAllSampleData();
+            DeliveryNote note = PrepareDeliveryNoteData.SampleData();
 
             IDeliveryNoteService deliveryNotenService = new DeliveryNoteServiceImpl();
             deliveryNotenService.CreateDeliveryNote(note);
@@ -85,7 +86,7 @@ namespace Manee.INV.Service.Test
 
             
             int actualRow = dao.CountDeliveryNote("DN001");
-            prepareData.DeleteAllSample();
+            PrepareDeliveryNoteData.DeleteAllSampleData();
             
 
             Assert.AreEqual(expectedRow, actualRow, "Failed");
@@ -98,9 +99,9 @@ namespace Manee.INV.Service.Test
 
             int expectedRow = 0;
 
-            PrepareData prepareData = new PrepareData();
-            prepareData.DeleteAllSample();
-            DeliveryNote note = prepareData.SampleData();
+            
+            PrepareDeliveryNoteData.DeleteAllSampleData();
+            DeliveryNote note = PrepareDeliveryNoteData.SampleData();
 
             IDeliveryNoteService deliveryNotenService = new DeliveryNoteServiceImpl();
             IDeliveryNoteDAO dao = new DeliveryNoteDAOImpl();
