@@ -1,0 +1,312 @@
+@{
+    ViewBag.Title = "dnd_grid_to_gridJs";
+}
+
+
+
+
+@*<script type="text/javascript" src="../../ext-all.js"></script>*@
+
+<script src="@Url.Content("~/Scripts/extjs/ext-4.1.1a/ext-all.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/extjs/ext-4.1.1a/examples/examples.js")" type="text/javascript"></script>
+<link href="@Url.Content("~/Scripts/extjs/ext-4.1.1a/resources/css/ext-all.css")" rel="stylesheet" type="text/css"/>
+
+
+
+
+
+<script type='text/javascript'>
+   Ext.Loader.setPath('Ext.ux', '../Scripts/extjs/ext-4.1.1a/examples/ux');
+   Ext.require([
+       'Ext.selection.CellModel',
+        'Ext.grid.*',
+        'Ext.data.*',
+        'Ext.dd.*',
+         'Ext.form.field.ComboBox',
+         'Ext.button.Button',
+    'Ext.grid.property.Grid'
+    ]);
+
+    Ext.define('DataObject', {
+        extend: 'Ext.data.Model',
+        fields: ['name', 'column1', 'column2', 'storeCombo', 'serial', 'storeCount', 'Unit']
+    });
+    var countStore;
+    var thisComboStore;
+    var secondGrid;
+    var groupItem = 'OldCode';
+    var ComboEdit;
+    var clickRecord = 0;
+    var storeCombo;
+    var  mainCodeComboStore;
+    var storeComboArray = [['f', 'Foo'], ['b', 'Bar']];
+    var storeComboArray2 = [['a', 'AAA'], ['b', 'BBB'], ['c', 'CCC'], ['d', 'DDDD']];
+    Ext.onReady(function () {
+
+        var cellEditing = Ext.create('Ext.grid.plugin.CellEditing', {
+            clicksToEdit: 1
+        });
+       
+        
+
+        Ext.define('Restaurant', {
+            extend: 'Ext.data.Model',
+            fields: ['Id', 'RequestNo', 'OldCode', 'NewCode', 'ItemDetail', 'Qty', 'Unit', 'Remark', 'Date', 'storeCombo','serial', 'storeCount']
+        });
+
+        
+        
+
+        var searchData = [
+                  {
+                      Id: '1', RequestNo: '0001', OldCode: 'o1', NewCode: 'n1', ItemDetail: 'Steal bar', Qty: 1, Unit: '10', Remark: 'r1..........', Date: '2010-23-11',
+                      storeCombo: [['a', '1_AAA'], ['b', '1_BBB'], ['c', '1_CCC'], ['d', '1_DDDD']],//[{ 'id': "1", 'name': "Alabama" }, { 'id': "2", 'name': "AAA_id2" }],
+                      serial: '', storeCount: 4, Unit: "50"
+                  },
+                  {
+                      Id: '2', RequestNo: '0002', OldCode: 'o2', NewCode: 'n2', ItemDetail: ' Description Description Description Description ...', Qty: 2, Unit: '20', Remark: 'r2..........', Date: '2010-23-11',
+                      storeCombo: [['a', '2_AAA'], ['b', '2_BBB'], ['c', '2_CCC'], ['d', '2_DDDD']],//[{ 'id': "1", 'name': "Rn2_id1" }, { 'id': "2", 'name': "Rn2_id2" }],
+                      serial: '', storeCount: 4, Unit: "50"
+                  },
+                  {
+                      Id: '3', RequestNo: '0003', OldCode: 'o2', NewCode: 'n3', ItemDetail: ' 0003Description Description Description Description ...', Qty: 3, Unit: '30', Remark: 'r3..........', Date: '2010-23-11',
+                      storeCombo: [['a', '3_AAA'], ['b', '3_BBB'], ['c', '3_CCC'], ['d', '3_DDDD']],//[{ 'id': "1", 'name': "Rn3_id1" }, { 'id': "2", 'name': "Rn3_id2" }],
+                      serial: '', storeCount: 4, Unit: "50"
+                  },
+                  {
+                      Id: '4', RequestNo: '0004', OldCode: 'o4', NewCode: 'n4', ItemDetail: ' 0004Description Description Description Description ...', Qty: 4, Unit: '40', Remark: 'r4..........', Date: '2010-23-11',
+                      storeCombo: [['x', '4_XXX'], ['y', '4_YYYY'], ['z', '4_ZZZZ'], ['r', '4_RRRR']],//[{ 'id': "1", 'name': "Rn2_id1" }, { 'id': "2", 'name': "Rn2_id2" }],
+                      serial: '', storeCount: 1, Unit: "50"
+                  },
+                  {
+                      Id: '5', RequestNo: '0005', OldCode: 'o6', NewCode: 'n5', ItemDetail: ' 0005Description Description Description Description ...', Qty: 5, Unit: '50', Remark: 'r5..........', Date: '2010-23-11',
+                      storeCombo: [['x', '5_XXX'], ['y', '5_YYYY'], ['z', '5_ZZZZ'], ['r', '5_RRRR']],// [{ 'id': "1", 'name': "Rn2_id1" }, { 'id': "2", 'name': "Rn2_id2" }],
+                      serial: '', storeCount: 4, Unit: "50"
+                  },
+                  {
+                      Id: '6', RequestNo: '0006', OldCode: 'o6', NewCode: 'n6', ItemDetail: ' 0006Description Description Description Description ...', Qty: 6, Unit: '60', Remark: 'r6..........', Date: '2010-23-11',
+                      storeCombo: [['ss', '6_ss'], ['kk', '6_sskkkkkk'], ['w', '6_sswwwww']],//[{ 'id': "1", 'name': "Rn2_id1" }, { 'id': "2", 'name': "Rn2_id2" }],
+                      serial: '', storeCount: 4, Unit: "50"
+                  },
+                  {
+                      Id: '7', RequestNo: '0007', OldCode: 'o7', NewCode: 'n7', ItemDetail: ' 0007Description Description Description Description ...', Qty: 7, Unit: '70', Remark: 'r7..........', Date: '2010-23-11',
+                      storeCombo: [['x', '7_XXX'], ['y', '7_YYYY']],// [{ 'id': "1", 'name': "Rn2_id1" }, { 'id': "2", 'name': "Rn2_id2" }],
+                      serial: '', storeCount: 4, Unit: "50"
+                  }
+        ];
+
+        var Restaurants = Ext.create('Ext.data.Store', {
+            storeId: 'restaraunts',
+            model: 'Restaurant',
+            groupField: 'cuisine',
+            sorters: ['cuisine', 'name'],
+            data: searchData
+           
+        });
+
+       //pillar1
+         mainCodeComboStore = new Ext.data.SimpleStore({
+            fields: ['MainCode', 'Name'],
+            data: storeComboArray
+        });
+               
+        
+        //end pillar1
+
+        var grid = Ext.create('Ext.grid.Panel', {
+            renderTo: 'firstGrid',
+            collapsible: true,
+            multiSelect: true,
+            iconCls: 'icon-grid',
+            frame: true,
+            store: Restaurants,
+            width: 600,
+            height: 200,
+            title: 'Restaurants',
+            resizable: true,
+            // groupField: groupField,
+            plugins: [cellEditing],
+            viewConfig: {
+                plugins: {
+                    ptype: 'gridviewdragdrop',
+                    dragGroup: 'firstGridDDGroup',
+                    dropGroup: 'secondGridDDGroup'
+                },
+                listeners: {
+                    drop: function (node, data, dropRec, dropPosition) {
+                        var dropOn = dropRec ? ' ' + dropPosition + ' ' + dropRec.get('name') : ' on empty view';
+                        // Ext.example.msg("Drag from right to left", 'Dropped ' + data.records[0].get('name') + dropOn);
+                    }
+                }
+            },
+            columns: [
+                new Ext.grid.RowNumberer(),
+
+               {
+                   id: 'last',
+                   text: "NewCode",
+                   dataIndex: 'NewCode',                  
+                   width: 60,
+                   align: 'right'
+               },
+               {
+                   text: 'Item Detail',
+                flex: 1,
+                dataIndex: 'ItemDetail'
+               }
+            ]//end columns
+            
+        });
+        var secondGridStore = Ext.create('Ext.data.Store', {
+            model: 'Restaurant'
+        });
+
+        
+       // // states 1
+        var states = [{ "abbr": "AL", "name": "Alabama", "slogan": "The Heart of Dixie" },
+                      { "abbr": "AK", "name": "Alaska", "slogan": "The Land of the Midnight Sun" }];
+        Ext.regModel('State', {
+            fields: [
+                { type: 'string', name: 'abbr' },
+                { type: 'string', name: 'name' },
+                { type: 'string', name: 'slogan' }
+            ]
+        });
+
+        // The data store holding the states
+        var storeStates = Ext.create('Ext.data.Store', {
+            model: 'State',
+            data: states
+        });
+       
+        // // end state1
+       
+        var secondGrid = Ext.create('Ext.grid.Panel', {
+            renderTo: 'secondGrid',
+            width: 600,
+            height: 200,
+            id:'secondGrid',
+            plugins: [cellEditing],
+            viewConfig: {
+                plugins: {
+                    ptype: 'gridviewdragdrop',
+                    dragGroup: 'secondGridDDGroup',
+                    dropGroup: 'firstGridDDGroup'
+                },
+                listeners: {
+                    render:function () {
+                      //  myMask.show();
+                    },
+                    drop: function (node, data, dropRec, dropPosition) {
+                        var dropOn = dropRec ? ' ' + dropPosition + ' ' + dropRec.get('name') : ' on empty view';
+                    },
+                    cellclick: function (grid, thisHtml, col, record, e, row) {
+                        clickRecord = record;
+                        
+                    }, itemmousedown: function( v, record, item, index, e, eOpts ) {
+                       
+                    }
+                   
+                }
+            },// fields: ['Id', 'RequestNo', 'OldCode', 'NewCode', 'ItemDetail', 'Qty', 'Unit', 'Remark', 'Date', 'storeCombo', 'storeCount']
+            store: secondGridStore,//trello.com/board/karma/5024d17b725536d4513e25db
+            columns: [{
+                text: 'Name',
+                flex: 1,
+                hidden: true,
+                dataIndex: 'RequestNo'
+            }, {
+                text: 'OldCode',
+                flex: 1,
+                hidden: true,
+                dataIndex: 'OldCode'
+            }, {
+                text: 'NewCode',
+                flex: 1,
+                dataIndex: 'NewCode'
+            },
+             {
+                 text: 'Item Detail',
+                 flex: 1,
+                 dataIndex: 'ItemDetail'
+             },
+                {
+                    header: "Main Code",
+                    width: 150,
+                    dataIndex: 'MainCode',
+                    sortable: true,
+                    menuDisabled: true,                   
+                    groupable: false,
+                    align: 'center',
+                    renderer: function (v, p, record) {
+                        return '<div class="canedit">' + v + '</div>';
+                    },
+                    editor: new Ext.form.ComboBox({
+                        id: 'MainCode',
+                        store: mainCodeComboStore,
+                        minChars: 1,
+                        displayField: 'Name',
+                        Tpl: '<tpl for="."><div ext:qtip="{Name}" class="x-combo-list-item">{Name}</div></tpl>',
+                        selectOnFocus: true,
+                        width: 150,
+                        forceSelection: true,
+                        matchFieldWidth: false,
+                        typeAhead: true,
+                        anyMatch: false,
+                        valueNotFoundText: 'Select',
+                        mode: 'local',
+                        queryMode: 'local',
+                        triggerAction: 'all',
+                        listeners: {
+                            focus: function (combo, The, eOpts) {
+                               
+                                clearFilter(mainCodeComboStore);
+                                mainCodeComboStore.realSnapshot = mainCodeComboStore.snapshot;
+                                mainCodeComboStore.snapshot = clickRecord.data.storeCombo;
+                                mainCodeComboStore.loadData(clickRecord.data.storeCombo)
+                            }
+                        }
+                    }),
+                    hidden: false
+
+                }, 
+
+           {
+                text: 'Qty',
+                flex: 1,
+                dataIndex: 'Qty',
+                editor: {
+                    xtype: 'numberfield',
+                    allowBlank: false
+                }
+            },
+            {
+                text: 'Unit',
+                flex: 1,
+                dataIndex: 'Unit',
+                editor: {
+                    xtype: 'textfield',
+                    allowBlank: false
+                }
+            } ],
+            stripeRows: true,
+            title: 'Second Grid',
+            margins: '0 0 0 3'
+        });
+
+       
+    }); //end onReady
+
+   
+    function renderLast(value, p, r) {
+
+        var isAttach = 2;
+        if (isAttach == 1) {
+            return '<img src="../../Scripts/extjs/ext-4.1.1a/resources/themes/images/gray/dd/drop-add.gif" />';//Add Picture For Attrachment
+        }
+        else if (isAttach == 2) {
+            return '<img src="../../Scripts/extjs/ext-4.1.1a/resources/themes/images/gray/dd/drop-no.gif" />';//Add Picture For Other status
+        }
+
+    }
+</script>

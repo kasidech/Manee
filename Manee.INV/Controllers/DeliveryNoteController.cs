@@ -51,6 +51,12 @@ namespace Manee.INV.Controllers
             NoteLineItem itemCriteria = new NoteLineItem();
 
 
+<<<<<<< HEAD
+            ICarService carService = (ICarService)applicationContext.GetObject("CarSrv");
+            IDeliveryNoteService service = (IDeliveryNoteService)applicationContext.GetObject("DeliveryNoteSrv");
+            INoteLineItemService nliService = (INoteLineItemService)applicationContext.GetObject("NoteLineItemSrv");
+            ViewData["cars"] = carService.FindCarAll().ToString();
+=======
 
             ICarService carSrv = (ICarService)appContext.GetObject("CarSrv");
             IDeliveryNoteService service = (IDeliveryNoteService)appContext.GetObject("DeliveryNoteSrv");
@@ -58,6 +64,7 @@ namespace Manee.INV.Controllers
             List<NoteLineItem> n = nliService.FindNoteLineItemByLocation(location_Id);
             
             ViewData["cars"] = carSrv.FindCarAll();
+>>>>>>> 16febd4f8be98335fd4a3a09f46a344891c168c4
             ViewData["NoteLineItem"] = nliService.FindNoteLineItemByLocation(location_Id);
          
             return View();

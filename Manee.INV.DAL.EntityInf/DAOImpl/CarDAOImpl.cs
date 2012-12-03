@@ -11,7 +11,7 @@ namespace Manee.INV.DAL.DAOImpl
     public class CarDAOImpl : ICarDAO
     {
         ManeeDataContainer context = new ManeeDataContainer();
-        public List<Entity.Car> FindCarAll()
+        public List<Car> FindCarAll()
         {
             List<Car> cars = context.Cars.ToList();
             return cars;

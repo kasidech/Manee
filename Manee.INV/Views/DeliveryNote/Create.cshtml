@@ -1,6 +1,7 @@
 ﻿@{
     ViewBag.Title = "Create";
-    Html.RenderPartial("DeliveryNoteGridJs");
+   // Html.RenderPartial("DeliveryNoteGridJs");
+    Html.RenderPartial("dnd_grid_to_gridJs");
 }
 
 @{using (Html.BeginForm())
@@ -45,7 +46,8 @@
 
     <body>
         <form id="collection">
-
+            <div id="A">LogGrid</div>
+            <div id="B">LogGrid</div>
             <div id="DeliveryNote">DeliveryNote
                 <div id="InputForm">InputForm
                     <input id="DeliveryNoteId" type="hidden" name="DeliveryNoteId" value="" />
@@ -63,6 +65,8 @@
             <div id="SearchGrid">SearchGrid</div><br />
             <div id="panel">SearchGrid</div><br /><br />
             <div id="LogGrid">LogGrid</div>
+            <div id="firstGrid">LogGrid</div>
+            <div id="secondGrid">LogGrid</div>
         </form>
     </body>
     </html>
