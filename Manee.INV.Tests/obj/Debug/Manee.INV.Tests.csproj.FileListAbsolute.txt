@@ -52,7 +52,6 @@ C:\Users\Mo\Documents\GitHub\manee\Manee.INV.Tests\bin\Debug\DotNetOpenAuth.Open
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV.Tests\bin\Debug\DotNetOpenAuth.OpenId.xml
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV.Tests\obj\Debug\Manee.INV.Tests.dll
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV.Tests\obj\Debug\Manee.INV.Tests.pdb
-<<<<<<< HEAD
 D:\manee\Manee.INV.Tests\bin\Debug\Manee.INV.Tests.dll.config
 D:\manee\Manee.INV.Tests\bin\Debug\Manee.INV.Tests.dll
 D:\manee\Manee.INV.Tests\bin\Debug\Manee.INV.Tests.pdb
@@ -107,7 +106,5 @@ D:\manee\Manee.INV.Tests\bin\Debug\DotNetOpenAuth.OpenId.xml
 D:\manee\Manee.INV.Tests\obj\Debug\Manee.INV.Tests.csprojResolveAssemblyReference.cache
 D:\manee\Manee.INV.Tests\obj\Debug\Manee.INV.Tests.dll
 D:\manee\Manee.INV.Tests\obj\Debug\Manee.INV.Tests.pdb
-=======
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV.Tests\bin\Debug\LongkongStudio.Framework.dll
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV.Tests\bin\Debug\LongkongStudio.Framework.pdb
->>>>>>> 16febd4f8be98335fd4a3a09f46a344891c168c4

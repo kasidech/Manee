@@ -18,7 +18,6 @@ C:\Users\Mo\Documents\GitHub\manee\Manee.INV.Service\bin\Debug\Manee.INV.DAL.pdb
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV.Service\bin\Debug\EntityFramework.xml
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV.Service\obj\Debug\Manee.INV.Service.dll
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV.Service\obj\Debug\Manee.INV.Service.pdb
-<<<<<<< HEAD
 D:\manee\Manee.INV.Service\bin\Debug\Manee.INV.Service.dll.config
 D:\manee\Manee.INV.Service\bin\Debug\Manee.INV.Service.dll
 D:\manee\Manee.INV.Service\bin\Debug\Manee.INV.Service.pdb
@@ -29,7 +28,6 @@ D:\manee\Manee.INV.Service\bin\Debug\EntityFramework.xml
 D:\manee\Manee.INV.Service\obj\Debug\Manee.INV.Service.csprojResolveAssemblyReference.cache
 D:\manee\Manee.INV.Service\obj\Debug\Manee.INV.Service.dll
 D:\manee\Manee.INV.Service\obj\Debug\Manee.INV.Service.pdb
-=======
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV.Service\bin\Debug\Common.Logging.dll
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV.Service\bin\Debug\LongkongStudio.Framework.dll
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV.Service\bin\Debug\Spring.Core.dll
@@ -42,4 +40,3 @@ C:\Users\Mo\Documents\GitHub\manee\Manee.INV.Service\bin\Debug\System.Web.Http.x
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV.Service\bin\Debug\System.Web.Http.WebHost.xml
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV.Service\bin\Debug\System.Net.Http.Formatting.xml
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV.Service\bin\Debug\Newtonsoft.Json.xml
->>>>>>> 16febd4f8be98335fd4a3a09f46a344891c168c4
