@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<objects xmlns="http://www.springframework.net">
+
+  
+  <object id="deliveryNoteDAO" type="Manee.INV.DAL.DAOImpl.DeliveryNoteDAOImpl, Manee.INV.DAL" />
+
+  <object id="DeliveryNoteSrv" type="Manee.INV.Service.ServiceImpl.DeliveryNoteServiceImpl, Manee.INV.Service">
+    <property name="deliveryNoteDAO" ref="deliveryNoteDAO"/>
+  </object>
+
+  <object id="nliDAO" type="Manee.INV.DAL.DAOImpl.NoteLineItemDAOImpl, Manee.INV.DAL" />
+  
+  <object id="NoteLineItemSrv" type="Manee.INV.Service.ServiceImpl.NoteLineItemServiceImpl, Manee.INV.Service">
+    <property name="nliDAO" ref="nliDAO"/>
+  </object>
+
+  <object id="carDAO" type="Manee.INV.DAL.DAOImpl.CarDAOImpl, Manee.INV.DAL" />
+
+  <object id="CarSrv" type="Manee.INV.Service.ServiceImpl.CarServiceImpl, Manee.INV.Service">
+    <property name="carDAO" ref="carDAO"/>
+  </object>
+
+  <object id="calculatorService" type="Manee.INV.Service.ServiceImpl.CalculatorServiceImpl, Manee.INV.Service">
+    <property name="calculatorDAO" ref="calculatorDAO" />
+  </object>
+  <object id="calculatorDAO" type="Manee.INV.Service.ServiceImpl.CalculatorDAOImpl, Manee.INV.Service" />
+  
+  
+  </objects>

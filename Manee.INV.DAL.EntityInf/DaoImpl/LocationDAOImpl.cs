@@ -27,29 +27,15 @@ namespace Manee.INV.DAL.DAOImpl
             context.SaveChanges();
         }
 
-        Entity.Location ILocationDAO.FindLocationById(int id)
-        {
-           return context.Locations.FirstOrDefault(l => l.Id == id);
-        }
 
         List<Entity.Location> ILocationDAO.FindLocationAll()
         {
-            return new List<Location>();
+            return context.Locations.ToList();
         }
 
-        List<Entity.Location> ILocationDAO.FindByCriteria(Location locationCriteria)
-        {
-            List<Entity.Location> resultList = new List<Location>();
 
-            resultList = context.Locations.Where(
-                l => (!string.IsNullOrEmpty(l.Code) && l.Code.Contains(locationCriteria.Code))
-                     || (!string.IsNullOrEmpty(l.Name) && l.Name.Contains(locationCriteria.Name))
-                     || (!string.IsNullOrEmpty(l.Address) && l.Address.Contains(locationCriteria.Address))
-                     || (l.ProjectManagerId==locationCriteria.ProjectManagerId)
-                     || (l.LocationType == locationCriteria.LocationType)
-                     ).ToList();
-            return resultList;
 
-        }
+
+
     }
 }

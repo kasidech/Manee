@@ -11,17 +11,40 @@ using System.Data.Entity;
 
 namespace Manee.INV.DAL.DAOImpl
 {
+
+
+
     public class DeliveryNoteDAOImpl : IDeliveryNoteDAO
     {
         private ManeeDataContainer context = new ManeeDataContainer();
 
-        void IDeliveryNoteDAO.Create(Entity.DeliveryNote note)
+        void IDeliveryNoteDAO.CreateDeliveryNote(Entity.DeliveryNote note)
         {
-            context.DeliveryNotes.Add(note);
-            context.SaveChanges();
+
+            //DeliverNoteDTO addDN = new DeliverNoteDTO(note);
+            //DeliveryNote n = ()addDN;
+            
+
+            
+                // Your code...
+                // Could also be before try if you know the exception occurs in SaveChanges
+
+                if (note.Id == 0)
+                {
+
+                   
+                    context.DeliveryNotes.Add(note);
+
+                    context.Locations.Attach(note.Origin);
+                    context.Locations.Attach(note.Destination);
+                }
+               
+                
+                context.SaveChanges();
+            
         }
 
-        void IDeliveryNoteDAO.Delete(int noteId)
+        void IDeliveryNoteDAO.DeleteDeliveryNote(int noteId)
         {
             DeliveryNote deletingNote = context.DeliveryNotes.FirstOrDefault(p=>p.Id == noteId);
             context.DeliveryNotes.Remove(deletingNote);
@@ -29,7 +52,7 @@ namespace Manee.INV.DAL.DAOImpl
             
         }
 
-        void IDeliveryNoteDAO.Update(Entity.DeliveryNote note)
+        void IDeliveryNoteDAO.UpdateDeliveryNote(Entity.DeliveryNote note)
         {
             DeliveryNote updateNote = context.DeliveryNotes.FirstOrDefault(p => p.Id == note.Id);
             updateNote.Code = note.Code;

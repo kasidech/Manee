@@ -106,6 +106,7 @@ C:\Users\Mo\Documents\GitHub\manee\Manee.INV\bin\DotNetOpenAuth.OpenId.xml
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV\obj\Debug\Manee.INV.dll
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV\obj\Debug\Manee.INV.pdb
+<<<<<<< HEAD
 D:\manee\Manee.INV\bin\Manee.INV.dll
 D:\manee\Manee.INV\bin\Manee.INV.pdb
 D:\manee\Manee.INV\bin\Antlr3.Runtime.dll
@@ -161,3 +162,7 @@ D:\manee\Manee.INV\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
 D:\manee\Manee.INV\obj\Debug\Manee.INV.csprojResolveAssemblyReference.cache
 D:\manee\Manee.INV\obj\Debug\Manee.INV.dll
 D:\manee\Manee.INV\obj\Debug\Manee.INV.pdb
+=======
+C:\Users\Mo\Documents\GitHub\manee\Manee.INV\bin\LongkongStudio.Framework.dll
+C:\Users\Mo\Documents\GitHub\manee\Manee.INV\bin\LongkongStudio.Framework.pdb
+>>>>>>> 16febd4f8be98335fd4a3a09f46a344891c168c4

@@ -170,7 +170,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\DeliveryNoteController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NoteLineItemController.cs" />
@@ -5368,7 +5367,7 @@
     <Content Include="Scripts\ts-site.js">
       <DependentUpon>ts-site.ts</DependentUpon>
     </Content>
-    <Content Include="spring-inv-controller.xml">
+    <Content Include="spring-inv.xml">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.config" />
@@ -5424,6 +5423,10 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LongkongStudio.Framework\LongkongStudio.Framework.csproj">
+      <Project>{dbe98987-b029-4b35-a90d-c708edd7c929}</Project>
+      <Name>LongkongStudio.Framework</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Manee.INV.DAL.EntityInf\Manee.INV.DAL.csproj">
       <Project>{0927dec7-0e18-4018-a0ea-a9780fbebe1d}</Project>
       <Name>Manee.INV.DAL</Name>

@@ -23,7 +23,7 @@ namespace Manee.INV.DAL.Test
 
         ManeeDataContainer context = new ManeeDataContainer();
        
-        [TestMethod]
+
         //public void CreateLocation()
         //{
 
@@ -42,14 +42,7 @@ namespace Manee.INV.DAL.Test
         //    Assert.AreNotEqual(locationDB, "Failed");
 
         //}
-        public void FindLocationById()
-        {
-            int id = context.Locations.FirstOrDefault().Id;
-            Location location = dao.FindLocationById(id);
-            Location locationDB = context.Locations.FirstOrDefault(l => l.Id == id);
 
-            Assert.AreNotEqual(location, locationDB, "Failed");
-        }
 
         [TestMethod]
 
