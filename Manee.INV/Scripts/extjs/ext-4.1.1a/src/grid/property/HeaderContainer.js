@@ -101,6 +101,12 @@ Ext.define('Ext.grid.property.HeaderContainer', {
     },
 
     // private
+    rendercombo: function (bVal) {
+        console.log(bVal);
+        return this[bVal ? 'trueText' : 'falseText'];
+    },
+
+    // private
     // Renders custom property names instead of raw names if defined in the Grid
     getPropertyName : function(name) {
         var pn = this.grid.propertyNames;

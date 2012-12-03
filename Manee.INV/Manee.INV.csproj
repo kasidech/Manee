@@ -5361,6 +5361,9 @@
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Views\DeliveryNote\dnd_grid_to_gridJs.cshtml">
+      <SubType>Code</SubType>
+    </Content>
     <TypeScriptCompile Include="Scripts\ts-site.ts" />
     <Content Include="Scripts\ts-site.js">
       <DependentUpon>ts-site.ts</DependentUpon>

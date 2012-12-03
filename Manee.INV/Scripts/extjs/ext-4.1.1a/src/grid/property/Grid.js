@@ -202,7 +202,8 @@ Ext.define('Ext.grid.property.Grid', {
             'boolean' : new Ext.grid.CellEditor({ field: new Ext.form.field.ComboBox({
                 editable: false,
                 store: [[ true, me.headerCt.trueText ], [false, me.headerCt.falseText ]]
-            })})
+            })
+            })
         };
 
         // Track changes to the data so we can fire our events.
@@ -250,7 +251,8 @@ Ext.define('Ext.grid.property.Grid', {
             propName = record.get(me.nameField),
             val = record.get(me.valueField),
             editor = me.customEditors[propName];
-
+        console.log(val);
+        alert(1)
         // A custom editor was found. If not already wrapped with a CellEditor, wrap it, and stash it back
         // If it's not even a Field, just a config object, instantiate it before wrapping it.
         if (editor) {

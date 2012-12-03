@@ -18,3 +18,13 @@ C:\Users\Mo\Documents\GitHub\manee\Manee.INV.Service\bin\Debug\Manee.INV.DAL.pdb
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV.Service\bin\Debug\EntityFramework.xml
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV.Service\obj\Debug\Manee.INV.Service.dll
 C:\Users\Mo\Documents\GitHub\manee\Manee.INV.Service\obj\Debug\Manee.INV.Service.pdb
+D:\manee\Manee.INV.Service\bin\Debug\Manee.INV.Service.dll.config
+D:\manee\Manee.INV.Service\bin\Debug\Manee.INV.Service.dll
+D:\manee\Manee.INV.Service\bin\Debug\Manee.INV.Service.pdb
+D:\manee\Manee.INV.Service\bin\Debug\EntityFramework.dll
+D:\manee\Manee.INV.Service\bin\Debug\Manee.INV.DAL.dll
+D:\manee\Manee.INV.Service\bin\Debug\Manee.INV.DAL.pdb
+D:\manee\Manee.INV.Service\bin\Debug\EntityFramework.xml
+D:\manee\Manee.INV.Service\obj\Debug\Manee.INV.Service.csprojResolveAssemblyReference.cache
+D:\manee\Manee.INV.Service\obj\Debug\Manee.INV.Service.dll
+D:\manee\Manee.INV.Service\obj\Debug\Manee.INV.Service.pdb

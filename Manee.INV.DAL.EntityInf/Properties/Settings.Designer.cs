@@ -26,8 +26,8 @@ namespace Manee.INV.DAL.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=MO-PC\\RELEASE1;Initial Catalog=TOCPP;Persist Security Info=True;User " +
-            "ID=sa;Password=tmhctr")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(local);Initial Catalog=Manee;Persist Security Info=True;User ID=sa;P" +
+            "assword=tmhctr")]
         public string ManeeConnectionString {
             get {
                 return ((string)(this["ManeeConnectionString"]));

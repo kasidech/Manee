@@ -42,7 +42,7 @@ namespace Manee.INV.Controllers
             ICarService carService = (ICarService)applicationContext.GetObject("CarSrv");
             IDeliveryNoteService service = (IDeliveryNoteService)applicationContext.GetObject("DeliveryNoteSrv");
             INoteLineItemService nliService = (INoteLineItemService)applicationContext.GetObject("NoteLineItemSrv");
-            ViewData["cars"] = carService.FindCarAll();
+            ViewData["cars"] = carService.FindCarAll().ToString();
             ViewData["NoteLineItem"] = nliService.FindNoteLineItemByLocation(location_Id);
          
             return View();

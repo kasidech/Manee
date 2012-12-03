@@ -2,13 +2,13 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, and Azure
 -- --------------------------------------------------
--- Date Created: 11/28/2012 17:22:29
--- Generated from EDMX file: C:\Users\Mo\Documents\GitHub\manee\Manee.INV.DAL.EntityInf\Entity\ManeeEntityDataModel.edmx
+-- Date Created: 11/29/2012 18:40:23
+-- Generated from EDMX file: D:\manee\Manee.INV.DAL.EntityInf\Entity\ManeeEntityDataModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-USE [TOCPP];
+USE [Manee];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
